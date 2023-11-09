@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/StarterSamples/Usage/StartScene.unity
+    guid: 071fba5195bd4b04eab8668985aa1683
+  - enabled: 0
+    path: Assets/StarterSamples/Usage/CustomControllers.unity
+    guid: e0f49aa4174f98941b88699b5fecddc0
+  - enabled: 0
+    path: Assets/StarterSamples/Usage/CustomHands.unity
+    guid: a4f984fcee593d2418cc61f4a993d46d
+  - enabled: 0
+    path: Assets/StarterSamples/Usage/DebugUI.unity
+    guid: 34004346bd7dcbf4fbfd78d2f12e4451
+  - enabled: 0
+    path: Assets/StarterSamples/Usage/DistanceGrab.unity
+    guid: 24f58b3f0ca02d44eaec7f50bca538f2
+  - enabled: 0
+    path: Assets/StarterSamples/Usage/Locomotion.unity
+    guid: 024cd9dcd49bd8f46a6bea03aa8a21bb
+  - enabled: 0
+    path: Assets/StarterSamples/Usage/MixedRealityCapture.unity
+    guid: 24872d3c3760f23498f41ecb019ea5cd
+  - enabled: 0
+    path: Assets/StarterSamples/Usage/OVROverlay.unity
+    guid: d31b44aac77e1684d861792b23d46a8b
+  - enabled: 0
+    path: Assets/StarterSamples/Usage/Stereo180Video.unity
+    guid: 11cf8fa7bf3deb04db11bd170c0b4338
+  - enabled: 0
+    path: Assets/StarterSamples/Usage/HandsInteractionTrainScene.unity
+    guid: a9c41884ef0c347628dfd8a4af4a022e
+  - enabled: 0
+    path: Assets/StarterSamples/Usage/WidevineVideo.unity
+    guid: 5495456b7253d31479996b9587c20927
+  - enabled: 0
+    path: Assets/StarterSamples/Usage/AppDeeplink.unity
+    guid: 86c41af799197d64889f7269608d44e6
+  - enabled: 0
+    path: Assets/StarterSamples/Usage/Firebase.unity
+    guid: 954eda7bd02eb444ca928648702a2b4c
+  - enabled: 0
+    path: Assets/StarterSamples/Usage/SceneManager.unity
+    guid: d9d629a01189e9744a9347a18243afd9
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 8c0030b4b5984e7439a553df0cdd7dd2,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: abe5d4c6390c70b438750d3c82121457,
+      type: 2}
