@@ -46,7 +46,7 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0",
-    "com.meta.xr.sdk.core": "59.0.0",
-    "com.meta.xr.sdk.platform": "59.0.0"
+    "com.meta.xr.sdk.core": "60.0.0",
+    "com.meta.xr.sdk.platform": "60.0.0"
   }
 }
