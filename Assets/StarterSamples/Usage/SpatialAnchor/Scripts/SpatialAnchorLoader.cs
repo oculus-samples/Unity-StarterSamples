@@ -37,7 +37,7 @@ public class SpatialAnchorLoader : MonoBehaviour
     [SerializeField]
     OVRSpatialAnchor _anchorPrefab;
 
-    Action<OVRSpatialAnchor.UnboundAnchor, bool> _onLoadAnchor;
+    Action<bool, OVRSpatialAnchor.UnboundAnchor> _onAnchorLocalized;
 
     public void LoadAnchorsByUuid()
     {
@@ -72,31 +72,32 @@ public class SpatialAnchorLoader : MonoBehaviour
 
     private void Awake()
     {
-        _onLoadAnchor = OnLocalized;
+        _onAnchorLocalized = OnLocalized;
     }
 
-    private void Load(OVRSpatialAnchor.LoadOptions options) => OVRSpatialAnchor.LoadUnboundAnchors(options, anchors =>
-    {
-        if (anchors == null)
+    private void Load(OVRSpatialAnchor.LoadOptions options) => OVRSpatialAnchor.LoadUnboundAnchorsAsync(options)
+        .ContinueWith(anchors =>
         {
-            Log("Query failed.");
-            return;
-        }
-
-        foreach (var anchor in anchors)
-        {
-            if (anchor.Localized)
+            if (anchors == null)
             {
-                _onLoadAnchor(anchor, true);
+                Log("Query failed.");
+                return;
             }
-            else if (!anchor.Localizing)
-            {
-                anchor.Localize(_onLoadAnchor);
-            }
-        }
-    });
 
-    private void OnLocalized(OVRSpatialAnchor.UnboundAnchor unboundAnchor, bool success)
+            foreach (var anchor in anchors)
+            {
+                if (anchor.Localized)
+                {
+                    _onAnchorLocalized(true, anchor);
+                }
+                else if (!anchor.Localizing)
+                {
+                    anchor.LocalizeAsync().ContinueWith(_onAnchorLocalized, anchor);
+                }
+            }
+        });
+
+    private void OnLocalized(bool success, OVRSpatialAnchor.UnboundAnchor unboundAnchor)
     {
         if (!success)
         {

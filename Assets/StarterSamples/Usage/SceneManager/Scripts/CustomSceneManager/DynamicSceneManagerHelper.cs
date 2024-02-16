@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) Meta Platforms, Inc. and affiliates.
  * All rights reserved.
  *
@@ -162,7 +162,7 @@ namespace DynamicSceneManagerHelper
             // only interested in the anchors which are locatable
             if (!anchor.TryGetComponent(out OVRLocatable locatable))
                 return null;
-            await locatable.SetEnabledAsync(true);
+            await locatable.SetEnabledSafeAsync(true);
 
             // get semantic classification for object name
             var label = "other";
@@ -199,9 +199,5 @@ namespace DynamicSceneManagerHelper
             if (anchor.TryGetComponent(out OVRTriangleMesh mesh) && mesh.IsEnabled)
                 helper.UpdateMesh(mesh);
         }
-    }
-
-    static class ObjectPool
-    {
     }
 }

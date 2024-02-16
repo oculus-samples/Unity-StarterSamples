@@ -134,7 +134,14 @@ partial class OculusBuildSamples
     [MenuItem("Oculus/Samples/Build Starter Scene")]
     static void BuildStartScene()
     {
-        InitializeBuild("com.oculus.unitysample.startscene");
+        InitializeBuild("com.oculus.unitysample.startscene", "Meta XR SDK Samples");
+
+        var projectSettings = OVRProjectConfig.GetProjectConfig();
+        projectSettings.insightPassthroughSupport = OVRProjectConfig.FeatureSupport.Supported;
+        projectSettings.anchorSupport = OVRProjectConfig.AnchorSupport.Enabled;
+        projectSettings.sceneSupport = OVRProjectConfig.FeatureSupport.Supported;
+        projectSettings.handTrackingSupport = OVRProjectConfig.HandTrackingSupport.ControllersAndHands;
+
         Build(
             "StartScene.apk",
             new string[]
@@ -148,11 +155,12 @@ partial class OculusBuildSamples
                 GetFullPathForSample("Usage/OVROverlay.unity"),
                 GetFullPathForSample("Usage/OVROverlayCanvas.unity"),
                 GetFullPathForSample("Usage/Passthrough.unity"),
-                GetFullPathForSample("Usage/SceneManager.unity")
+                GetFullPathForSample("Usage/SceneManager.unity"),
             });
     }
 
-    private static void InitializeBuild(string identifier)
+
+    private static void InitializeBuild(string identifier, string productName = null)
     {
         PlayerSettings.stereoRenderingPath = StereoRenderingPath.SinglePass;
         GraphicsDeviceType[] graphicsApis = new GraphicsDeviceType[1];
@@ -166,12 +174,19 @@ partial class OculusBuildSamples
         EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
         QualitySettings.antiAliasing = 4;
         PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, identifier);
+        if (!string.IsNullOrEmpty(productName))
+        {
+            PlayerSettings.productName = productName;
+        }
     }
 
-    private static void Build(string sceneName)
-    {
-        Build(sceneName + ".apk", new string[] { GetFullPathForSample($"Usage/{sceneName}.unity") });
-    }
+    static void Build(string sceneName) => Build("Usage", sceneName);
+
+    static void Build(string relativeSamplePath, string sceneName) =>
+        Build($"{sceneName}.apk", new[]
+        {
+            GetFullPathForSample(Path.Combine(relativeSamplePath, $"{sceneName}.unity"))
+        });
 
 
     private static void Build(string apkName, string[] scenes)

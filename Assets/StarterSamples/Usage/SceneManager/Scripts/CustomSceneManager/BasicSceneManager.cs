@@ -36,8 +36,6 @@ public class BasicSceneManager : MonoBehaviour
 {
     void Start()
     {
-        SceneManagerHelper.RequestScenePermission();
-
         LoadSceneAsync();
     }
 
@@ -77,7 +75,7 @@ public class BasicSceneManager : MonoBehaviour
             // can we locate it in the world?
             if (!anchor.TryGetComponent(out OVRLocatable locatable))
                 return;
-            await locatable.SetEnabledAsync(true);
+            await locatable.SetEnabledSafeAsync(true);
 
             // get semantic classification for object name
             var label = "other";

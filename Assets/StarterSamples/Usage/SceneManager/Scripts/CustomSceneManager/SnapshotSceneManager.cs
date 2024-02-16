@@ -48,7 +48,6 @@ public class SnapshotSceneManager : MonoBehaviour
 
     void Start()
     {
-        SceneManagerHelper.RequestScenePermission();
         StartCoroutine(UpdateScenePeriodically());
     }
 

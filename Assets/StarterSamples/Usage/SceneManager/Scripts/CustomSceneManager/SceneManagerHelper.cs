@@ -157,15 +157,4 @@ public class SceneManagerHelper
         });
     }
     private static bool SceneCaptureRunning = false; // single instance
-
-    /// <summary>
-    /// A wrapper function for requesting the Android
-    /// permission for scene data.
-    /// </summary>
-    public static void RequestScenePermission()
-    {
-        const string permission = "com.oculus.permission.USE_SCENE";
-        if (!UnityEngine.Android.Permission.HasUserAuthorizedPermission(permission))
-            UnityEngine.Android.Permission.RequestUserPermission(permission);
-    }
 }

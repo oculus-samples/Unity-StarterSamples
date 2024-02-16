@@ -140,15 +140,15 @@ public class Anchor : MonoBehaviour
     {
         if (!_spatialAnchor) return;
 
-        _spatialAnchor.Save((anchor, success) =>
+        _spatialAnchor.SaveAsync().ContinueWith((success, anchor) =>
         {
             if (!success) return;
 
             // Enables save icon on the menu
-            ShowSaveIcon = true;
+            anchor.ShowSaveIcon = true;
 
-            SaveUuidToPlayerPrefs(anchor.Uuid);
-        });
+            SaveUuidToPlayerPrefs(anchor._spatialAnchor.Uuid);
+        }, this);
     }
 
     void SaveUuidToPlayerPrefs(Guid uuid)
@@ -179,13 +179,13 @@ public class Anchor : MonoBehaviour
     {
         if (!_spatialAnchor) return;
 
-        _spatialAnchor.Erase((anchor, success) =>
+        _spatialAnchor.EraseAsync().ContinueWith((success, anchor) =>
         {
             if (success)
             {
-                _saveIcon.SetActive(false);
+                anchor._saveIcon.SetActive(false);
             }
-        });
+        }, this);
     }
 
     #endregion // UI Event Listeners

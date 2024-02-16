@@ -54,7 +54,6 @@ public class DynamicSceneManager : MonoBehaviour
 
     void Start()
     {
-        SceneManagerHelper.RequestScenePermission();
         StartCoroutine(UpdateScenePeriodically());
     }
 
