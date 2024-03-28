@@ -162,7 +162,7 @@ namespace DynamicSceneManagerHelper
             // only interested in the anchors which are locatable
             if (!anchor.TryGetComponent(out OVRLocatable locatable))
                 return null;
-            await locatable.SetEnabledSafeAsync(true);
+            await locatable.SetEnabledAsync(true);
 
             // get semantic classification for object name
             var label = "other";

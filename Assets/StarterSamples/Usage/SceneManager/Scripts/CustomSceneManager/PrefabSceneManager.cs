@@ -98,7 +98,7 @@ public class PrefabSceneManager : MonoBehaviour
             // can we locate it in the world?
             if (!anchor.TryGetComponent(out OVRLocatable locatable))
                 return;
-            await locatable.SetEnabledSafeAsync(true);
+            await locatable.SetEnabledAsync(true);
 
             // check room layout information and assign prefab
             // it would also be possible to use the semantic label

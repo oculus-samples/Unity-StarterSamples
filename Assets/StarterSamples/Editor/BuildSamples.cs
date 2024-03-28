@@ -97,11 +97,9 @@ partial class OculusBuildSamples
         Build("OVROverlayCanvas");
     }
 
-    // reach out to panya or brittahummel for issues regarding passthrough
     static void BuildPassthrough()
     {
         InitializeBuild("com.oculus.unitysample.passthrough");
-        // TODO: enable OpenXR so Passthrough works
         Build("Passthrough");
     }
 

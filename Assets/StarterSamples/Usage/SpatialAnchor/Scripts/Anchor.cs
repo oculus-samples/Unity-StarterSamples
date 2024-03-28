@@ -18,14 +18,12 @@
  * limitations under the License.
  */
 
-using System;
 using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.Serialization;
-using System.Text;
 
 /// <summary>
 /// Specific functionality for spawned anchors
@@ -33,8 +31,6 @@ using System.Text;
 [RequireComponent(typeof(OVRSpatialAnchor))]
 public class Anchor : MonoBehaviour
 {
-    public const string NumUuidsPlayerPref = "numUuids";
-
     [SerializeField, FormerlySerializedAs("canvas_")]
     private Canvas _canvas;
 
@@ -140,28 +136,26 @@ public class Anchor : MonoBehaviour
     {
         if (!_spatialAnchor) return;
 
-        _spatialAnchor.SaveAsync().ContinueWith((success, anchor) =>
-        {
-            if (!success) return;
-
-            // Enables save icon on the menu
-            anchor.ShowSaveIcon = true;
-
-            SaveUuidToPlayerPrefs(anchor._spatialAnchor.Uuid);
-        }, this);
+        SaveAnchor();
     }
 
-    void SaveUuidToPlayerPrefs(Guid uuid)
-    {
-        // Write uuid of saved anchor to file
-        if (!PlayerPrefs.HasKey(NumUuidsPlayerPref))
-        {
-            PlayerPrefs.SetInt(NumUuidsPlayerPref, 0);
-        }
 
-        int playerNumUuids = PlayerPrefs.GetInt(NumUuidsPlayerPref);
-        PlayerPrefs.SetString("uuid" + playerNumUuids, uuid.ToString());
-        PlayerPrefs.SetInt(NumUuidsPlayerPref, ++playerNumUuids);
+    void SaveAnchor() => _spatialAnchor.SaveAsync().ContinueWith((success, anchor) =>
+    {
+        if (success)
+        {
+            anchor.OnSave();
+        }
+        else
+        {
+            Debug.LogError($"Failed to save anchor {anchor._spatialAnchor.Uuid}.");
+        }
+    }, this);
+
+    void OnSave()
+    {
+        ShowSaveIcon = true;
+        AnchorUuidStore.Add(_spatialAnchor.Uuid);
     }
 
     /// <summary>
@@ -179,13 +173,28 @@ public class Anchor : MonoBehaviour
     {
         if (!_spatialAnchor) return;
 
+        EraseAnchor();
+    }
+
+    void EraseAnchor()
+    {
         _spatialAnchor.EraseAsync().ContinueWith((success, anchor) =>
         {
             if (success)
             {
-                anchor._saveIcon.SetActive(false);
+                anchor.OnErase();
+            }
+            else
+            {
+                Debug.LogError($"Failed to erase anchor {anchor._spatialAnchor.Uuid}");
             }
         }, this);
+    }
+
+    void OnErase()
+    {
+        ShowSaveIcon = false;
+        AnchorUuidStore.Remove(_spatialAnchor.Uuid);
     }
 
     #endregion // UI Event Listeners

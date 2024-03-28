@@ -19,6 +19,8 @@
  */
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -26,7 +28,7 @@ using UnityEngine;
 /// </summary>
 /// <remarks>
 /// Loading existing anchors involves two asynchronous methods:
-/// 1. Call <see cref="OVRSpatialAnchor.LoadUnboundAnchors"/>
+/// 1. Call <see cref="OVRSpatialAnchor.LoadUnboundAnchorsAsync"/>
 /// 2. For each unbound anchor you wish to localize, invoke <see cref="OVRSpatialAnchor.UnboundAnchor.Localize"/>.
 /// 3. Once localized, your callback will receive an <see cref="OVRSpatialAnchor.UnboundAnchor"/>. Instantiate an
 /// <see cref="OVRSpatialAnchor"/> component and bind it to the `UnboundAnchor` by calling
@@ -41,26 +43,15 @@ public class SpatialAnchorLoader : MonoBehaviour
 
     public void LoadAnchorsByUuid()
     {
-        // Get number of saved anchor uuids
-        if (!PlayerPrefs.HasKey(Anchor.NumUuidsPlayerPref))
+        var uuids = AnchorUuidStore.Uuids.ToArray();
+        if (uuids.Length == 0)
         {
-            PlayerPrefs.SetInt(Anchor.NumUuidsPlayerPref, 0);
-        }
-
-        var playerUuidCount = PlayerPrefs.GetInt(Anchor.NumUuidsPlayerPref);
-        Log($"Attempting to load {playerUuidCount} saved anchors.");
-        if (playerUuidCount == 0)
+            LogWarning($"There are no anchors to load.");
             return;
-
-        var uuids = new Guid[playerUuidCount];
-        for (int i = 0; i < playerUuidCount; ++i)
-        {
-            var uuidKey = "uuid" + i;
-            var currentUuid = PlayerPrefs.GetString(uuidKey);
-            Log("QueryAnchorByUuid: " + currentUuid);
-
-            uuids[i] = new Guid(currentUuid);
         }
+
+        Log($"Attempting to load {uuids.Length} anchors by UUID: " +
+            $"{string.Join($", ", uuids.Select(uuid => uuid.ToString()))}");
 
         Load(new OVRSpatialAnchor.LoadOptions
         {
@@ -75,25 +66,35 @@ public class SpatialAnchorLoader : MonoBehaviour
         _onAnchorLocalized = OnLocalized;
     }
 
+    private void ProcessUnboundAnchors(IReadOnlyList<OVRSpatialAnchor.UnboundAnchor> unboundAnchors)
+    {
+        Log($"{nameof(OVRSpatialAnchor.LoadUnboundAnchorsAsync)} found {unboundAnchors.Count} unbound anchors: " +
+            $"[{string.Join(", ", unboundAnchors.Select(a => a.Uuid.ToString()))}]");
+
+        foreach (var anchor in unboundAnchors)
+        {
+            if (anchor.Localized)
+            {
+                _onAnchorLocalized(true, anchor);
+            }
+            else if (!anchor.Localizing)
+            {
+                anchor.LocalizeAsync().ContinueWith(_onAnchorLocalized, anchor);
+            }
+        }
+    }
+
+
     private void Load(OVRSpatialAnchor.LoadOptions options) => OVRSpatialAnchor.LoadUnboundAnchorsAsync(options)
         .ContinueWith(anchors =>
         {
-            if (anchors == null)
+            if (anchors != null)
             {
-                Log("Query failed.");
-                return;
+                ProcessUnboundAnchors(anchors);
             }
-
-            foreach (var anchor in anchors)
+            else
             {
-                if (anchor.Localized)
-                {
-                    _onAnchorLocalized(true, anchor);
-                }
-                else if (!anchor.Localizing)
-                {
-                    anchor.LocalizeAsync().ContinueWith(_onAnchorLocalized, anchor);
-                }
+                LogError($"{nameof(OVRSpatialAnchor.LoadUnboundAnchorsAsync)} failed.");
             }
         });
 
@@ -101,7 +102,7 @@ public class SpatialAnchorLoader : MonoBehaviour
     {
         if (!success)
         {
-            Log($"{unboundAnchor} Localization failed!");
+            LogError($"{unboundAnchor} Localization failed!");
             return;
         }
 
@@ -116,5 +117,12 @@ public class SpatialAnchorLoader : MonoBehaviour
         }
     }
 
-    private static void Log(string message) => Debug.Log($"[SpatialAnchorsUnity]: {message}");
+    private static void Log(LogType logType, object message)
+        => Debug.unityLogger.Log(logType, "[SpatialAnchorSample]", message);
+
+    private static void Log(object message) => Log(LogType.Log, message);
+
+    private static void LogWarning(object message) => Log(LogType.Warning, message);
+
+    private static void LogError(object message) => Log(LogType.Error, message);
 }

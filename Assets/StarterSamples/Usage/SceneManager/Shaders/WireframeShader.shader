@@ -2,7 +2,7 @@ Shader "Unlit/WireframeShader" {
   Properties {
     _WireframeColor("WireframeColor", Color) = (1, 0, 0, 1)
     _Color("Color", Color) = (1, 1, 1, 1)
-    _DistanceMultipler("DistanceMultiplier", Range(1, 5)) = 1
+    _LineWidth("LineWidth", Range(0.01, 0.1)) = 0.05
   }
 
   SubShader {
@@ -12,8 +12,8 @@ Shader "Unlit/WireframeShader" {
       #pragma vertex vert
       #pragma fragment frag
 
-      half4 _WireframeColor, _Color;
-      float _LineThickness, _DistanceMultipler;
+      float4 _WireframeColor, _Color;
+      float _LineWidth;
 
       struct appdata
       {
@@ -25,7 +25,6 @@ Shader "Unlit/WireframeShader" {
       struct v2f
       {
         float4 vertex : SV_POSITION;
-        float3 vertexView : TEXCOORD0;
         float3 color: COLOR;
         UNITY_VERTEX_OUTPUT_STEREO
       };
@@ -37,21 +36,32 @@ Shader "Unlit/WireframeShader" {
         UNITY_INITIALIZE_OUTPUT(v2f, o);
         UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
         o.vertex = UnityObjectToClipPos(v.vertex);
-        o.vertexView = UnityObjectToViewPos(v.vertex);
         o.color = v.color;
         return o;
       }
 
       fixed4 frag(v2f i) : SV_Target
       {
-        // on edge, one or the coordinates is 0
-        float closest = min(i.color.x, min(i.color.y, i.color.z));
+        // barycentric coord - on triangle edge, we're at 0
+        float bc = min(i.color.x, min(i.color.y, i.color.z));
 
-        // use distance to make far away edges visible
-        float distance = length(i.vertexView) * _DistanceMultipler * 0.02;
-        float val = closest/distance;
+        // use screen-space derivates on the bc
+        float bcDeriv = fwidth(bc);
 
-        return lerp(_WireframeColor, _Color, clamp(val,0,1));
+        // limit the thickness by pixel size
+        float drawWidth = max(_LineWidth, bcDeriv);
+
+        // multiply to use absolute size (instead of later /2)
+        float lineAA = bcDeriv * 1.5f;
+        float lineBC = 1.0f - abs(frac(bc) * 2.0f - 1.0f);
+
+        // smoothstep using the BC as the gradient
+        float val = smoothstep(drawWidth + lineAA, drawWidth - lineAA, lineBC);
+
+        // fade by how thick we wanted (_LineWidth) vs we're drawing
+        val *= saturate(_LineWidth / drawWidth);
+
+        return lerp(_Color, _WireframeColor, val);
       }
       ENDCG
     }
