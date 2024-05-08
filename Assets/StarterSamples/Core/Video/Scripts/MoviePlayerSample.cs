@@ -214,7 +214,7 @@ public class MoviePlayerSample : MonoBehaviour
                     Play(video, null);
                 }
 #else
-                Play(Application.streamingAssetsPath +"/" + MovieName, null);
+                Play(Application.streamingAssetsPath + "/" + MovieName, null);
 #endif
             }
             else
