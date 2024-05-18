@@ -90,7 +90,7 @@ public class HandMeshMask : MonoBehaviour
         // must have a minimum amount for math to work out
         radialDivisions = Mathf.Max(2, radialDivisions);
 
-        if (referenceHand)
+        if (referenceHand && referenceHand.IsDataValid)
         {
             // make sure all math accounts for hand scale
             handScale = referenceHand.GetComponent<OVRHand>().HandScale;

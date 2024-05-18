@@ -136,21 +136,18 @@ public class Anchor : MonoBehaviour
     {
         if (!_spatialAnchor) return;
 
-        SaveAnchor();
+        _spatialAnchor.SaveAnchorAsync().ContinueWith((result, anchor) =>
+        {
+            if (result.Success)
+            {
+                anchor.OnSave();
+            }
+            else
+            {
+                Debug.LogError($"Failed to save anchor {anchor._spatialAnchor.Uuid} with error {result.Status}.");
+            }
+        }, this);
     }
-
-
-    void SaveAnchor() => _spatialAnchor.SaveAsync().ContinueWith((success, anchor) =>
-    {
-        if (success)
-        {
-            anchor.OnSave();
-        }
-        else
-        {
-            Debug.LogError($"Failed to save anchor {anchor._spatialAnchor.Uuid}.");
-        }
-    }, this);
 
     void OnSave()
     {
@@ -178,15 +175,15 @@ public class Anchor : MonoBehaviour
 
     void EraseAnchor()
     {
-        _spatialAnchor.EraseAsync().ContinueWith((success, anchor) =>
+        _spatialAnchor.EraseAnchorAsync().ContinueWith((result, anchor) =>
         {
-            if (success)
+            if (result.Success)
             {
                 anchor.OnErase();
             }
             else
             {
-                Debug.LogError($"Failed to erase anchor {anchor._spatialAnchor.Uuid}");
+                Debug.LogError($"Failed to erase anchor {anchor._spatialAnchor.Uuid} with result {result.Status}");
             }
         }, this);
     }

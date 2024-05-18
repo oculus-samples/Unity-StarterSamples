@@ -41,6 +41,8 @@ public class SpatialAnchorLoader : MonoBehaviour
 
     Action<bool, OVRSpatialAnchor.UnboundAnchor> _onAnchorLocalized;
 
+    readonly List<OVRSpatialAnchor.UnboundAnchor> _unboundAnchors = new();
+
     public void LoadAnchorsByUuid()
     {
         var uuids = AnchorUuidStore.Uuids.ToArray();
@@ -53,12 +55,18 @@ public class SpatialAnchorLoader : MonoBehaviour
         Log($"Attempting to load {uuids.Length} anchors by UUID: " +
             $"{string.Join($", ", uuids.Select(uuid => uuid.ToString()))}");
 
-        Load(new OVRSpatialAnchor.LoadOptions
-        {
-            Timeout = 0,
-            StorageLocation = OVRSpace.StorageLocation.Local,
-            Uuids = uuids
-        });
+        OVRSpatialAnchor.LoadUnboundAnchorsAsync(uuids, _unboundAnchors)
+            .ContinueWith(result =>
+            {
+                if (result.Success)
+                {
+                    ProcessUnboundAnchors(result.Value);
+                }
+                else
+                {
+                    LogError($"{nameof(OVRSpatialAnchor.LoadUnboundAnchorsAsync)} failed with error {result.Status}.");
+                }
+            });
     }
 
     private void Awake()
@@ -83,20 +91,6 @@ public class SpatialAnchorLoader : MonoBehaviour
             }
         }
     }
-
-
-    private void Load(OVRSpatialAnchor.LoadOptions options) => OVRSpatialAnchor.LoadUnboundAnchorsAsync(options)
-        .ContinueWith(anchors =>
-        {
-            if (anchors != null)
-            {
-                ProcessUnboundAnchors(anchors);
-            }
-            else
-            {
-                LogError($"{nameof(OVRSpatialAnchor.LoadUnboundAnchorsAsync)} failed.");
-            }
-        });
 
     private void OnLocalized(bool success, OVRSpatialAnchor.UnboundAnchor unboundAnchor)
     {

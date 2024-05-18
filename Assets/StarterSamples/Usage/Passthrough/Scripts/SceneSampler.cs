@@ -18,33 +18,46 @@
  * limitations under the License.
  */
 
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneSampler : MonoBehaviour
 {
-    int currentSceneIndex = 0;
+    private int currentSceneIndex;
     public GameObject displayText;
 
     void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        // Make sure we have only one instance of SceneSampler game object when jumping between scene
+        if (FindObjectsOfType<SceneSampler>().Any(sceneSampler => sceneSampler != this))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+        currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // Log Passthrough capabilities
+        OVRManager.PassthroughCapabilities passthroughCapabilities = OVRManager.GetPassthroughCapabilities();
+        Debug.Log("PassthroughCapabilities.SupportsPassthrough: " + passthroughCapabilities.SupportsPassthrough);
+        Debug.Log("PassthroughCapabilities.SupportsColorPassthrough: " + passthroughCapabilities.SupportsColorPassthrough);
+        Debug.Log("PassthroughCapabilities.MaxColorLutResolution: " + passthroughCapabilities.MaxColorLutResolution);
+        Debug.Log("IsPassthroughRecommended: " + OVRManager.IsPassthroughRecommended());
     }
 
     void Update()
     {
         bool controllersActive = OVRInput.GetActiveController() == OVRInput.Controller.Touch ||
-                                 OVRInput.GetActiveController() == OVRInput.Controller.LTouch ||
-                                 OVRInput.GetActiveController() == OVRInput.Controller.RTouch;
+          OVRInput.GetActiveController() == OVRInput.Controller.LTouch ||
+          OVRInput.GetActiveController() == OVRInput.Controller.RTouch;
 
         displayText.SetActive(controllersActive);
 
         if (OVRInput.GetUp(OVRInput.Button.Start))
         {
-            currentSceneIndex++;
-            if (currentSceneIndex >= SceneManager.sceneCountInBuildSettings) currentSceneIndex = 0;
+            currentSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
             SceneManager.LoadScene(currentSceneIndex);
         }
 

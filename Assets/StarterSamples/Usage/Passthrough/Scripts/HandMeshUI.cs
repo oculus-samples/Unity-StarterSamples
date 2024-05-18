@@ -47,48 +47,52 @@ public class HandMeshUI : MonoBehaviour
 
     void Update()
     {
-        CheckForHands();
-
-        Vector3 RfingerPos = rightHand.Bones[20].Transform.position;
-        Vector3 LfingerPos = leftHand.Bones[20].Transform.position;
-        if (rightHeldKnob >= 0)
+        if (rightHand.IsDataValid)
         {
-            Vector3 localCursorPos = knobs[rightHeldKnob].transform.parent.InverseTransformPoint(RfingerPos);
-            SetSliderValue(rightHeldKnob, Mathf.Clamp01(localCursorPos.x * 10), true);
-            if (localCursorPos.z < -0.02f)
+            Vector3 RfingerPos = rightHand.Bones[20].Transform.position;
+            if (rightHeldKnob >= 0)
             {
-                rightHeldKnob = -1;
-            }
-        }
-        else
-        {
-            for (int i = 0; i < knobs.Length; i++)
-            {
-                if (Vector3.Distance(RfingerPos, knobs[i].transform.position) <= 0.02f && leftHeldKnob != i)
+                Vector3 localCursorPos = knobs[rightHeldKnob].transform.parent.InverseTransformPoint(RfingerPos);
+                SetSliderValue(rightHeldKnob, Mathf.Clamp01(localCursorPos.x * 10), true);
+                if (localCursorPos.z < -0.02f)
                 {
-                    rightHeldKnob = i;
-                    break;
+                    rightHeldKnob = -1;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < knobs.Length; i++)
+                {
+                    if (Vector3.Distance(RfingerPos, knobs[i].transform.position) <= 0.02f && leftHeldKnob != i)
+                    {
+                        rightHeldKnob = i;
+                        break;
+                    }
                 }
             }
         }
 
-        if (leftHeldKnob >= 0)
+        if (leftHand.IsDataValid)
         {
-            Vector3 localCursorPos = knobs[leftHeldKnob].transform.parent.InverseTransformPoint(LfingerPos);
-            SetSliderValue(leftHeldKnob, Mathf.Clamp01(localCursorPos.x * 10), true);
-            if (localCursorPos.z < -0.02f)
+            Vector3 LfingerPos = leftHand.Bones[20].Transform.position;
+            if (leftHeldKnob >= 0)
             {
-                leftHeldKnob = -1;
-            }
-        }
-        else
-        {
-            for (int i = 0; i < knobs.Length; i++)
-            {
-                if (Vector3.Distance(LfingerPos, knobs[i].transform.position) <= 0.02f && rightHeldKnob != i)
+                Vector3 localCursorPos = knobs[leftHeldKnob].transform.parent.InverseTransformPoint(LfingerPos);
+                SetSliderValue(leftHeldKnob, Mathf.Clamp01(localCursorPos.x * 10), true);
+                if (localCursorPos.z < -0.02f)
                 {
-                    leftHeldKnob = i;
-                    break;
+                    leftHeldKnob = -1;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < knobs.Length; i++)
+                {
+                    if (Vector3.Distance(LfingerPos, knobs[i].transform.position) <= 0.02f && rightHeldKnob != i)
+                    {
+                        leftHeldKnob = i;
+                        break;
+                    }
                 }
             }
         }
@@ -157,36 +161,6 @@ public class HandMeshUI : MonoBehaviour
                 rightMask.webOffset = absoluteValue;
                 leftMask.webOffset = absoluteValue;
                 break;
-        }
-    }
-
-    void CheckForHands()
-    {
-        bool handsActive = (
-            OVRInput.GetActiveController() == OVRInput.Controller.Hands ||
-            OVRInput.GetActiveController() == OVRInput.Controller.LHand ||
-            OVRInput.GetActiveController() == OVRInput.Controller.RHand);
-
-        if (transform.GetChild(0).gameObject.activeSelf)
-        {
-            if (!handsActive)
-            {
-                transform.GetChild(0).gameObject.SetActive(false);
-                leftHeldKnob = -1;
-                rightHeldKnob = -1;
-            }
-        }
-        else
-        {
-            if (handsActive)
-            {
-                transform.GetChild(0).gameObject.SetActive(true);
-                transform.position = (rightHand.Bones[20].Transform.position + rightHand.Bones[20].Transform.position) *
-                                     0.5f;
-                transform.position += (transform.position - Camera.main.transform.position).normalized * 0.1f;
-                transform.rotation = Quaternion.LookRotation(new Vector3(Camera.main.transform.forward.x, 0,
-                    Camera.main.transform.forward.z));
-            }
         }
     }
 }

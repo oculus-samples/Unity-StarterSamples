@@ -60,17 +60,12 @@ public class ObjectManipulator : MonoBehaviour
 
     private void Start()
     {
-        if (passthrough)
-        {
-            passthrough.colorMapEditorBrightness = -1;
-            passthrough.colorMapEditorContrast = -1;
-        }
-
-        StartCoroutine(StartDemo());
         // render these UI elements after the passthrough "hole punch" shader and the brush ring
         if (objectNameLabel) objectNameLabel.font.material.renderQueue = 4600;
         if (objectInstructionsLabel) objectInstructionsLabel.font.material.renderQueue = 4600;
         if (objectInfoBG) objectInfoBG.materialForRendering.renderQueue = 4599;
+
+        StartCoroutine(StartDemo());
     }
 
     void Update()
@@ -146,28 +141,39 @@ public class ObjectManipulator : MonoBehaviour
     // wait for systems to get situated, then spawn the objects in front of them
     IEnumerator StartDemo()
     {
-        demoObjects.SetActive(false);
-        // fade from black
-        float timer = 0.0f;
-        float fadeTime = 1.0f;
-        while (timer <= fadeTime)
-        {
-            timer += Time.deltaTime;
-            float normTimer = Mathf.Clamp01(timer / fadeTime);
-            if (passthrough)
-            {
-                passthrough.colorMapEditorBrightness = Mathf.Lerp(-1.0f, 0.0f, normTimer);
-                passthrough.colorMapEditorContrast = Mathf.Lerp(-1.0f, 0.0f, normTimer);
-            }
+        Camera mainCamera = Camera.main;
+        Debug.Assert(mainCamera != null);
 
+        // We fade in from black only when running on device and if a user prefers a VR home environment
+        bool enablePassthroughFadeIn = passthrough && !Application.isEditor && !OVRManager.IsPassthroughRecommended();
+        if (enablePassthroughFadeIn)
+            yield return FadeInPassthroughFromBlack();
+
+        // Wait until the headset is positioned inside the scene
+        while (mainCamera.transform.position == Vector3.zero)
+            yield return null;
+
+        // Position objects in front of a user
+        Vector3 cameraForward = new Vector3(mainCamera.transform.forward.x, 0, mainCamera.transform.forward.z).normalized;
+        demoObjects.transform.position = mainCamera.transform.position + cameraForward;
+        demoObjects.transform.rotation = Quaternion.LookRotation(cameraForward);
+    }
+
+    private IEnumerator FadeInPassthroughFromBlack()
+    {
+        demoObjects.SetActive(false);
+
+        // fade from black
+        float fadeTime = 1.0f;
+        for (float timer = 0f; timer < fadeTime; timer += Time.deltaTime)
+        {
+            float progress = Mathf.Clamp01(timer / fadeTime);
+            passthrough.colorMapEditorBrightness = Mathf.Lerp(-1.0f, 0.0f, progress);
+            passthrough.colorMapEditorContrast = Mathf.Lerp(-1.0f, 0.0f, progress);
             yield return null;
         }
 
-        //yield return new WaitForSeconds(1.0f);
         demoObjects.SetActive(true);
-        Vector3 objFwd = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z).normalized;
-        demoObjects.transform.position = Camera.main.transform.position + objFwd;
-        demoObjects.transform.rotation = Quaternion.LookRotation(objFwd);
     }
 
     void FindHoverObject(Vector3 controllerPos, Quaternion controllerRot)
@@ -227,12 +233,13 @@ public class ObjectManipulator : MonoBehaviour
             {
                 Vector3 targetPos = controllerPos + (Camera.main.transform.position - controllerPos).normalized * 0.1f;
                 objectInfo.position = Vector3.Lerp(objectInfo.position, targetPos, grabTime);
-                ;
                 objectInfo.rotation = Quaternion.LookRotation(objectInfo.position - Camera.main.transform.position);
                 //objectInstructionsLabel.gameObject.SetActive(true);
                 objectInfo.localScale = Vector3.one;
                 if (grabObject.GetComponent<GrabObject>())
+                {
                     showLaser = grabObject.GetComponent<GrabObject>().showLaserWhileGrabbed;
+                }
             }
         }
 
@@ -313,8 +320,7 @@ public class ObjectManipulator : MonoBehaviour
 
                     Vector3 newUp = obj.GetComponent<GrabObject>().grabbedRotation * Vector3.up;
                     newUp = new Vector3(newUp.x, 0, newUp.z);
-                    obj.transform.rotation =
-                        Quaternion.LookRotation(Vector3.up, Quaternion.Euler(0, rotationOffset, 0) * newUp);
+                    obj.transform.rotation = Quaternion.LookRotation(Vector3.up, Quaternion.Euler(0, rotationOffset, 0) * newUp);
                     break;
                 case GrabObject.ManipulationType.Menu:
                     Vector3 targetPos = handGrabPosition + (handGrabRotation * Vector3.forward * 0.4f);

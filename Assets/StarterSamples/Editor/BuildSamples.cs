@@ -139,7 +139,6 @@ partial class OculusBuildSamples
         projectSettings.anchorSupport = OVRProjectConfig.AnchorSupport.Enabled;
         projectSettings.sceneSupport = OVRProjectConfig.FeatureSupport.Supported;
         projectSettings.handTrackingSupport = OVRProjectConfig.HandTrackingSupport.ControllersAndHands;
-
         Build(
             "StartScene.apk",
             new string[]
