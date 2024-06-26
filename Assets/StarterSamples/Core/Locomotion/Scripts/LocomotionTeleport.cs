@@ -328,46 +328,46 @@ public class LocomotionTeleport : MonoBehaviour
         switch (AimCollisionType)
         {
             case AimCollisionTypes.Capsule:
+            {
+                float r, h;
+                if (UseCharacterCollisionData)
                 {
-                    float r, h;
-                    if (UseCharacterCollisionData)
-                    {
-                        var c = LocomotionController.CharacterController;
-                        h = c.height;
-                        r = c.radius;
-                    }
-                    else
-                    {
-                        h = AimCollisionHeight;
-                        r = AimCollisionRadius;
-                    }
-
-                    return Physics.CapsuleCast(start + new Vector3(0, r, 0),
-                        start + new Vector3(0, h + r, 0), r, direction,
-                        out hitInfo, distance, aimCollisionLayerMask, QueryTriggerInteraction.Ignore);
+                    var c = LocomotionController.CharacterController;
+                    h = c.height;
+                    r = c.radius;
                 }
+                else
+                {
+                    h = AimCollisionHeight;
+                    r = AimCollisionRadius;
+                }
+
+                return Physics.CapsuleCast(start + new Vector3(0, r, 0),
+                    start + new Vector3(0, h + r, 0), r, direction,
+                    out hitInfo, distance, aimCollisionLayerMask, QueryTriggerInteraction.Ignore);
+            }
 
             case AimCollisionTypes.Point:
                 return Physics.Raycast(start, direction, out hitInfo, distance, aimCollisionLayerMask,
                     QueryTriggerInteraction.Ignore);
 
             case AimCollisionTypes.Sphere:
+            {
+                float r;
+                if (UseCharacterCollisionData)
                 {
-                    float r;
-                    if (UseCharacterCollisionData)
-                    {
-                        var c = LocomotionController.CharacterController;
-                        //r = c.radius - c.skinWidth;
-                        r = c.radius;
-                    }
-                    else
-                    {
-                        r = AimCollisionRadius;
-                    }
-
-                    return Physics.SphereCast(start, r, direction, out hitInfo, distance, aimCollisionLayerMask,
-                        QueryTriggerInteraction.Ignore);
+                    var c = LocomotionController.CharacterController;
+                    //r = c.radius - c.skinWidth;
+                    r = c.radius;
                 }
+                else
+                {
+                    r = AimCollisionRadius;
+                }
+
+                return Physics.SphereCast(start, r, direction, out hitInfo, distance, aimCollisionLayerMask,
+                    QueryTriggerInteraction.Ignore);
+            }
         }
 
         // App should never get here.

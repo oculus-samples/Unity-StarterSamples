@@ -55,7 +55,7 @@ public class AndroidVideoEditorUtil
         }
     }
 
-    [MenuItem("Oculus/Samples/Video/Enable Native Android Video Player")]
+    [MenuItem("Meta/Samples/Video/Enable Native Android Video Player")]
     public static void EnableNativeVideoPlayer()
     {
         // Enable video plugins
@@ -78,7 +78,7 @@ public class AndroidVideoEditorUtil
         }
     }
 
-    [MenuItem("Oculus/Samples/Video/Disable Native Android Video Player")]
+    [MenuItem("Meta/Samples/Video/Disable Native Android Video Player")]
     public static void DisableNativeVideoPlayer()
     {
         // Disable video plugins

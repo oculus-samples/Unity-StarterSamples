@@ -23,7 +23,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
-public class SliderValueToText : MonoBehaviour {
+public class SliderValueToText : MonoBehaviour
+{
     private TextMeshProUGUI textSliderValue;
 
     [SerializeField] private Slider sliderUI;

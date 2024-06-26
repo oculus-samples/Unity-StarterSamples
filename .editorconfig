@@ -1,12 +1,90 @@
-﻿# http://EditorConfig.org
+# Unity Integration coding style
+
+# Based on Microsoft C# Coding Conventions:
+# https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions
+#
+# Forked from:
+# https://github.com/dotnet/roslyn-analyzers/blob/main/.editorconfig
 
 # top-most EditorConfig file
 root = true
 
+# Don't use tabs for indentation.
 [*]
-end_of_line = lf
 indent_style = space
-tab_width = 4
+# (Please don't specify an indent_size here; that has too many unintended consequences.)
+
+# Code files
+[*.{cs,csx,vb,vbx}]
 indent_size = 4
 insert_final_newline = true
-trim_trailing_whitespace = true
+charset = utf-8
+
+# XML project files
+[*.{csproj,vbproj,vcxproj,vcxproj.filters,proj,projitems,shproj}]
+indent_size = 2
+
+# XML config files
+[*.{props,targets,ruleset,config,nuspec,resx,vsixmanifest,vsct}]
+indent_size = 2
+
+# Powershell files
+[*.ps1]
+indent_size = 2
+
+# Shell script files
+[*.sh]
+end_of_line = lf
+indent_size = 2
+
+### CSharp code style settings ###
+[*.cs]
+# New line preferences
+end_of_line = lf
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_before_members_in_anonymous_types = true
+csharp_new_line_between_query_expression_clauses = true
+
+# Indentation preferences
+csharp_indent_block_contents = true
+csharp_indent_braces = false
+csharp_indent_case_contents = true
+csharp_indent_case_contents_when_block = false
+csharp_indent_labels = no_change
+csharp_indent_switch_labels = true
+
+# Space preferences
+csharp_space_after_cast = false
+csharp_space_after_colon_in_inheritance_clause = true
+csharp_space_after_comma = true
+csharp_space_after_dot = false
+csharp_space_after_keywords_in_control_flow_statements = true
+csharp_space_after_semicolon_in_for_statement = true
+csharp_space_around_binary_operators = before_and_after
+csharp_space_around_declaration_statements = false
+csharp_space_before_colon_in_inheritance_clause = true
+csharp_space_before_comma = false
+csharp_space_before_dot = false
+csharp_space_before_open_square_brackets = false
+csharp_space_before_semicolon_in_for_statement = false
+csharp_space_between_empty_square_brackets = false
+csharp_space_between_method_call_empty_parameter_list_parentheses = false
+csharp_space_between_method_call_name_and_opening_parenthesis = false
+csharp_space_between_method_call_parameter_list_parentheses = false
+csharp_space_between_method_declaration_empty_parameter_list_parentheses = false
+csharp_space_between_method_declaration_name_and_open_parenthesis = false
+csharp_space_between_method_declaration_parameter_list_parentheses = false
+csharp_space_between_parentheses = false
+csharp_space_between_square_brackets = false
+
+# Blocks are allowed
+csharp_prefer_braces = true
+csharp_preserve_single_line_blocks = true
+csharp_preserve_single_line_statements = true
+
+dotnet_analyzer_diagnostic.severity = none
+dotnet_diagnostic.OVR013.severity = warning

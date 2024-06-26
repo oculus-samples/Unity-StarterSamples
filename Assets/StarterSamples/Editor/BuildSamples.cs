@@ -103,33 +103,12 @@ partial class OculusBuildSamples
         Build("Passthrough");
     }
 
-    //needs openXR backend in ovrplugin
-    static void BuildBouncingBall()
-    {
-        InitializeBuild("com.oculus.unitysample.bouncingball");
-        Build("BouncingBall");
-    }
-
-    //needs openXR backend in ovrplugin
-    static void BuildShowSceneModel()
-    {
-        InitializeBuild("com.oculus.unitysample.scenemanager");
-        Build("SceneManager");
-    }
-
-    //needs openXR backend in ovrplugin
-    static void BuildVirtualFurniture()
-    {
-        InitializeBuild("com.oculus.unitysample.virtualfurniture");
-        Build("VirtualFurniture");
-    }
-
     static string GetFullPathForSample(string internalPath)
     {
         return Path.Combine(GetSamplesRootPath(), internalPath);
     }
 
-    [MenuItem("Oculus/Samples/Build Starter Scene")]
+    [MenuItem("Meta/Samples/Build Starter Scene")]
     static void BuildStartScene()
     {
         InitializeBuild("com.oculus.unitysample.startscene", "Meta XR SDK Samples");
@@ -144,15 +123,32 @@ partial class OculusBuildSamples
             new string[]
             {
                 GetFullPathForSample("Usage/StartScene.unity"),
-                GetFullPathForSample("Usage/Locomotion.unity"),
-                GetFullPathForSample("Usage/DistanceGrab.unity"),
+                GetFullPathForSample("Usage/CustomControllers.unity"),
+                GetFullPathForSample("Usage/CustomHands.unity"),
                 GetFullPathForSample("Usage/DebugUI.unity"),
+                GetFullPathForSample("Usage/DistanceGrab.unity"),
+                GetFullPathForSample("Usage/Firebase.unity"),
                 GetFullPathForSample("Usage/HandsInteractionTrainScene.unity"),
+                GetFullPathForSample("Usage/Locomotion.unity"),
                 GetFullPathForSample("Usage/MixedRealityCapture.unity"),
                 GetFullPathForSample("Usage/OVROverlay.unity"),
                 GetFullPathForSample("Usage/OVROverlayCanvas.unity"),
+                GetFullPathForSample("Usage/OVROverlayCanvas_Text.unity"),
                 GetFullPathForSample("Usage/Passthrough.unity"),
                 GetFullPathForSample("Usage/SceneManager.unity"),
+                GetFullPathForSample("Usage/Stereo180Video.unity"),
+                GetFullPathForSample("Usage/SpatialAnchor.unity"),
+                GetFullPathForSample("Usage/WidevineVideo.unity"),
+                GetFullPathForSample("Usage/Passthrough/Scenes/AugmentedObjects.unity"),
+                GetFullPathForSample("Usage/Passthrough/Scenes/Lighting.unity"),
+                GetFullPathForSample("Usage/Passthrough/Scenes/OverlayPassthrough.unity"),
+                GetFullPathForSample("Usage/Passthrough/Scenes/PassthroughHands.unity"),
+                GetFullPathForSample("Usage/Passthrough/Scenes/PassthroughStyles.unity"),
+                GetFullPathForSample("Usage/Passthrough/Scenes/SelectivePassthrough.unity"),
+                GetFullPathForSample("Usage/Passthrough/Scenes/SurfaceProjectedPassthrough.unity"),
+                GetFullPathForSample("Usage/TouchPro/LocalizedHapticsSample.unity"),
+                GetFullPathForSample("Usage/TouchPro/SelfTrackingSample.unity"),
+                GetFullPathForSample("Usage/TouchPro/StylusTipSample.unity"),
             });
     }
 

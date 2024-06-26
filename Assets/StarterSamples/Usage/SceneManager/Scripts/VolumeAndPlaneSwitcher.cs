@@ -74,50 +74,50 @@ public class VolumeAndPlaneSwitcher : MonoBehaviour
                 switch (pair.desiredGeometryType)
                 {
                     case GeometryType.Plane:
+                    {
+                        var volume = GetComponent<OVRSceneVolume>();
+                        if (!volume)
                         {
-                            var volume = GetComponent<OVRSceneVolume>();
-                            if (!volume)
-                            {
-                                Debug.LogWarning(
-                                    $"Ignoring desired volume to plane switch for {pair.label} because it is not a volume.");
-                                continue;
-                            }
-
-                            Debug.Log($"IN Volume Position {transform.position}, Dimensions: {volume.Dimensions}");
-                            // This object is a volume, but we want a plane instead.
-                            GetTopPlaneFromVolume(
-                                transform,
-                                volume.Dimensions,
-                                out position,
-                                out rotation,
-                                out localScale);
-                            Debug.Log($"OUT Plane Position {position}, Dimensions: {localScale}");
-                            ReplaceAnchor(planePrefab, position, rotation, localScale);
-                            break;
+                            Debug.LogWarning(
+                                $"Ignoring desired volume to plane switch for {pair.label} because it is not a volume.");
+                            continue;
                         }
+
+                        Debug.Log($"IN Volume Position {transform.position}, Dimensions: {volume.Dimensions}");
+                        // This object is a volume, but we want a plane instead.
+                        GetTopPlaneFromVolume(
+                            transform,
+                            volume.Dimensions,
+                            out position,
+                            out rotation,
+                            out localScale);
+                        Debug.Log($"OUT Plane Position {position}, Dimensions: {localScale}");
+                        ReplaceAnchor(planePrefab, position, rotation, localScale);
+                        break;
+                    }
                     case GeometryType.Volume:
+                    {
+                        var plane = GetComponent<OVRScenePlane>();
+                        if (!plane)
                         {
-                            var plane = GetComponent<OVRScenePlane>();
-                            if (!plane)
-                            {
-                                Debug.LogWarning(
-                                    $"Ignoring desired plane to volume switch for {pair.label} because it is not a plane.");
-                                continue;
-                            }
-
-                            Debug.Log($"IN Plane Position {transform.position}, Dimensions: {plane.Dimensions}");
-                            // This object is a plane, but we want a volume instead.
-                            GetVolumeFromTopPlane(
-                                transform,
-                                plane.Dimensions,
-                                transform.position.y,
-                                out position,
-                                out rotation,
-                                out localScale);
-                            Debug.Log($"OUT Volume Position {position}, Dimensions: {localScale}");
-                            ReplaceAnchor(volumePrefab, position, rotation, localScale);
-                            break;
+                            Debug.LogWarning(
+                                $"Ignoring desired plane to volume switch for {pair.label} because it is not a plane.");
+                            continue;
                         }
+
+                        Debug.Log($"IN Plane Position {transform.position}, Dimensions: {plane.Dimensions}");
+                        // This object is a plane, but we want a volume instead.
+                        GetVolumeFromTopPlane(
+                            transform,
+                            plane.Dimensions,
+                            transform.position.y,
+                            out position,
+                            out rotation,
+                            out localScale);
+                        Debug.Log($"OUT Volume Position {position}, Dimensions: {localScale}");
+                        ReplaceAnchor(volumePrefab, position, rotation, localScale);
+                        break;
+                    }
                 }
             }
         }

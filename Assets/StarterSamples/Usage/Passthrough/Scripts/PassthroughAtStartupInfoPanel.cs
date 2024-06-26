@@ -23,7 +23,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-[ExecuteInEditMode] [RequireComponent(typeof(CanvasGroup))]
+[ExecuteInEditMode]
+[RequireComponent(typeof(CanvasGroup))]
 public class PassthroughAtStartupInfoPanel : MonoBehaviour
 {
     private readonly string infoPanelTextTemplate =

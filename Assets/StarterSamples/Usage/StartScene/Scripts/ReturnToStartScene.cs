@@ -18,23 +18,24 @@
  * limitations under the License.
  */
 
-using TMPro;
-using UnityEngine;
 
-public class UiVectorInspector : MonoBehaviour
+ using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class ReturnToStartScene : MonoBehaviour
 {
-    [Header("Components")]
-    [SerializeField] private TextMeshProUGUI m_nameLabel = null;
 
-    [SerializeField] private TextMeshProUGUI m_valueLabel = null;
-
-    public void SetName(string name)
+    void Start()
     {
-        m_nameLabel.text = name;
+        DontDestroyOnLoad(this.gameObject);
     }
 
-    public void SetValue(bool value)
+    void Update()
     {
-        m_valueLabel.text = string.Format("[{0}]", value);
+        //since this is the Start scene, we can assume it's the first index in build settings
+        if (OVRInput.GetUp(OVRInput.Button.Start) && SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }

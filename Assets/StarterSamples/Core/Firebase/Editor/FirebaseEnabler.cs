@@ -24,7 +24,7 @@ public class FirebaseEnabler
 {
     private static readonly string FirebaseBuildDefinition = "OVR_SAMPLES_ENABLE_FIREBASE";
 
-    [MenuItem("Oculus/Samples/Firebase/Enable Firebase Sample")]
+    [MenuItem("Meta/Samples/Firebase/Enable Firebase Sample")]
     public static void EnableFirebaseSample()
     {
         var defineString = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android);
@@ -32,7 +32,7 @@ public class FirebaseEnabler
             $"{defineString};{FirebaseBuildDefinition}");
     }
 
-    [MenuItem("Oculus/Samples/Firebase/Disable Firebase Sample")]
+    [MenuItem("Meta/Samples/Firebase/Disable Firebase Sample")]
     public static void DisableFirebaseSample()
     {
         var defineString = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android);

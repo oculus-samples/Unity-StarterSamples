@@ -5,48 +5,87 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/StarterSamples/Usage/StartScene.unity
     guid: 071fba5195bd4b04eab8668985aa1683
-  - enabled: 0
+  - enabled: 1
     path: Assets/StarterSamples/Usage/CustomControllers.unity
     guid: e0f49aa4174f98941b88699b5fecddc0
-  - enabled: 0
+  - enabled: 1
     path: Assets/StarterSamples/Usage/CustomHands.unity
     guid: a4f984fcee593d2418cc61f4a993d46d
-  - enabled: 0
+  - enabled: 1
     path: Assets/StarterSamples/Usage/DebugUI.unity
     guid: 34004346bd7dcbf4fbfd78d2f12e4451
-  - enabled: 0
+  - enabled: 1
     path: Assets/StarterSamples/Usage/DistanceGrab.unity
     guid: 24f58b3f0ca02d44eaec7f50bca538f2
-  - enabled: 0
-    path: Assets/StarterSamples/Usage/Locomotion.unity
-    guid: 024cd9dcd49bd8f46a6bea03aa8a21bb
-  - enabled: 0
-    path: Assets/StarterSamples/Usage/MixedRealityCapture.unity
-    guid: 24872d3c3760f23498f41ecb019ea5cd
-  - enabled: 0
-    path: Assets/StarterSamples/Usage/OVROverlay.unity
-    guid: d31b44aac77e1684d861792b23d46a8b
-  - enabled: 0
-    path: Assets/StarterSamples/Usage/Stereo180Video.unity
-    guid: 11cf8fa7bf3deb04db11bd170c0b4338
-  - enabled: 0
-    path: Assets/StarterSamples/Usage/HandsInteractionTrainScene.unity
-    guid: a9c41884ef0c347628dfd8a4af4a022e
-  - enabled: 0
-    path: Assets/StarterSamples/Usage/WidevineVideo.unity
-    guid: 5495456b7253d31479996b9587c20927
-  - enabled: 0
-    path: Assets/StarterSamples/Usage/AppDeeplink.unity
-    guid: 86c41af799197d64889f7269608d44e6
-  - enabled: 0
+  - enabled: 1
     path: Assets/StarterSamples/Usage/Firebase.unity
     guid: 954eda7bd02eb444ca928648702a2b4c
-  - enabled: 0
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/HandsInteractionTrainScene.unity
+    guid: a9c41884ef0c347628dfd8a4af4a022e
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/Locomotion.unity
+    guid: 024cd9dcd49bd8f46a6bea03aa8a21bb
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/MixedRealityCapture.unity
+    guid: 24872d3c3760f23498f41ecb019ea5cd
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/OVROverlay.unity
+    guid: d31b44aac77e1684d861792b23d46a8b
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/OVROverlayCanvas.unity
+    guid: af6fdd821de21814caa6187d466b6d2b
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/OVROverlayCanvas_Text.unity
+    guid: ddc6bb16dbba496439d8fd8634a91a8e
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/Passthrough.unity
+    guid: 58e5fc2486c774a4e88ac76261268d52
+  - enabled: 1
     path: Assets/StarterSamples/Usage/SceneManager.unity
     guid: d9d629a01189e9744a9347a18243afd9
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/Stereo180Video.unity
+    guid: 11cf8fa7bf3deb04db11bd170c0b4338
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/SpatialAnchor.unity
+    guid: 1db179c458352bf46beb307fd047d589
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/WidevineVideo.unity
+    guid: 5495456b7253d31479996b9587c20927
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/Passthrough/Scenes/AugmentedObjects.unity
+    guid: 9afeada2bbd240b4981cfb6abb525418
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/Passthrough/Scenes/Lighting.unity
+    guid: b79c88b27037b4b48ab3fa45a63f208d
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/Passthrough/Scenes/OverlayPassthrough.unity
+    guid: 698c56db7f615834881cf3fad4dae4b5
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/Passthrough/Scenes/PassthroughHands.unity
+    guid: c94e480e4a6da614693c0cd3372e2d2d
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/Passthrough/Scenes/PassthroughStyles.unity
+    guid: a1a6574991742284e9630c2e8f93648a
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/Passthrough/Scenes/SelectivePassthrough.unity
+    guid: 0e7861142f653584586c707ede59072e
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/Passthrough/Scenes/SurfaceProjectedPassthrough.unity
+    guid: e36011c54ca6d994c94449356fa5cee6
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/TouchPro/LocalizedHapticsSample.unity
+    guid: 11d7e44745b2f574db3a261b31ca4fd9
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/TouchPro/SelfTrackingSample.unity
+    guid: df3f47e89f918004a83d2bea9b059da3
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/TouchPro/StylusTipSample.unity
+    guid: 68233fffc84bb0648add52aa07154c8c
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 8c0030b4b5984e7439a553df0cdd7dd2,
       type: 2}
