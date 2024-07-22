@@ -15,13 +15,7 @@ EditorBuildSettings:
     path: Assets/StarterSamples/Usage/CustomHands.unity
     guid: a4f984fcee593d2418cc61f4a993d46d
   - enabled: 1
-    path: Assets/StarterSamples/Usage/DebugUI.unity
-    guid: 34004346bd7dcbf4fbfd78d2f12e4451
-  - enabled: 1
-    path: Assets/StarterSamples/Usage/DistanceGrab.unity
-    guid: 24f58b3f0ca02d44eaec7f50bca538f2
-  - enabled: 1
-    path: Assets/StarterSamples/Usage/Firebase.unity
+    path: Assets/StarterSamples/Usage/Tools/Firebase.unity
     guid: 954eda7bd02eb444ca928648702a2b4c
   - enabled: 1
     path: Assets/StarterSamples/Usage/HandsInteractionTrainScene.unity
@@ -30,7 +24,7 @@ EditorBuildSettings:
     path: Assets/StarterSamples/Usage/Locomotion.unity
     guid: 024cd9dcd49bd8f46a6bea03aa8a21bb
   - enabled: 1
-    path: Assets/StarterSamples/Usage/MixedRealityCapture.unity
+    path: Assets/StarterSamples/Usage/MixedRealityCapture/MixedRealityCapture.unity
     guid: 24872d3c3760f23498f41ecb019ea5cd
   - enabled: 1
     path: Assets/StarterSamples/Usage/OVROverlay.unity
@@ -78,14 +72,8 @@ EditorBuildSettings:
     path: Assets/StarterSamples/Usage/Passthrough/Scenes/SurfaceProjectedPassthrough.unity
     guid: e36011c54ca6d994c94449356fa5cee6
   - enabled: 1
-    path: Assets/StarterSamples/Usage/TouchPro/LocalizedHapticsSample.unity
-    guid: 11d7e44745b2f574db3a261b31ca4fd9
-  - enabled: 1
-    path: Assets/StarterSamples/Usage/TouchPro/SelfTrackingSample.unity
-    guid: df3f47e89f918004a83d2bea9b059da3
-  - enabled: 1
-    path: Assets/StarterSamples/Usage/TouchPro/StylusTipSample.unity
-    guid: 68233fffc84bb0648add52aa07154c8c
+    path: Assets/StarterSamples/Usage/TouchPro/TouchProSample.unity
+    guid: a54709569404c0644b22913759862a81
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 8c0030b4b5984e7439a553df0cdd7dd2,
       type: 2}

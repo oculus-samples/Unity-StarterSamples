@@ -100,8 +100,15 @@ public class SpatialAnchorLoader : MonoBehaviour
             return;
         }
 
-        var pose = unboundAnchor.Pose;
-        var spatialAnchor = Instantiate(_anchorPrefab, pose.position, pose.rotation);
+        var isPoseValid = unboundAnchor.TryGetPose(out var pose);
+        if (!isPoseValid)
+        {
+            Debug.LogWarning("Unable to acquire initial anchor pose. Instantiating prefab at the origin.");
+        }
+
+        var spatialAnchor = isPoseValid
+            ? Instantiate(_anchorPrefab, pose.position, pose.rotation)
+            : Instantiate(_anchorPrefab);
         unboundAnchor.BindTo(spatialAnchor);
 
         if (spatialAnchor.TryGetComponent<Anchor>(out var anchor))

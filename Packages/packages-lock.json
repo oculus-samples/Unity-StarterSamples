@@ -1,18 +1,17 @@
 {
   "dependencies": {
     "com.meta.xr.sdk.core": {
-      "version": "66.0.0",
+      "version": "67.0.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.meta.xr.sdk.platform": {
-      "version": "66.0.0",
+      "version": "67.0.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.meta.xr.sdk.core": "66.0.0",
         "com.unity.ugui": "1.0.0"
       },
       "url": "https://packages.unity.com"

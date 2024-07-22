@@ -1,37 +1,45 @@
-Shader "MixedReality/SelectivePassthroughSoft" {
-  Properties{
-      _MainTex("Texture", 2D) = "white" {}
-      _SoftFade("Soft Fade Distance", Float) = 0.05
-     _Inflation("Inflation", float) = 0
+Shader "MixedReality/SelectivePassthroughSoft"
+{
+  Properties
+  {
+    _MainTex("Texture", 2D) = "white" {}
+    _SoftFade("Soft Fade Distance", Float) = 0.05
+   _Inflation("Inflation", float) = 0
   }
-      SubShader {
-    Tags{"RenderType" = "Transparent"} LOD 100
+  SubShader
+  {
+    Tags { "RenderType" = "Transparent" }
+    LOD 100
 
-        Pass {
-            ZWrite Off
-            BlendOp RevSub, Min
-            Blend Zero One, One OneMinusSrcAlpha
+    Pass
+    {
+      ZWrite Off
+      BlendOp RevSub, Min
+      Blend Zero One, One OneMinusSrcAlpha
 
-              CGPROGRAM
-      // Upgrade NOTE: excluded shader from DX11; has structs without semantics (struct v2f members
-      // center)
-      //#pragma exclude_renderers d3d11
-#pragma vertex vert
-#pragma fragment frag
+      CGPROGRAM
+      // Upgrade NOTE: excluded shader from DX11; has structs without semantics (struct v2f members center)
+      // #pragma exclude_renderers d3d11
+      #pragma vertex vert
+      #pragma fragment frag
 
-#include "UnityCG.cginc"
+      #include "UnityCG.cginc"
 
-      struct appdata {
+      struct appdata
+      {
         float4 vertex : POSITION;
         float2 uv : TEXCOORD0;
         float3 normal : NORMAL;
+        UNITY_VERTEX_INPUT_INSTANCE_ID
       };
 
-      struct v2f {
+      struct v2f
+      {
         float2 uv : TEXCOORD0;
         float4 vertex : SV_POSITION;
         float2 projPos : TEXCOORD1;
         float depth : DEPTH;
+        UNITY_VERTEX_OUTPUT_STEREO
       };
 
       sampler2D _MainTex;
@@ -40,8 +48,12 @@ Shader "MixedReality/SelectivePassthroughSoft" {
       float _SoftFade;
       float _Inflation;
 
-      v2f vert(appdata v) {
+      v2f vert(appdata v)
+      {
         v2f o;
+        UNITY_SETUP_INSTANCE_ID(v);
+        UNITY_INITIALIZE_OUTPUT(v2f, o);
+        UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
         o.vertex = UnityObjectToClipPos(v.vertex + v.normal * _Inflation);
         float4 origin = mul(unity_ObjectToWorld, float4(0.0, 0.0, 0.0, 1.0));
         o.uv = TRANSFORM_TEX(v.uv, _MainTex);
@@ -50,7 +62,8 @@ Shader "MixedReality/SelectivePassthroughSoft" {
         return o;
       }
 
-      fixed4 frag(v2f i) : SV_Target {
+      fixed4 frag(v2f i) : SV_Target
+      {
         // get a linear & normalized (0-1) depth value of the scene
         float frameDepth = Linear01Depth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, i.projPos.xy));
         // convert the normalized value to world units, with depth of 0 at this mesh

@@ -49,6 +49,7 @@ Shader "Oculus Sample/Train Smoke"
           float2 uv : TEXCOORD0;
           float4 clipPos : SV_POSITION;
           fixed4 color : COLOR;
+          UNITY_VERTEX_INPUT_INSTANCE_ID
           UNITY_VERTEX_OUTPUT_STEREO
         };
 
@@ -60,9 +61,8 @@ Shader "Oculus Sample/Train Smoke"
         {
           vertOut vOut;
           UNITY_SETUP_INSTANCE_ID(vIn);
-          UNITY_INITIALIZE_OUTPUT(vertOut, vOut);
+          UNITY_TRANSFER_INSTANCE_ID(vIn, vOut);
           UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(vOut);
-
           vOut.clipPos = UnityObjectToClipPos(vIn.vertex);
           vOut.uv = TRANSFORM_TEX(vIn.uv, _MainTex);
           vOut.color = vIn.color * _TintColor;

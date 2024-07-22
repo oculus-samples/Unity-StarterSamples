@@ -21,42 +21,89 @@ Shader "Oculus Sample/Alpha Hand Outline"
 
     _HandAlpha ("Hand Alpha", Range(0, 1)) = 1.0
     _MinVisibleAlpha ("Minimum Visible Alpha", Range(0,1)) = 0.15
+
+    [HideInInspector][Toggle] _ALPHAPREMULTIPLY ("Enable Alpha", Float) = 1.0
   }
+
   SubShader
   {
-    Tags {"Queue" = "Transparent" "Render" = "Transparent" "IgnoreProjector" = "True"}
-    LOD 100
+    PackageRequirements { "com.unity.render-pipelines.universal" }
 
-    // Write depth values so that you see topmost layer.
+    Tags { "Queue"="Transparent" "RenderType" = "Transparent" "RenderPipeline" = "UniversalPipeline" }
+
+    HLSLINCLUDE
+    half4 _ColorPrimary;
+    half4 _ColorTop;
+    half4 _ColorBottom;
+    float _RimFactor;
+    float _FresnelPower;
+    float _HandAlpha;
+    float _MinVisibleAlpha;
+    ENDHLSL
+
+    // Write depth values so that you only see the
+    // topmost layer of this transparent material.
     Pass
     {
       ZWrite On
       ColorMask 0
+    }
 
-      CGPROGRAM
-      #pragma vertex vert
-      #pragma fragment frag
-      #include "UnityCG.cginc"
+    Pass
+    {
+      Tags { "LightMode"="UniversalForward" }
+      Blend SrcAlpha OneMinusSrcAlpha
 
-      float4 vert(float4 vertex : POSITION) : SV_POSITION
+      HLSLPROGRAM
+      #pragma target 2.0
+
+      #pragma vertex LitPassVertex
+      #pragma fragment CustomLitPassFragment
+
+      #define _MAIN_LIGHT_SHADOWS_CASCADE
+      #define _SURFACE_TYPE_TRANSPARENT
+
+      #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/SurfaceInput.hlsl"
+      void CustomizeSurfaceData(InputData input, inout SurfaceData surfaceData)
       {
-        return UnityObjectToClipPos(vertex);
-      }
+        // see BiRP shadow below for details
+        half viewDotNormal = saturate(dot(input.viewDirectionWS, input.normalWS));
+        half rim = pow(1.0 - viewDotNormal, 0.5) * (1.0 - _RimFactor) + _RimFactor;
+        rim = saturate(rim);
+        half3 emission = lerp(half3(0,0,0), _ColorPrimary.rgb, rim);
+        emission += rim * 0.5;
 
-      fixed4 frag() : SV_Target
-      {
-        return 0;
+        float fresnel = saturate(pow(1.0 - viewDotNormal, _FresnelPower));
+        half4 color = lerp(_ColorTop, _ColorBottom, fresnel);
+        half alphaValue = step(_MinVisibleAlpha, _HandAlpha) * _HandAlpha;
+
+        surfaceData.alpha = alphaValue;
+        surfaceData.emission = color.rgb * emission;
       }
-      ENDCG
+      #include "../../ShaderLibrary/CustomURPLit.hlsl"
+      ENDHLSL
+    }
+    UsePass "Universal Render Pipeline/Lit/ShadowCaster"
+    UsePass "Universal Render Pipeline/Lit/DepthOnly"
+    UsePass "Universal Render Pipeline/Lit/Meta"
+  }
+
+  SubShader
+  {
+    Tags { "Queue" = "Transparent" }
+    LOD 100
+
+    // Write depth values so that you see topmost layer of this transparent material.
+    Pass
+    {
+      ZWrite On
+      ColorMask 0
     }
 
     CGPROGRAM
-    #include "UnityCG.cginc"
     // no deferred. support lightmaps and one light. use half vector instead of
     // view vector (less accurate but faster)
     #pragma surface surf BlinnPhong alpha:fade exclude_path:prepass noforwardadd halfasview nolightmap
-
-    sampler2D _MainTex;
 
     struct Input {
       float2 uv_MainTex;
@@ -64,9 +111,6 @@ Shader "Oculus Sample/Alpha Hand Outline"
       float3 viewDir;
       INTERNAL_DATA
     };
-
-    #define ColorBlack half3(0, 0, 0)
-    #define EmissionFactor (0.95)
 
     fixed3 _ColorPrimary;
     fixed3 _ColorTop;
@@ -84,6 +128,9 @@ Shader "Oculus Sample/Alpha Hand Outline"
       }
       return normalize(normal);
     }
+
+    #define ColorBlack half3(0, 0, 0)
+    #define EmissionFactor (0.95)
 
     void surf(Input IN, inout SurfaceOutput o) {
       float3 normalDirection = SafeNormalize(o.Normal);

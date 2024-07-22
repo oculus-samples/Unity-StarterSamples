@@ -24,8 +24,8 @@
             Blend Zero One, One One
 
             CGPROGRAM
-// Upgrade NOTE: excluded shader from DX11; has structs without semantics (struct v2f members center)
-//#pragma exclude_renderers d3d11
+            // Upgrade NOTE: excluded shader from DX11; has structs without semantics (struct v2f members center)
+            //#pragma exclude_renderers d3d11
             #pragma vertex vert
             #pragma fragment frag
 
@@ -36,12 +36,14 @@
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
                 float3 normal : NORMAL;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
             struct v2f
             {
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
+                UNITY_VERTEX_OUTPUT_STEREO
             };
 
             sampler2D _MainTex;
@@ -52,6 +54,9 @@
             v2f vert(appdata v)
             {
                 v2f o;
+                UNITY_SETUP_INSTANCE_ID(v);
+                UNITY_INITIALIZE_OUTPUT(v2f, o);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
                 o.vertex = UnityObjectToClipPos(v.vertex + v.normal * _Inflation);
                 float4 origin = mul(unity_ObjectToWorld, float4(0.0, 0.0, 0.0, 1.0));
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);

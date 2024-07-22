@@ -1,37 +1,49 @@
-Shader "MixedReality/PassthroughLine" {
-  Properties{
+Shader "MixedReality/PassthroughLine"
+{
+  Properties
+  {
       _LineLength("Line Length", float) = 1
+  }
+  SubShader
+  {
+    Tags{"RenderType" = "Transparent"}
+    LOD 100
 
-  } SubShader {
-    Tags{"RenderType" = "Transparent"} LOD 100
-
-        Pass {
+    Pass {
       ZWrite Off
       BlendOp RevSub, Min
       Blend Zero One, One One
 
-              CGPROGRAM
+      CGPROGRAM
       // Upgrade NOTE: excluded shader from DX11; has structs without semantics (struct v2f members
       // center)
       //#pragma exclude_renderers d3d11
-#pragma vertex vert
-#pragma fragment frag
+      #pragma vertex vert
+      #pragma fragment frag
 
-#include "UnityCG.cginc"
+      #include "UnityCG.cginc"
 
-          struct appdata {
+      struct appdata
+      {
         float4 vertex : POSITION;
         float2 uv : TEXCOORD0;
         float3 normal : NORMAL;
+        UNITY_VERTEX_INPUT_INSTANCE_ID
       };
 
-      struct v2f {
+      struct v2f
+      {
         float2 uv : TEXCOORD0;
         float4 vertex : SV_POSITION;
+        UNITY_VERTEX_OUTPUT_STEREO
       };
 
-      v2f vert(appdata v) {
+      v2f vert(appdata v)
+      {
         v2f o;
+        UNITY_SETUP_INSTANCE_ID(v);
+        UNITY_INITIALIZE_OUTPUT(v2f, o);
+        UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
         o.vertex = UnityObjectToClipPos(v.vertex);
         o.uv = v.uv;
         return o;

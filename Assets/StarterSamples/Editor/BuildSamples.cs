@@ -61,17 +61,6 @@ partial class OculusBuildSamples
         Build("Locomotion");
     }
 
-    static void BuildDistanceGrab()
-    {
-        InitializeBuild("com.oculus.unitysample.distancegrab");
-        Build("DistanceGrab");
-    }
-
-    static void BuildDebugUI()
-    {
-        InitializeBuild("com.oculus.unitysample.debugui");
-        Build("DebugUI");
-    }
 
     static void BuildHandsInteractionTrain()
     {
@@ -82,7 +71,8 @@ partial class OculusBuildSamples
     static void BuildMixedRealityCapture()
     {
         InitializeBuild("com.oculus.unitysample.mixedrealitycapture");
-        Build("MixedRealityCapture");
+        Build("MixedRealityCapture.apk",
+            new[] { GetFullPathForSample("Usage/MixedRealityCapture/MixedRealityCapture.unity") });
     }
 
     static void BuildOVROverlay()
@@ -113,7 +103,7 @@ partial class OculusBuildSamples
     {
         InitializeBuild("com.oculus.unitysample.startscene", "Meta XR SDK Samples");
 
-        var projectSettings = OVRProjectConfig.GetProjectConfig();
+        var projectSettings = OVRProjectConfig.CachedProjectConfig;
         projectSettings.insightPassthroughSupport = OVRProjectConfig.FeatureSupport.Supported;
         projectSettings.anchorSupport = OVRProjectConfig.AnchorSupport.Enabled;
         projectSettings.sceneSupport = OVRProjectConfig.FeatureSupport.Supported;
@@ -125,12 +115,10 @@ partial class OculusBuildSamples
                 GetFullPathForSample("Usage/StartScene.unity"),
                 GetFullPathForSample("Usage/CustomControllers.unity"),
                 GetFullPathForSample("Usage/CustomHands.unity"),
-                GetFullPathForSample("Usage/DebugUI.unity"),
-                GetFullPathForSample("Usage/DistanceGrab.unity"),
-                GetFullPathForSample("Usage/Firebase.unity"),
+                GetFullPathForSample("Usage/Tools/Firebase.unity"),
                 GetFullPathForSample("Usage/HandsInteractionTrainScene.unity"),
                 GetFullPathForSample("Usage/Locomotion.unity"),
-                GetFullPathForSample("Usage/MixedRealityCapture.unity"),
+                GetFullPathForSample("Usage/MixedRealityCapture/MixedRealityCapture.unity"),
                 GetFullPathForSample("Usage/OVROverlay.unity"),
                 GetFullPathForSample("Usage/OVROverlayCanvas.unity"),
                 GetFullPathForSample("Usage/OVROverlayCanvas_Text.unity"),
@@ -146,9 +134,7 @@ partial class OculusBuildSamples
                 GetFullPathForSample("Usage/Passthrough/Scenes/PassthroughStyles.unity"),
                 GetFullPathForSample("Usage/Passthrough/Scenes/SelectivePassthrough.unity"),
                 GetFullPathForSample("Usage/Passthrough/Scenes/SurfaceProjectedPassthrough.unity"),
-                GetFullPathForSample("Usage/TouchPro/LocalizedHapticsSample.unity"),
-                GetFullPathForSample("Usage/TouchPro/SelfTrackingSample.unity"),
-                GetFullPathForSample("Usage/TouchPro/StylusTipSample.unity"),
+                GetFullPathForSample("Usage/TouchPro/TouchProSample.unity"),
             });
     }
 
