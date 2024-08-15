@@ -15,4 +15,4 @@ MonoBehaviour:
   isContextualPassthroughEnabled: 0
   isSystemSplashScreenEnabled: 0
   isUnityVrSplashScreenEnabled: 0
-  isUnityLogosSplashScreenEnabled: 0
+  isUnityLogosSplashScreenEnabled: 1
