@@ -47,20 +47,20 @@ public class EnableDisablePassthroughController : MonoBehaviour
 
     void OnEnable()
     {
-        layerWithPtResumedCallback.PassthroughLayerResumed += OnPassthroughLayerResumed;
+        layerWithPtResumedCallback.passthroughLayerResumed.AddListener(OnPassthroughLayerResumed);
     }
 
     void OnDisable()
     {
-        layerWithPtResumedCallback.PassthroughLayerResumed -= OnPassthroughLayerResumed;
+        layerWithPtResumedCallback.passthroughLayerResumed.RemoveListener(OnPassthroughLayerResumed);
     }
 
-    private async void OnPassthroughLayerResumed()
+    private async void OnPassthroughLayerResumed(OVRPassthroughLayer layer)
     {
         Debug.Log("Received PassthroughLayerResumed event, passthrough content will be visible soon...");
         await Task.Delay(20);
         Debug.Log("... passthrough content is now visible");
-        rendererWithPtResumedCallback.enabled = true;
+        layer.enabled = true;
     }
 
     private void Initialize(OVRPassthroughLayer layer, Renderer layerRenderer)

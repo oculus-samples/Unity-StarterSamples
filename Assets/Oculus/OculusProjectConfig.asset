@@ -38,8 +38,8 @@ MonoBehaviour:
   insightPassthroughEnabled: 0
   _insightPassthroughSupport: 2
   _processorFavor: 0
-  systemSplashScreen: {fileID: 0}
+  systemSplashScreen: {fileID: 2800000, guid: d912e38fd43da354b9b187f8585109d1, type: 3}
   systemSplashScreenType: 0
-  _systemLoadingScreenBackground: 0
-  ovrPluginMd5Win64: aa662cdf2f901973cc80422bf87a766d65ce180dd22f33d1b0cf2b6568355b0a
-  ovrPluginMd5Android: b191da349d7c05c640e5f41721d8abdfa4204dbffe8b723b77fabe26c86db27b
+  _systemLoadingScreenBackground: 1
+  ovrPluginMd5Win64: f41e5927c8b0ba3e4ce52995d5460d49d782e2dff0b92b68282b378d298f1553
+  ovrPluginMd5Android: beeab9b00bb400454965db62a9ec5f8712fcda418f9ab7ff304a09be7ff5670d

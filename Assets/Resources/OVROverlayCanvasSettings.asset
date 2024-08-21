@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa1458c2bc55e04b872c61942be2866, type: 3}
+  m_Name: OVROverlayCanvasSettings
+  m_EditorClassIdentifier: 
+  _overrideCanvasShader: {fileID: 4800000, guid: e720ef9c6dcfbe4489d043ddf61706f8,
+    type: 3}
+  _transparentImposterShader: {fileID: 4800000, guid: 3e744168f165d504fb0f5f3e0a6ae824,
+    type: 3}
+  _opaqueImposterShader: {fileID: 4800000, guid: 1d90b910cd5a4854598ecfe4f74358d1,
+    type: 3}
+  _overrideDefaultCanvasMaterial: 0

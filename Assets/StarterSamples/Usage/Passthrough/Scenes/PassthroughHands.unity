@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.56543225, g: 0.5654317, b: 0.5654306, a: 1}
+  m_IndirectSpecularColor: {r: 0.5657588, g: 0.566327, b: 0.565711, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1506,6 +1506,80 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1001 &519180204
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2073883202203575097, guid: 53d33b2230cc6934d89c369e64e55377,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073883202203575097, guid: 53d33b2230cc6934d89c369e64e55377,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.0043063
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073883202203575097, guid: 53d33b2230cc6934d89c369e64e55377,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.3477062
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073883202203575097, guid: 53d33b2230cc6934d89c369e64e55377,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.787427
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073883202203575097, guid: 53d33b2230cc6934d89c369e64e55377,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073883202203575097, guid: 53d33b2230cc6934d89c369e64e55377,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073883202203575097, guid: 53d33b2230cc6934d89c369e64e55377,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073883202203575097, guid: 53d33b2230cc6934d89c369e64e55377,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073883202203575097, guid: 53d33b2230cc6934d89c369e64e55377,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073883202203575097, guid: 53d33b2230cc6934d89c369e64e55377,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073883202203575097, guid: 53d33b2230cc6934d89c369e64e55377,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073883202203575102, guid: 53d33b2230cc6934d89c369e64e55377,
+        type: 3}
+      propertyPath: ShowStartButtonTooltip
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073883202203575103, guid: 53d33b2230cc6934d89c369e64e55377,
+        type: 3}
+      propertyPath: m_Name
+      value: ReturnToStartScene
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 53d33b2230cc6934d89c369e64e55377, type: 3}
 --- !u!4 &651084360 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 482130, guid: 126d619cf4daa52469682f85c1378b4a,
@@ -1791,10 +1865,12 @@ MonoBehaviour:
   overlayType: 1
   compositionDepth: 0
   hidden: 0
-  depthTestEnabled: 0
   overridePerLayerColorScaleAndOffset: 0
   colorScale: {x: 1, y: 1, z: 1, w: 1}
   colorOffset: {x: 0, y: 0, z: 0, w: 0}
+  passthroughLayerResumed:
+    m_PersistentCalls:
+      m_Calls: []
   overrideBlendFactors: 0
   srcBlendFactor: 2
   dstBlendFactor: 3
@@ -2960,7 +3036,7 @@ Transform:
   m_Children:
   - {fileID: 100856365}
   m_Father: {fileID: 1531528665}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1715121475
 GameObject:
@@ -3447,7 +3523,7 @@ Transform:
   m_Children:
   - {fileID: 1078530266}
   m_Father: {fileID: 651084360}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!223 &750005636115748617
 Canvas:

@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/StarterSamples/Usage/CustomHands.unity
     guid: a4f984fcee593d2418cc61f4a993d46d
   - enabled: 1
+    path: Assets/StarterSamples/Usage/OculusInternal/DebugUI.unity
+    guid: 34004346bd7dcbf4fbfd78d2f12e4451
+  - enabled: 1
+    path: Assets/StarterSamples/Usage/OculusInternal/DistanceGrab.unity
+    guid: 24f58b3f0ca02d44eaec7f50bca538f2
+  - enabled: 1
     path: Assets/StarterSamples/Usage/Tools/Firebase.unity
     guid: 954eda7bd02eb444ca928648702a2b4c
   - enabled: 1

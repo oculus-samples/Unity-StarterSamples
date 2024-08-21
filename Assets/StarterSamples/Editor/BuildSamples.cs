@@ -36,6 +36,7 @@ partial class OculusBuildSamples
     // Update const if the file changes name or is relocated
     private const string CLASS_FILE_NAME = "BuildSamples.cs";
     private const string CLASS_FILE_INTERNAL_LOCATION = "Editor/" + CLASS_FILE_NAME;
+    private const string BUNDLE_PREFIX = "com.meta.unitysamples.";
 
     private static string samplesRootPath = "";
 
@@ -57,39 +58,39 @@ partial class OculusBuildSamples
 
     static void BuildLocomotion()
     {
-        InitializeBuild("com.oculus.unitysample.locomotion");
+        InitializeBuild("locomotion");
         Build("Locomotion");
     }
 
 
     static void BuildHandsInteractionTrain()
     {
-        InitializeBuild("com.oculus.unitysample.handsinteractiontrain");
+        InitializeBuild("handsinteractiontrain");
         Build("HandsInteractionTrainScene");
     }
 
     static void BuildMixedRealityCapture()
     {
-        InitializeBuild("com.oculus.unitysample.mixedrealitycapture");
+        InitializeBuild("mixedrealitycapture");
         Build("MixedRealityCapture.apk",
             new[] { GetFullPathForSample("Usage/MixedRealityCapture/MixedRealityCapture.unity") });
     }
 
     static void BuildOVROverlay()
     {
-        InitializeBuild("com.oculus.unitysample.ovroverlay");
+        InitializeBuild("ovroverlay");
         Build("OVROverlay");
     }
 
     static void BuildOVROverlayCanvas()
     {
-        InitializeBuild("com.oculus.unitysample.ovroverlaycanvas");
+        InitializeBuild("ovroverlaycanvas");
         Build("OVROverlayCanvas");
     }
 
     static void BuildPassthrough()
     {
-        InitializeBuild("com.oculus.unitysample.passthrough");
+        InitializeBuild("passthrough");
         Build("Passthrough");
     }
 
@@ -101,10 +102,10 @@ partial class OculusBuildSamples
     [MenuItem("Meta/Samples/Build Starter Scene")]
     static void BuildStartScene()
     {
-        InitializeBuild("com.oculus.unitysample.startscene", "Meta XR SDK Samples");
+        InitializeBuild("startscene", "Meta XR SDK Starter Samples");
 
         var projectSettings = OVRProjectConfig.CachedProjectConfig;
-        projectSettings.insightPassthroughSupport = OVRProjectConfig.FeatureSupport.Supported;
+        projectSettings.insightPassthroughSupport = OVRProjectConfig.FeatureSupport.Required;
         projectSettings.anchorSupport = OVRProjectConfig.AnchorSupport.Enabled;
         projectSettings.sceneSupport = OVRProjectConfig.FeatureSupport.Supported;
         projectSettings.handTrackingSupport = OVRProjectConfig.HandTrackingSupport.ControllersAndHands;
@@ -139,9 +140,9 @@ partial class OculusBuildSamples
     }
 
 
-    private static void InitializeBuild(string identifier, string productName = null)
+    private static void InitializeBuild(string identifierSuffix, string productName = null)
     {
-        PlayerSettings.stereoRenderingPath = StereoRenderingPath.SinglePass;
+        PlayerSettings.stereoRenderingPath = StereoRenderingPath.Instancing;
         GraphicsDeviceType[] graphicsApis = new GraphicsDeviceType[1];
         graphicsApis[0] = GraphicsDeviceType.Vulkan;
         PlayerSettings.SetGraphicsAPIs(BuildTarget.Android, graphicsApis);
@@ -152,7 +153,7 @@ partial class OculusBuildSamples
         PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
         EditorUserBuildSettings.androidBuildSystem = AndroidBuildSystem.Gradle;
         QualitySettings.antiAliasing = 4;
-        PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, identifier);
+        PlayerSettings.SetApplicationIdentifier(BuildTargetGroup.Android, $"{BUNDLE_PREFIX}{identifierSuffix}");
         if (!string.IsNullOrEmpty(productName))
         {
             PlayerSettings.productName = productName;

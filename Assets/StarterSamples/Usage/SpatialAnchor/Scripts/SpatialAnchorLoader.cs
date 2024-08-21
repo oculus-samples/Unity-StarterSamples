@@ -43,30 +43,32 @@ public class SpatialAnchorLoader : MonoBehaviour
 
     readonly List<OVRSpatialAnchor.UnboundAnchor> _unboundAnchors = new();
 
-    public void LoadAnchorsByUuid()
+    public async void LoadAnchorsByUuid()
     {
-        var uuids = AnchorUuidStore.Uuids.ToArray();
-        if (uuids.Length == 0)
+        var uuids = AnchorUuidStore.Uuids;
+        if (uuids.Count == 0)
         {
             LogWarning($"There are no anchors to load.");
             return;
         }
 
-        Log($"Attempting to load {uuids.Length} anchors by UUID: " +
-            $"{string.Join($", ", uuids.Select(uuid => uuid.ToString()))}");
+        var batchCount = Math.Ceiling((float)uuids.Count / 50);
+        for (int i = 0, batchIndex = 1; i < uuids.Count; i += 50, batchIndex++)
+        {
+            var uuidBatch = uuids.Skip(i).Take(50);
+            Log($"Attempting to load batch {batchIndex} of {batchCount} with {uuidBatch.Count()} anchor(s) by UUID: " +
+                $"[{string.Join($", ", uuidBatch.Select(uuid => uuid.ToString()))}]");
 
-        OVRSpatialAnchor.LoadUnboundAnchorsAsync(uuids, _unboundAnchors)
-            .ContinueWith(result =>
+            var result = await OVRSpatialAnchor.LoadUnboundAnchorsAsync(uuidBatch, _unboundAnchors);
+            if (result.Success)
             {
-                if (result.Success)
-                {
-                    ProcessUnboundAnchors(result.Value);
-                }
-                else
-                {
-                    LogError($"{nameof(OVRSpatialAnchor.LoadUnboundAnchorsAsync)} failed with error {result.Status}.");
-                }
-            });
+                ProcessUnboundAnchors(result.Value);
+            }
+            else
+            {
+                LogError($"{nameof(OVRSpatialAnchor.LoadUnboundAnchorsAsync)} failed with error {result.Status}.");
+            }
+        }
     }
 
     private void Awake()
