@@ -54,30 +54,30 @@ public class AnalyticsUI : MonoBehaviour
     void Start()
     {
         DebugUIBuilder ui = DebugUIBuilder.instance;
-        ui.AddButton("ResetAnalyticsData", ResetAnalyticsData, target);
-        ui.AddButton("SetAnalyticsCollectionEnabled", SetAnalyticsCollectionEnabled, target);
+        ui.AddButton("ResetAnalyticsData", ResetAnalyticsData, -1, target);
+        ui.AddButton("SetAnalyticsCollectionEnabled", SetAnalyticsCollectionEnabled, -1, target);
         ui.AddToggle("CollectionEnabled", delegate(Toggle t) { analyticsCollectionEnabled = t.enabled; },
             analyticsCollectionEnabled, target);
 
-        //ui.AddButton("SetDefaultEventParameters", SetDefaultEventParameters, target);
+        //ui.AddButton("SetDefaultEventParameters", SetDefaultEventParameters, -1, target);
 
-        ui.AddButton("SetSessionTimeoutDuration", SetSessionTimeoutDuration, target);
+        ui.AddButton("SetSessionTimeoutDuration", SetSessionTimeoutDuration, -1, target);
         textFieldSessionTimeoutDuration = ui.AddTextField("500000", target);
 
-        ui.AddButton("SetUserId", SetUserId, target);
+        ui.AddButton("SetUserId", SetUserId, -1, target);
         textFieldUserId = ui.AddTextField("UserId", target);
 
-        ui.AddButton("SetUserProperty", SetUserProperty, target);
+        ui.AddButton("SetUserProperty", SetUserProperty, -1, target);
         textFieldName = ui.AddTextField("Name", target);
-        textFieldProperty = ui.AddTextField("Nroperty", target);
+        textFieldProperty = ui.AddTextField("Property", target);
 
         // log event UI
-        ui.AddButton("LogEvent", LogEvent, 3);
+        ui.AddButton("LogEvent", LogEvent, -1, 3);
         textFieldEventName = ui.AddTextField("EventName", 3);
-        ui.AddButton("AddInt", AddInt, 3);
-        ui.AddButton("AddFlt", AddFlt, 3);
-        ui.AddButton("AddStr", AddStr, 3);
-        ui.AddButton("Clear", Clear, 3);
+        ui.AddButton("AddInt", AddInt, -1, 3);
+        ui.AddButton("AddFlt", AddFlt, -1, 3);
+        ui.AddButton("AddStr", AddStr, -1, 3);
+        ui.AddButton("Clear", Clear, -1, 3);
 
         ui.Show();
     }

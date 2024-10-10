@@ -128,13 +128,8 @@ partial class OculusBuildSamples
                 GetFullPathForSample("Usage/Stereo180Video.unity"),
                 GetFullPathForSample("Usage/SpatialAnchor.unity"),
                 GetFullPathForSample("Usage/WidevineVideo.unity"),
-                GetFullPathForSample("Usage/Passthrough/Scenes/AugmentedObjects.unity"),
-                GetFullPathForSample("Usage/Passthrough/Scenes/Lighting.unity"),
                 GetFullPathForSample("Usage/Passthrough/Scenes/OverlayPassthrough.unity"),
-                GetFullPathForSample("Usage/Passthrough/Scenes/PassthroughHands.unity"),
-                GetFullPathForSample("Usage/Passthrough/Scenes/PassthroughStyles.unity"),
-                GetFullPathForSample("Usage/Passthrough/Scenes/SelectivePassthrough.unity"),
-                GetFullPathForSample("Usage/Passthrough/Scenes/SurfaceProjectedPassthrough.unity"),
+                GetFullPathForSample("Usage/Passthrough/Scenes/EnableDisablePassthrough.unity"),
                 GetFullPathForSample("Usage/TouchPro/TouchProSample.unity"),
             });
     }

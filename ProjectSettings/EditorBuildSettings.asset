@@ -15,12 +15,6 @@ EditorBuildSettings:
     path: Assets/StarterSamples/Usage/CustomHands.unity
     guid: a4f984fcee593d2418cc61f4a993d46d
   - enabled: 1
-    path: Assets/StarterSamples/Usage/OculusInternal/DebugUI.unity
-    guid: 34004346bd7dcbf4fbfd78d2f12e4451
-  - enabled: 1
-    path: Assets/StarterSamples/Usage/OculusInternal/DistanceGrab.unity
-    guid: 24f58b3f0ca02d44eaec7f50bca538f2
-  - enabled: 1
     path: Assets/StarterSamples/Usage/Tools/Firebase.unity
     guid: 954eda7bd02eb444ca928648702a2b4c
   - enabled: 1
@@ -57,26 +51,11 @@ EditorBuildSettings:
     path: Assets/StarterSamples/Usage/WidevineVideo.unity
     guid: 5495456b7253d31479996b9587c20927
   - enabled: 1
-    path: Assets/StarterSamples/Usage/Passthrough/Scenes/AugmentedObjects.unity
-    guid: 9afeada2bbd240b4981cfb6abb525418
-  - enabled: 1
-    path: Assets/StarterSamples/Usage/Passthrough/Scenes/Lighting.unity
-    guid: b79c88b27037b4b48ab3fa45a63f208d
-  - enabled: 1
     path: Assets/StarterSamples/Usage/Passthrough/Scenes/OverlayPassthrough.unity
     guid: 698c56db7f615834881cf3fad4dae4b5
   - enabled: 1
-    path: Assets/StarterSamples/Usage/Passthrough/Scenes/PassthroughHands.unity
-    guid: c94e480e4a6da614693c0cd3372e2d2d
-  - enabled: 1
-    path: Assets/StarterSamples/Usage/Passthrough/Scenes/PassthroughStyles.unity
-    guid: a1a6574991742284e9630c2e8f93648a
-  - enabled: 1
-    path: Assets/StarterSamples/Usage/Passthrough/Scenes/SelectivePassthrough.unity
-    guid: 0e7861142f653584586c707ede59072e
-  - enabled: 1
-    path: Assets/StarterSamples/Usage/Passthrough/Scenes/SurfaceProjectedPassthrough.unity
-    guid: e36011c54ca6d994c94449356fa5cee6
+    path: Assets/StarterSamples/Usage/Passthrough/Scenes/EnableDisablePassthrough.unity
+    guid: 3e2ea09376a86d544ba6603c851c8627
   - enabled: 1
     path: Assets/StarterSamples/Usage/TouchPro/TouchProSample.unity
     guid: a54709569404c0644b22913759862a81

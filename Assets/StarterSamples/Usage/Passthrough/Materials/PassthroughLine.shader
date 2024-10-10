@@ -11,8 +11,8 @@ Shader "MixedReality/PassthroughLine"
 
     Pass {
       ZWrite Off
-      BlendOp RevSub, Min
-      Blend Zero One, One One
+      BlendOp Add
+      Blend Zero SrcAlpha
 
       CGPROGRAM
       // Upgrade NOTE: excluded shader from DX11; has structs without semantics (struct v2f members

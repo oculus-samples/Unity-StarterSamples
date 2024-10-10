@@ -8,8 +8,6 @@
 
         [Header(DepthTest)]
         [Enum(UnityEngine.Rendering.CompareFunction)] _ZTest("ZTest", Float) = 4 //"LessEqual"
-        [Enum(UnityEngine.Rendering.BlendOp)] _BlendOpColor("Blend Color", Float) = 2 //"ReverseSubtract"
-        [Enum(UnityEngine.Rendering.BlendOp)] _BlendOpAlpha("Blend Alpha", Float) = 3 //"Min"
     }
     SubShader
     {
@@ -20,8 +18,8 @@
         {
             ZWrite Off
             ZTest[_ZTest]
-            BlendOp[_BlendOpColor], [_BlendOpAlpha]
-            Blend Zero One, One One
+            BlendOp Add
+            Blend Zero SrcAlpha
 
             CGPROGRAM
             // Upgrade NOTE: excluded shader from DX11; has structs without semantics (struct v2f members center)
