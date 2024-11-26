@@ -29,7 +29,6 @@ git clone https://github.com/oculus-samples/Unity-StarterSamples.git
 All Meta SDKs can be found in the [Unity Asset Store](https://assetstore.unity.com/publishers/25353).
 This project depends on SDKs defined in the [Packages/manifest.json](./Packages/manifest.json):
 * [Meta XR Core SDK](https://assetstore.unity.com/packages/tools/integration/meta-xr-core-sdk-269169)
-* [Meta XR Platform SDK](https://assetstore.unity.com/packages/tools/integration/meta-xr-platform-sdk-262366)
 
 ## Integrate Samples to your own project
 1. Make sure your project uses the same SDK version

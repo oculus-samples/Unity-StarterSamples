@@ -22816,6 +22816,11 @@ PrefabInstance:
       propertyPath: _systemGestureMaterial
       value: 
       objectReference: {fileID: 2100000, guid: a3aacb3bb3e11b948899db3fbefc6fe1, type: 2}
+    - target: {fileID: 114428879332287356, guid: 835e735ca71bf78459fb2cababd74112,
+        type: 3}
+      propertyPath: _pointerPoseRoot
+      value: 
+      objectReference: {fileID: 444521431}
     - target: {fileID: 114567484643301796, guid: 835e735ca71bf78459fb2cababd74112,
         type: 3}
       propertyPath: _enablePhysicsCapsules
@@ -23499,6 +23504,11 @@ PrefabInstance:
       propertyPath: HandType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114428879332287356, guid: 835e735ca71bf78459fb2cababd74112,
+        type: 3}
+      propertyPath: _pointerPoseRoot
+      value: 
+      objectReference: {fileID: 444521431}
     - target: {fileID: 114567484643301796, guid: 835e735ca71bf78459fb2cababd74112,
         type: 3}
       propertyPath: _skeletonType
