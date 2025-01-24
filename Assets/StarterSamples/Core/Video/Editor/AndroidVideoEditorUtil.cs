@@ -21,6 +21,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using System.IO;
+using UnityEditor.Android;
 using UnityEngine;
 
 public class AndroidVideoEditorUtil
@@ -72,9 +73,37 @@ public class AndroidVideoEditorUtil
         properties.Save();
 
         // Set the target sdk version to the required minimum for the NativeVideoPlayer plugin
-        if (PlayerSettings.Android.targetSdkVersion < MinimumTargetAndroidSdkVersion)
+        var currentTargetSDK = PlayerSettings.Android.targetSdkVersion;
+        if (currentTargetSDK == 0)
+        {
+            var platformPath = Path.Combine(AndroidExternalToolsSettings.sdkRootPath, "platforms");
+            if (Directory.Exists(platformPath))
+            {
+                var allSubDir = Directory.GetDirectories(platformPath);
+                foreach (var dir in allSubDir)
+                {
+                    // in this case the filename is the directory name
+                    var dirName = Path.GetFileName(dir);
+                    // directory format is android-29, android-30, etc.
+                    if (int.TryParse(dirName.Replace("android-", ""), out var sdkValue))
+                    {
+                        var sdkVersion = (AndroidSdkVersions)sdkValue;
+                        if (sdkVersion > currentTargetSDK)
+                        {
+                            currentTargetSDK = sdkVersion;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogError($"{platformPath} doesn't exists, the android build might not work as expected.");
+            }
+        }
+        if (currentTargetSDK < MinimumTargetAndroidSdkVersion)
         {
             PlayerSettings.Android.targetSdkVersion = MinimumTargetAndroidSdkVersion;
+            Debug.Log($"Update settings to match minimum android target API level to {MinimumTargetAndroidSdkVersion}");
         }
     }
 
