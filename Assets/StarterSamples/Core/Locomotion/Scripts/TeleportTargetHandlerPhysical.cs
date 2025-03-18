@@ -21,12 +21,14 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using Meta.XR.Samples;
 using UnityEngine.EventSystems;
 
 /// <summary>
 /// This target handler simply returns any location that is detected by the aim collision tests.
 /// Essentially, any space the player will fit will be a valid teleport destination.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportTargetHandlerPhysical : TeleportTargetHandler
 {
     /// <summary>

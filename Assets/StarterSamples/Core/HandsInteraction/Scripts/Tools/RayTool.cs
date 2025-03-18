@@ -20,6 +20,7 @@
 
 
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -28,6 +29,7 @@ namespace OculusSampleFramework
     /// <summary>
     /// Ray tool used for far-field interactions.
     /// </summary>
+    [MetaCodeSample("StarterSample.Core-HandsInteraction")]
     public class RayTool : InteractableTool
     {
         private const float MINIMUM_RAY_CAST_DISTANCE = 0.8f;

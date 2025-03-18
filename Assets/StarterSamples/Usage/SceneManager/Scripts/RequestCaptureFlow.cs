@@ -19,8 +19,10 @@
  */
 
 using System;
+using Meta.XR.Samples;
 using UnityEngine;
 
+[MetaCodeSample("StarterSample-SceneManager")]
 public class RequestCaptureFlow : MonoBehaviour
 {
     public OVRInput.Button RequestCaptureBtn = OVRInput.Button.Two;

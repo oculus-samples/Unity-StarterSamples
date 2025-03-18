@@ -21,8 +21,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Meta.XR.Samples;
 using UnityEngine;
 
+[MetaCodeSample("StarterSample-Firebase")]
 public class StartCrashlytics : MonoBehaviour
 {
 #if OVR_SAMPLES_ENABLE_FIREBASE

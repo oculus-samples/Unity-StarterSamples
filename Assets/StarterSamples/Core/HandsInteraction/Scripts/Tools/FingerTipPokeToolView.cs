@@ -19,6 +19,7 @@
  */
 
 
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -27,6 +28,7 @@ using UnityEngine.Assertions;
 /// </summary>
 namespace OculusSampleFramework
 {
+    [MetaCodeSample("StarterSample.Core-HandsInteraction")]
     public class FingerTipPokeToolView : MonoBehaviour, InteractableToolView
     {
         [SerializeField] private MeshRenderer _sphereMeshRenderer = null;

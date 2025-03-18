@@ -19,11 +19,13 @@
  */
 
 
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace OculusSampleFramework
 {
+    [MetaCodeSample("StarterSample-HandsTrain")]
     public class TrainCar : TrainCarBase
     {
         [SerializeField] private TrainCarBase _parentLocomotive = null;

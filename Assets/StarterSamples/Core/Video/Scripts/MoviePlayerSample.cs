@@ -21,7 +21,9 @@
 using UnityEngine;
 using System;
 using System.IO;
+using Meta.XR.Samples;
 
+[MetaCodeSample("StarterSample.Core-Video")]
 public class MoviePlayerSample : MonoBehaviour
 {
     private bool videoPausedBeforeAppPause = false;

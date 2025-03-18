@@ -20,10 +20,12 @@
 
 using UnityEngine;
 using System.Collections;
+using Meta.XR.Samples;
 
 /// <summary>
 /// This transition will move the player with no other side effects.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportTransitionInstant : TeleportTransition
 {
     /// <summary>

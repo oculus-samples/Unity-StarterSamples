@@ -21,6 +21,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using Meta.XR.Samples;
 
 /// <summary>
 /// The TeleportInputHandler provides interfaces used to control aim related to teleports and related behaviors.
@@ -28,6 +29,7 @@ using System.Collections;
 /// Supporting any of these, or other future controllers, is possible by implementing and enabling a different
 /// derived type of TeleportInputHandler.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public abstract class TeleportInputHandler : TeleportSupport
 {
     private readonly Action _startReadyAction;

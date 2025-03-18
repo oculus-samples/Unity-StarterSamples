@@ -18,11 +18,13 @@
  * limitations under the License.
  */
 
+using Meta.XR.Samples;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
+[MetaCodeSample("StarterSample-Passthrough")]
 public class SliderValueToText : MonoBehaviour
 {
     private TextMeshProUGUI textSliderValue;

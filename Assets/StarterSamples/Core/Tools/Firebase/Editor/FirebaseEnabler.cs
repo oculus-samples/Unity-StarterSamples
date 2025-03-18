@@ -18,8 +18,10 @@
  * limitations under the License.
  */
 
+using Meta.XR.Samples;
 using UnityEditor;
 
+[MetaCodeSample("StarterSample.Core-Tools.Firebase")]
 public class FirebaseEnabler
 {
     private static readonly string FirebaseBuildDefinition = "OVR_SAMPLES_ENABLE_FIREBASE";

@@ -21,10 +21,12 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using Meta.XR.Samples;
 
 /// <summary>
 /// The orientation handler is what determines the final rotation of the player after the teleport.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public abstract class TeleportOrientationHandler : TeleportSupport
 {
     private readonly Action _updateOrientationAction;

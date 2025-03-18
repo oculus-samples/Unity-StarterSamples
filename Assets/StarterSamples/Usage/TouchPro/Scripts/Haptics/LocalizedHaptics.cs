@@ -18,8 +18,10 @@
  * limitations under the License.
  */
 
+using Meta.XR.Samples;
 using UnityEngine;
 
+[MetaCodeSample("StarterSample-TouchPro")]
 public class LocalizedHaptics : MonoBehaviour
 {
     [Header("Settings")]

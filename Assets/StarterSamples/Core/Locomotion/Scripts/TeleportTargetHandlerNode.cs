@@ -18,11 +18,13 @@
  * limitations under the License.
  */
 
+using Meta.XR.Samples;
 using UnityEngine;
 
 /// <summary>
 /// This target handler will only return locations that the aim system detects that contain a TeleportPoint component.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportTargetHandlerNode : TeleportTargetHandler
 {
     /// <summary>

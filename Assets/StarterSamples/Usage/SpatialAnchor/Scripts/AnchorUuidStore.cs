@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Meta.XR.Samples;
 using UnityEngine;
 
 /// <summary>
@@ -34,6 +35,7 @@ using UnityEngine;
 /// In a real app, you'd probably want to use a more sophisticated storage mechanism, but PlayerPrefs serves the
 /// purposes required by this sample.
 /// </remarks>
+[MetaCodeSample("StarterSample-SpatialAnchor")]
 public static class AnchorUuidStore
 {
     public const string NumUuidsPlayerPref = "numUuids";

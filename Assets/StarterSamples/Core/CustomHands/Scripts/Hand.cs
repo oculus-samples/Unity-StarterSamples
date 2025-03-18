@@ -21,6 +21,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Meta.XR.Samples;
 using UnityEngine;
 using OVRTouchSample;
 #if UNITY_EDITOR
@@ -31,6 +32,7 @@ namespace OVRTouchSample
 {
     // Animated hand visuals for a user of a Touch controller.
     [RequireComponent(typeof(OVRGrabber))]
+    [MetaCodeSample("StarterSample.Core-CustomHands")]
     public class Hand : MonoBehaviour
     {
         public const string ANIM_LAYER_NAME_POINT = "Point Layer";

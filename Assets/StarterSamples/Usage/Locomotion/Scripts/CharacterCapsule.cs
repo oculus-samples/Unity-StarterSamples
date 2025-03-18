@@ -20,12 +20,14 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 
 /// <summary>
 /// Procedurally generated capsule mesh which matches the character controller size.
 /// This was originally created for visualizing the capsule in the HMD but it could be adapted to other purposes.
 /// </summary>
 [ExecuteInEditMode]
+[MetaCodeSample("StarterSample-Locomotion")]
 public class CharacterCapsule : MonoBehaviour
 {
     private CharacterController _character;

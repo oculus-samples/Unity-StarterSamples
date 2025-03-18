@@ -19,11 +19,13 @@
  */
 
 
+using Meta.XR.Samples;
 using UnityEngine;
 
 namespace OculusSampleFramework
 {
     // Simple component that changes color based on grab state.
+    [MetaCodeSample("StarterSample-SharedAssets")]
     public class ColorGrabbable : OVRGrabbable
     {
         public static readonly Color COLOR_GRAB = new Color(1.0f, 0.5f, 0.0f, 1.0f);

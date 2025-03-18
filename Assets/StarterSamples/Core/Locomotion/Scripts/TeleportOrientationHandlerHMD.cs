@@ -18,11 +18,13 @@
  * limitations under the License.
  */
 
+using Meta.XR.Samples;
 using UnityEngine;
 
 /// <summary>
 /// This orientation handler will aim the player at the point they aim the HMD at after they choose the teleport location.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportOrientationHandlerHMD : TeleportOrientationHandler
 {
     /// <summary>

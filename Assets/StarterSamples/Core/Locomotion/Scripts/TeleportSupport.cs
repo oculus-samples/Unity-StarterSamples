@@ -20,11 +20,13 @@
 
 using UnityEngine;
 using System.Collections;
+using Meta.XR.Samples;
 
 /// <summary>
 /// The TeleportSupport is an EventHandlerBehavior used by a number of derived behaviors
 /// which all rely on the a LocomotionTeleport component being present and available.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public abstract class TeleportSupport : MonoBehaviour
 {
     protected LocomotionTeleport LocomotionTeleport { get; private set; }

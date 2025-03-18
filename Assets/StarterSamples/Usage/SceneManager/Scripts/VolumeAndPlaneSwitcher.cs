@@ -21,9 +21,11 @@
 #pragma warning disable CS0618 // OVRSceneManager is obsolete (use MRUK instead)
 
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 
 [RequireComponent(typeof(OVRSceneAnchor))]
+[MetaCodeSample("StarterSample-SceneManager")]
 public class VolumeAndPlaneSwitcher : MonoBehaviour
 {
     public OVRSceneAnchor planePrefab;

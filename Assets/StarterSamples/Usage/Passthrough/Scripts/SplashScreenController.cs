@@ -19,8 +19,10 @@
  */
 
 using System.Threading.Tasks;
+using Meta.XR.Samples;
 using UnityEngine;
 
+[MetaCodeSample("StarterSample-Passthrough")]
 public class SplashScreenController : MonoBehaviour
 {
     private CameraSnapBehaviour cameraSnapBehaviour;

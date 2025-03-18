@@ -20,9 +20,11 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+[MetaCodeSample("StarterSample.Core-Video")]
 public class ButtonDownListener : MonoBehaviour, UnityEngine.EventSystems.IPointerDownHandler
 {
     public event System.Action onButtonDown;

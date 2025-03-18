@@ -19,11 +19,13 @@
  */
 
 using System.Text.RegularExpressions;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
+[MetaCodeSample("StarterSample-TouchPro")]
 public class UiSceneMenu : MonoBehaviour
 {
     [Header("Settings")]

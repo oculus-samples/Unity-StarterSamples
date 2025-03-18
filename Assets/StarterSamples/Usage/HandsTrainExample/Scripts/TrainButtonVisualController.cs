@@ -20,6 +20,7 @@
 
 
 using System.Collections;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -28,6 +29,7 @@ namespace OculusSampleFramework
     /// <summary>
     /// An example visual controller for a button intended for the train sample scene.
     /// </summary>
+    [MetaCodeSample("StarterSample-HandsTrain")]
     public class TrainButtonVisualController : MonoBehaviour
     {
         private const float LERP_TO_OLD_POS_DURATION = 1.0f;

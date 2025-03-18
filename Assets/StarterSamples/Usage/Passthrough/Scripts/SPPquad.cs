@@ -20,8 +20,10 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 
+[MetaCodeSample("StarterSample-Passthrough")]
 public class SPPquad : MonoBehaviour
 {
     OVRPassthroughLayer passthroughLayer;

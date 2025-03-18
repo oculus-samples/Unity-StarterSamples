@@ -19,6 +19,7 @@
  */
 
 using System.Collections;
+using Meta.XR.Samples;
 using UnityEngine;
 
 /// <summary>
@@ -37,14 +38,21 @@ using UnityEngine;
 /// well supported for non Multi-Pass rendering modes.
 /// </remarks>
 [RequireComponent(typeof(MeshFilter))]
+[MetaCodeSample("StarterSample-SceneManager")]
 public class SetMeshBarycentricCoordinates : MonoBehaviour
 {
+    [Tooltip("Hide the mesh until we have created the barycentric coordinates.")]
+    public bool HideMeshBeforeProcessed = true;
+
     MeshFilter _meshFilter;
     Mesh _mesh;
 
     private void Start()
     {
         _meshFilter = GetComponent<MeshFilter>();
+
+        if (HideMeshBeforeProcessed)
+            ToggleMeshRendering(false);
 
         StartCoroutine(CheckMeshData());
     }
@@ -94,5 +102,19 @@ public class SetMeshBarycentricCoordinates : MonoBehaviour
         _mesh = mesh;
         _meshFilter.mesh = _mesh;
         _meshFilter.mesh.RecalculateNormals();
+
+        if (HideMeshBeforeProcessed)
+            ToggleMeshRendering(true);
+    }
+
+    private void ToggleMeshRendering(bool enable)
+    {
+        if (TryGetComponent(out MeshRenderer renderer))
+            renderer.enabled = enable;
+
+#pragma warning disable CS0618 // Type or member is obsolete
+        if (TryGetComponent(out RenderMeshVisibility trackingVizToggle))
+            trackingVizToggle.enabled = enable;
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 }

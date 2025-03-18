@@ -422,6 +422,7 @@ GameObject:
   - component: {fileID: 1132682185376712905}
   - component: {fileID: 8013016026686888416}
   - component: {fileID: 2339718010947781651}
+  - component: {fileID: 7042720512527001057}
   m_Layer: 9
   m_Name: Volume
   m_TagString: Untagged
@@ -472,6 +473,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scaleChildren: 1
   _offsetChildren: 1
+--- !u!114 &7042720512527001057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8999845180316542267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd99dbd2ad52504b9ca0deb0d6a6973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9042023309557681183
 GameObject:
   m_ObjectHideFlags: 0

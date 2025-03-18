@@ -18,9 +18,11 @@
  * limitations under the License.
  */
 
+using Meta.XR.Samples;
 using TMPro;
 using UnityEngine;
 
+[MetaCodeSample("StarterSample-TouchPro")]
 public class UiVectorInspector : MonoBehaviour
 {
     [Header("Components")]

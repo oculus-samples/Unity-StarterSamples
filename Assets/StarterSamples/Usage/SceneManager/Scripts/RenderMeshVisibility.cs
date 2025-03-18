@@ -18,40 +18,41 @@
  * limitations under the License.
  */
 
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using Meta.XR.Samples;
 using UnityEngine;
 
-[MetaCodeSample("StarterSample-Passthrough")]
-public class OverlayPassthrough : MonoBehaviour
+/// <summary>
+/// Sets the visibility of an <see cref="OVRSceneAnchor"/>'s render mesh according to whether it is currently tracked.
+/// </summary>
+[Obsolete("OVRSceneManager and associated classes are deprecated (v65), please use MR Utility Kit instead (https://developer.oculus.com/documentation/unity/unity-mr-utility-kit-overview)")]
+[MetaCodeSample("StarterSample-SceneManager")]
+public class RenderMeshVisibility : MonoBehaviour
 {
-    OVRPassthroughLayer passthroughLayer;
+    List<MeshRenderer> _meshRenderers = new();
+
+    OVRSceneAnchor _sceneAnchor;
 
     void Start()
     {
-        GameObject ovrCameraRig = GameObject.Find("OVRCameraRig");
-        if (ovrCameraRig == null)
+        if (TryGetComponent(out _sceneAnchor))
         {
-            Debug.LogError("Scene does not contain an OVRCameraRig");
-            return;
+            _sceneAnchor.GetComponentsInChildren(_meshRenderers);
         }
-
-        passthroughLayer = ovrCameraRig.GetComponent<OVRPassthroughLayer>();
-        if (passthroughLayer == null)
+        else
         {
-            Debug.LogError("OVRCameraRig does not contain an OVRPassthroughLayer component");
+            enabled = false;
         }
     }
 
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch))
+        foreach (var meshRenderer in _meshRenderers)
         {
-            passthroughLayer.hidden = !passthroughLayer.hidden;
+            // IsTracked will be false if the system cannot determine the pose of the anchor. In this case, we
+            // stop rendering it so that it doesn't appear in the wrong place.
+            meshRenderer.enabled = _sceneAnchor.IsTracked;
         }
-
-        float thumbstickX = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.RTouch).x;
-        passthroughLayer.textureOpacity = thumbstickX * 0.5f + 0.5f;
     }
 }

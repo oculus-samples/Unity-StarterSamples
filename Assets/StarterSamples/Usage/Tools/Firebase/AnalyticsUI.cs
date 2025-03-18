@@ -20,6 +20,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +28,7 @@ using UnityEngine.UI;
 using Firebase.Analytics;
 #endif
 
+[MetaCodeSample("StarterSample-Firebase")]
 public class AnalyticsUI : MonoBehaviour
 {
 #if OVR_SAMPLES_ENABLE_FIREBASE

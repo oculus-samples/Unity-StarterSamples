@@ -18,10 +18,12 @@
  * limitations under the License.
  */
 
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+[MetaCodeSample("StarterSample-TouchPro")]
 public class UiAxis1dInspector : MonoBehaviour
 {
     [Header("Settings")]

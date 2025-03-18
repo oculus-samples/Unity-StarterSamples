@@ -20,6 +20,7 @@
 
 
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 
 namespace OculusSampleFramework
@@ -29,6 +30,7 @@ namespace OculusSampleFramework
     /// We want to do this in a top-down fashion, because we might want to disable
     /// far-field interactions if near-field interactions take precendence (for instance).
     /// </summary>
+    [MetaCodeSample("StarterSample.Core-HandsInteraction")]
     public class InteractableToolsInputRouter : MonoBehaviour
     {
         private static InteractableToolsInputRouter _instance;

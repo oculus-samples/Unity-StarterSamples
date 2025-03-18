@@ -23,12 +23,14 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine.Serialization;
 
 /// <summary>
 /// Specific functionality for spawned anchors
 /// </summary>
 [RequireComponent(typeof(OVRSpatialAnchor))]
+[MetaCodeSample("StarterSample-SpatialAnchor")]
 public class Anchor : MonoBehaviour
 {
     [SerializeField, FormerlySerializedAs("canvas_")]

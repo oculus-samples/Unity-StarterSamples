@@ -22,10 +22,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+[MetaCodeSample("StarterSample-Passthrough")]
 public class PassthroughAtStartupController : MonoBehaviour
 {
     private const float LogoFoVDefault = 35f;

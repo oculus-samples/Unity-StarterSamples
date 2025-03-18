@@ -20,6 +20,7 @@
 
 
 using System;
+using Meta.XR.Samples;
 using UnityEngine;
 
 namespace OculusSampleFramework
@@ -39,6 +40,7 @@ namespace OculusSampleFramework
     /// <summary>
     /// Arguments for object interacting with collider zone.
     /// </summary>
+    [MetaCodeSample("StarterSample.Core-HandsInteraction")]
     public class ColliderZoneArgs : EventArgs
     {
         public readonly ColliderZone Collider;

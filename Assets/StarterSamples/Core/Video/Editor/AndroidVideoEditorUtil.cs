@@ -21,9 +21,11 @@
 using System.Collections.Generic;
 using UnityEditor;
 using System.IO;
+using Meta.XR.Samples;
 using UnityEditor.Android;
 using UnityEngine;
 
+[MetaCodeSample("StarterSample.Core-Video.Editor")]
 public class AndroidVideoEditorUtil
 {
     private static readonly string[] VideoPluginNames = {

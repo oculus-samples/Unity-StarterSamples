@@ -20,6 +20,7 @@
 
 
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -28,6 +29,7 @@ namespace OculusSampleFramework
     /// <summary>
     /// A button interactable used by the train scene.
     /// </summary>
+    [MetaCodeSample("StarterSample.Core-HandsInteraction")]
     public class ButtonController : Interactable
     {
         private const float ENTRY_DOT_THRESHOLD = 0.8f;

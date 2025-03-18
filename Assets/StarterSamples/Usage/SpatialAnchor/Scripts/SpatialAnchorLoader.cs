@@ -21,6 +21,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Meta.XR.Samples;
 using UnityEngine;
 
 /// <summary>
@@ -34,6 +35,7 @@ using UnityEngine;
 /// <see cref="OVRSpatialAnchor"/> component and bind it to the `UnboundAnchor` by calling
 /// <see cref="OVRSpatialAnchor.UnboundAnchor.BindTo"/>.
 /// </remarks>
+[MetaCodeSample("StarterSample-SpatialAnchor")]
 public class SpatialAnchorLoader : MonoBehaviour
 {
     [SerializeField]

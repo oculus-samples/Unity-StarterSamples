@@ -18,13 +18,13 @@
  * limitations under the License.
  */
 
-using System.Collections;
-using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 // Show off all the Debug UI components.
+[MetaCodeSample("StarterSample-DebugUI")]
 public class DebugUISample : MonoBehaviour
 {
     bool inMenu;

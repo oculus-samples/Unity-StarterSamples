@@ -19,11 +19,13 @@
  */
 
 
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace OculusSampleFramework
 {
+    [MetaCodeSample("StarterSample-HandsTrain")]
     public abstract class TrainCarBase : MonoBehaviour
     {
         private static Vector3 OFFSET = new Vector3(0f, 0.0195f, 0f);

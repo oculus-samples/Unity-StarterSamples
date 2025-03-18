@@ -24,8 +24,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Meta.XR.Samples;
 
 // Create menu of all scenes included in the build.
+[MetaCodeSample("StarterSample-StartScene")]
 public class StartMenu : MonoBehaviour
 {
     public OVROverlay overlay;

@@ -25,6 +25,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Meta.XR.Samples;
 using Debug = UnityEngine.Debug;
 
 /// <summary>
@@ -33,6 +34,7 @@ using Debug = UnityEngine.Debug;
 /// that can simply update the destination to any arbitrary location, or update only when a teleport node
 /// is being pointed at, or anything else that fits the design for limiting when & where a teleport is valid.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public abstract class TeleportTargetHandler : TeleportSupport
 {
     /// <summary>

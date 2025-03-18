@@ -20,6 +20,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Meta.XR.Samples;
 
 /// <summary>
 /// Teleport transitions manage the actual relocation of the player from the current position and orientation
@@ -27,6 +28,7 @@ using System.Collections;
 /// All teleport transition behaviors derive from this class, primarily for type safety
 /// within the LocomotionTeleport to track the current transition type.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public abstract class TeleportTransition : TeleportSupport
 {
     protected override void AddEventHandlers()

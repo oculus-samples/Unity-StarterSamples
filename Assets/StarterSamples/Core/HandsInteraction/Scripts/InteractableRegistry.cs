@@ -20,6 +20,7 @@
 
 
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 
 namespace OculusSampleFramework
@@ -28,6 +29,7 @@ namespace OculusSampleFramework
     /// In case someone wants to know about all interactables in a scene,
     /// this registry is the easiest way to access that information.
     /// </summary>
+    [MetaCodeSample("StarterSample.Core-HandsInteraction")]
     public class InteractableRegistry : MonoBehaviour
     {
         public static HashSet<Interactable> _interactables = new HashSet<Interactable>();

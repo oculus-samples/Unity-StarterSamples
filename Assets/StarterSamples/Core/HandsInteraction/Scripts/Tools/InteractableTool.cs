@@ -21,6 +21,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Meta.XR.Samples;
 using UnityEngine;
 
 namespace OculusSampleFramework
@@ -52,6 +53,7 @@ namespace OculusSampleFramework
     /// <summary>
     /// Describes tool-to-collision information.
     /// </summary>
+    [MetaCodeSample("StarterSample.Core-HandsInteraction")]
     public class InteractableCollisionInfo
     {
         public InteractableCollisionInfo(ColliderZone collider, InteractableCollisionDepth collisionDepth,

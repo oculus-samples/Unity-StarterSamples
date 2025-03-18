@@ -20,12 +20,14 @@
 
 using System;
 using System.Collections;
+using Meta.XR.Samples;
 using UnityEngine;
 
 /// <summary>
 /// This component is responsible for moving the character capsule to match the HMD, fading out the camera or blocking movement when
 /// collisions occur, and adjusting the character capsule height to match the HMD's offset from the ground.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class CharacterCameraConstraint : MonoBehaviour
 {
     // Distance in front of the camera at which fading begins.

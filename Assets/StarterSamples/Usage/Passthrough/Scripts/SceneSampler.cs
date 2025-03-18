@@ -19,9 +19,11 @@
  */
 
 using System.Linq;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[MetaCodeSample("StarterSample-Passthrough")]
 public class SceneSampler : MonoBehaviour
 {
     private int currentSceneIndex;

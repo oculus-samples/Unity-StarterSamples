@@ -18,10 +18,12 @@
  * limitations under the License.
  */
 
+using Meta.XR.Samples;
 using UnityEngine;
 
 namespace OVRTouchSample
 {
+    [MetaCodeSample("StarterSample.Core-CustomHands")]
     public class ControllersActive : MonoBehaviour
     {
         [SerializeField] private GameObject _notificationUI;

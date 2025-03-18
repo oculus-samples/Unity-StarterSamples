@@ -19,9 +19,11 @@
  */
 
 #if UNITY_EDITOR
+using Meta.XR.Samples;
 using UnityEditor;
 
 [InitializeOnLoadAttribute]
+[MetaCodeSample("StarterSample-Editor")]
 public class OculusSampleUtil
 {
     static OculusSampleUtil()

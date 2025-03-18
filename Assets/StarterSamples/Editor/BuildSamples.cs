@@ -25,12 +25,14 @@ using UnityEditor;
 using UnityEditor.Build.Reporting;
 using System.IO;
 using System.Linq;
+using Meta.XR.Samples;
 
 //-------------------------------------------------------------------------------------
 // ***** OculusBuildSamples
 //
 // Provides scripts to build Samples scene APKs.
 //
+[MetaCodeSample("StarterSample-Editor")]
 partial class OculusBuildSamples
 {
     // Update const if the file changes name or is relocated

@@ -18,8 +18,10 @@
  * limitations under the License.
  */
 
+using Meta.XR.Samples;
 using UnityEngine;
 
+[MetaCodeSample("StarterSample-Passthrough")]
 public class SplashScreenSettings : ScriptableObject
 {
     public bool isContextualPassthroughEnabled;

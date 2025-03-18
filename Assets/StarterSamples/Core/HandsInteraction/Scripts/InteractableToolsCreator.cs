@@ -21,6 +21,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 
 namespace OculusSampleFramework
@@ -28,6 +29,7 @@ namespace OculusSampleFramework
     /// <summary>
     /// Spawns all interactable tools that are specified for a scene.
     /// </summary>
+    [MetaCodeSample("StarterSample.Core-HandsInteraction")]
     public class InteractableToolsCreator : MonoBehaviour
     {
         [SerializeField] private Transform[] LeftHandTools = null;

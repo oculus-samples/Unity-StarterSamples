@@ -1463,7 +1463,6 @@ GameObject:
   - component: {fileID: 1285069863}
   - component: {fileID: 1285069864}
   - component: {fileID: 1285069862}
-  - component: {fileID: 1285069865}
   m_Layer: 0
   m_Name: ObjectManipulator
   m_TagString: Untagged
@@ -1605,18 +1604,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &1285069865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1285069861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d62788dcc9ea074fa279a45302d60de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1428558756
 GameObject:
   m_ObjectHideFlags: 0
@@ -2523,7 +2510,7 @@ Transform:
   m_Children:
   - {fileID: 693085675}
   m_Father: {fileID: 1531528665}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2132069643
 GameObject:

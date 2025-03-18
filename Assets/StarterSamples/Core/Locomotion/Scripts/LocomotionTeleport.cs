@@ -26,6 +26,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Meta.XR.Samples;
 using UnityEngine.EventSystems;
 using Debug = UnityEngine.Debug;
 
@@ -36,6 +37,7 @@ using Debug = UnityEngine.Debug;
 /// for different aspects of the teleport process. This makes it possible for different kinds of
 /// teleport behaviors to be occur by simply enabling different combinations of components.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class LocomotionTeleport : MonoBehaviour
 {
     /// <summary>

@@ -18,9 +18,11 @@
  * limitations under the License.
  */
 
+using Meta.XR.Samples;
 using UnityEngine;
 using TMPro;
 
+[MetaCodeSample("StarterSample-TouchPro")]
 public class UiDeviceInspector : MonoBehaviour
 {
     [Header("Settings")]

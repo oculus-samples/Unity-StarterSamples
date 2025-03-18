@@ -20,10 +20,12 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
+[MetaCodeSample("StarterSample-Firebase")]
 public class SampleUI : MonoBehaviour
 {
     RectTransform collectionButton;

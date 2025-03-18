@@ -19,11 +19,13 @@
  */
 
 using System.Collections;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace OculusSampleFramework
 {
+    [MetaCodeSample("StarterSample-HandsTrain")]
     public class TrainLocomotive : TrainCarBase
     {
         private const float MIN_SPEED = 0.2f;

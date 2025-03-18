@@ -19,11 +19,13 @@
  */
 
 
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace OculusSampleFramework
 {
+    [MetaCodeSample("StarterSample-HandsTrain")]
     public class TrainTrack : MonoBehaviour
     {
         [SerializeField] private float _gridSize = 0.5f;

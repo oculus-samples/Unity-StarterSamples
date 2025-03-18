@@ -21,7 +21,9 @@
 
 using UnityEngine;
 using System.Collections;
+using Meta.XR.Samples;
 
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportPoint : MonoBehaviour
 {
     public float dimmingSpeed = 1;

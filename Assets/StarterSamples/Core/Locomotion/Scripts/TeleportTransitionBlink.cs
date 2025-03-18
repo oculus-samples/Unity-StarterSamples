@@ -21,11 +21,13 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using Meta.XR.Samples;
 
 /// <summary>
 /// This transition will cause the screen to quickly fade to black, perform the repositioning, and then fade
 /// the view back to normal.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportTransitionBlink : TeleportTransition
 {
     /// <summary>

@@ -18,10 +18,12 @@
  * limitations under the License.
  */
 
+using Meta.XR.Samples;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[MetaCodeSample("StarterSample-TouchPro")]
 public class UiBoolInspector : MonoBehaviour
 {
     [Header("Components")]

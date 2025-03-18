@@ -21,9 +21,11 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+[MetaCodeSample("StarterSample-HandsTrain")]
 public class HandsActiveChecker : MonoBehaviour
 {
     [SerializeField]

@@ -19,9 +19,11 @@
  */
 
 
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[MetaCodeSample("StarterSample-StartScene")]
 public class ReturnToStartScene : MonoBehaviour
 {
     public bool ShowStartButtonTooltip;

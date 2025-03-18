@@ -19,11 +19,13 @@
  */
 
 using System.Collections;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.UI;
 
 // grabs any object that has a collider
 // adding a GrabObject script to the object offers more functionality
+[MetaCodeSample("StarterSample-Passthrough")]
 public class ObjectManipulator : MonoBehaviour
 {
     OVRInput.Controller controller = OVRInput.Controller.RTouch;

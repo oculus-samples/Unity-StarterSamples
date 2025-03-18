@@ -20,8 +20,10 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 
+[MetaCodeSample("StarterSample-Passthrough")]
 public class EnableUnpremultipliedAlpha : MonoBehaviour
 {
     void Start()

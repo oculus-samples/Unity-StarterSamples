@@ -18,6 +18,7 @@
  * limitations under the License.
  */
 
+using Meta.XR.Samples;
 using UnityEngine;
 
 namespace OculusSampleFramework
@@ -26,6 +27,7 @@ namespace OculusSampleFramework
     /// Manages pinch state, including if an object is being focused via something
     /// like a ray (or not).
     /// </summary>
+    [MetaCodeSample("StarterSample.Core-HandsInteraction")]
     public class PinchStateModule
     {
         private const float PINCH_STRENGTH_THRESHOLD = 1.0f;

@@ -18,8 +18,10 @@
  * limitations under the License.
  */
 
+using Meta.XR.Samples;
 using UnityEngine;
 
+[MetaCodeSample("StarterSample-Passthrough")]
 public class AugmentedObject : MonoBehaviour
 {
     public OVRInput.Controller controllerHand = OVRInput.Controller.None;

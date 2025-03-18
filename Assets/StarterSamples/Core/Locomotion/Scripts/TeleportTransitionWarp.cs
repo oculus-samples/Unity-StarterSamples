@@ -20,12 +20,14 @@
 
 using UnityEngine;
 using System.Collections;
+using Meta.XR.Samples;
 
 /// <summary>
 /// This transition will move the player to the destination over the span of a fixed amount of time.
 /// It will not adjust the orientation of the player because this is very uncomfortable.
 /// Note there is custom editor for this behavior which is used to control the warp interpolation.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportTransitionWarp : TeleportTransition
 {
     /// <summary>

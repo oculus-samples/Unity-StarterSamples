@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -28,6 +29,7 @@ using UnityEngine.UI;
 /// Manages UI of anchor sample.
 /// </summary>
 [RequireComponent(typeof(SpatialAnchorLoader))]
+[MetaCodeSample("StarterSample-SpatialAnchor")]
 public class AnchorUIManager : MonoBehaviour
 {
     /// <summary>

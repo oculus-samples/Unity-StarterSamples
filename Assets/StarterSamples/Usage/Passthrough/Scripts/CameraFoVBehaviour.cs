@@ -19,6 +19,7 @@
  */
 
 using System;
+using Meta.XR.Samples;
 using UnityEngine;
 
 /// <summary>
@@ -27,6 +28,7 @@ using UnityEngine;
 /// between the camera and the canvas.
 /// </summary>
 [RequireComponent(typeof(RectTransform))]
+[MetaCodeSample("StarterSample-Passthrough")]
 public class CameraFoVBehaviour : MonoBehaviour
 {
     private const float IpdMeter = .065f; // use fixed IPD

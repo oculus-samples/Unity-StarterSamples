@@ -22,6 +22,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -31,6 +32,7 @@ namespace OculusSampleFramework
     /// Poke tool used for near-field (touching) interactions. Assumes that it will be placed on
     /// finger tips.
     /// </summary>
+    [MetaCodeSample("StarterSample.Core-HandsInteraction")]
     public class FingerTipPokeTool : InteractableTool
     {
         private const int NUM_VELOCITY_FRAMES = 10;
@@ -83,6 +85,25 @@ namespace OculusSampleFramework
             StartCoroutine(AttachTriggerLogic());
         }
 
+        private static OVRSkeleton.BoneId GetFingerTip(OVRPlugin.HandFinger finger,
+            OVRSkeleton.SkeletonType skeletonType)
+        {
+            bool isOVR = skeletonType.IsOVRHandSkeleton();
+            switch (finger)
+            {
+                case OVRPlugin.HandFinger.Thumb:
+                    return isOVR ? OVRSkeleton.BoneId.Hand_Thumb3 : OVRSkeleton.BoneId.XRHand_ThumbDistal;
+                case OVRPlugin.HandFinger.Index:
+                    return isOVR ? OVRSkeleton.BoneId.Hand_Index3 : OVRSkeleton.BoneId.XRHand_IndexDistal;
+                case OVRPlugin.HandFinger.Middle:
+                    return isOVR ? OVRSkeleton.BoneId.Hand_Middle3 : OVRSkeleton.BoneId.XRHand_MiddleDistal;
+                case OVRPlugin.HandFinger.Ring:
+                    return isOVR ? OVRSkeleton.BoneId.Hand_Ring3 : OVRSkeleton.BoneId.XRHand_RingDistal;
+                default:
+                    return isOVR ? OVRSkeleton.BoneId.Hand_Pinky3 : OVRSkeleton.BoneId.XRHand_LittleDistal;
+            }
+        }
+
         private IEnumerator AttachTriggerLogic()
         {
             while (!HandsManager.Instance || !HandsManager.Instance.IsInitialized())
@@ -94,25 +115,8 @@ namespace OculusSampleFramework
                 ? HandsManager.Instance.RightHandSkeleton
                 : HandsManager.Instance.LeftHandSkeleton;
 
-            OVRSkeleton.BoneId boneToTestCollisions = OVRSkeleton.BoneId.Hand_Pinky3;
-            switch (_fingerToFollow)
-            {
-                case OVRPlugin.HandFinger.Thumb:
-                    boneToTestCollisions = OVRSkeleton.BoneId.Hand_Thumb3;
-                    break;
-                case OVRPlugin.HandFinger.Index:
-                    boneToTestCollisions = OVRSkeleton.BoneId.Hand_Index3;
-                    break;
-                case OVRPlugin.HandFinger.Middle:
-                    boneToTestCollisions = OVRSkeleton.BoneId.Hand_Middle3;
-                    break;
-                case OVRPlugin.HandFinger.Ring:
-                    boneToTestCollisions = OVRSkeleton.BoneId.Hand_Ring3;
-                    break;
-                default:
-                    boneToTestCollisions = OVRSkeleton.BoneId.Hand_Pinky3;
-                    break;
-            }
+            OVRSkeleton.BoneId boneToTestCollisions = GetFingerTip(
+                _fingerToFollow, handSkeleton.GetSkeletonType());
 
             List<BoneCapsuleTriggerLogic> boneCapsuleTriggerLogic = new List<BoneCapsuleTriggerLogic>();
             List<OVRBoneCapsule> boneCapsules = HandsManager.GetCapsulesPerBone(handSkeleton, boneToTestCollisions);

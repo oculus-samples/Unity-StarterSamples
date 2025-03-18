@@ -20,9 +20,11 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.UI;
 
+[MetaCodeSample("StarterSample-Passthrough")]
 public class FlashlightController : MonoBehaviour
 {
     public Light sceneLight;

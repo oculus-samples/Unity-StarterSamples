@@ -20,10 +20,12 @@
 
 using UnityEngine;
 using System.Collections;
+using Meta.XR.Samples;
 
 /// <summary>
 /// This orientation handler will use the specified thumbstick to adjust the landing orientation of the teleport.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportOrientationHandlerThumbstick : TeleportOrientationHandler
 {
     /// <summary>

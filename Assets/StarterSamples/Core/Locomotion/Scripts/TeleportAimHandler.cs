@@ -21,6 +21,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 
 /// <summary>
 /// TeleportAimHandler will provide a series of points in the world that represent the series of line
@@ -29,6 +30,7 @@ using System.Collections.Generic;
 /// shape makes sense for the teleport aiming mechanism which is then used to perform collision detection with the world
 /// in order to determine the final teleport target location.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public abstract class TeleportAimHandler : TeleportSupport
 {
     /// <summary>

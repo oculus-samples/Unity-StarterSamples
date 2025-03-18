@@ -20,6 +20,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.UI;
 #if UNITY_EDITOR
@@ -27,6 +28,7 @@ using UnityEngine.SceneManagement;
 #endif
 using TMPro;
 
+[MetaCodeSample("StarterSample.Core-DebugUI")]
 public class DebugUIBuilder : MonoBehaviour
 {
     // room for extension:

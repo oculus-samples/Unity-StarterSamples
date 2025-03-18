@@ -20,8 +20,10 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 
+[MetaCodeSample("StarterSample.Core-Video")]
 public static class NativeVideoPlayer
 {
     public enum PlabackState

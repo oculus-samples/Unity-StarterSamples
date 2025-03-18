@@ -19,9 +19,11 @@
  */
 
 using System.Collections;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.UI;
 
+[MetaCodeSample("StarterSample-Passthrough")]
 public class EnableDisablePassthroughController : MonoBehaviour
 {
     private static readonly int InvertedAlpha = Shader.PropertyToID("_InvertedAlpha");

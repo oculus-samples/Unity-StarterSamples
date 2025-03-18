@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 7267477438902063499}
   - component: {fileID: 1951687056023864910}
   - component: {fileID: 5899543314854920822}
+  - component: {fileID: 5969135533535608965}
   m_Layer: 9
   m_Name: PlaneMesh
   m_TagString: Untagged
@@ -242,6 +243,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5969135533535608965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4350422998566360405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd99dbd2ad52504b9ca0deb0d6a6973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7284367002185598776
 GameObject:
   m_ObjectHideFlags: 0

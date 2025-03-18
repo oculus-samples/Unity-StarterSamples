@@ -20,10 +20,12 @@
 
 
 using System.Collections;
+using Meta.XR.Samples;
 using UnityEngine;
 
 namespace OculusSampleFramework
 {
+    [MetaCodeSample("StarterSample-HandsTrain")]
     public class PanelHMDFollower : MonoBehaviour
     {
         private const float TOTAL_DURATION = 3.0f;

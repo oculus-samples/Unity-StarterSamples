@@ -21,11 +21,13 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using Meta.XR.Samples;
 using UnityEngine.Assertions;
 
 /// <summary>
 /// When this component is enabled, the player will be able to aim and trigger teleport behavior using Oculus Touch controllers.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportInputHandlerTouch : TeleportInputHandlerHMD
 {
     public Transform LeftHand;

@@ -24,7 +24,9 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
+using Meta.XR.Samples;
 
+[MetaCodeSample("StarterSample.Core-DebugUI")]
 public class LaserPointer : OVRCursor
 {
     public enum LaserBeamBehavior

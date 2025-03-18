@@ -18,11 +18,13 @@
  * limitations under the License.
  */
 
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace OculusSampleFramework
 {
+    [MetaCodeSample("StarterSample-HandsTrain")]
     public class CowController : MonoBehaviour
     {
         [SerializeField] private Animation _cowAnimation = null;

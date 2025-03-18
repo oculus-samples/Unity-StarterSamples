@@ -21,9 +21,11 @@
 using UnityEngine;
 using System.Collections;
 using System.Linq;
+using Meta.XR.Samples;
 using UnityEditor;
 
 [CustomEditor(typeof(TeleportTransitionWarp))]
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportTransitionWarpInspector : Editor
 {
     public override void OnInspectorGUI()

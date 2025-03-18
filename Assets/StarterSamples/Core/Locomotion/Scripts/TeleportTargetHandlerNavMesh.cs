@@ -24,7 +24,9 @@
 using UnityEngine;
 using System.Collections;
 using System.Diagnostics;
+using Meta.XR.Samples;
 
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportTargetHandlerNavMesh : TeleportTargetHandler
 {
     /// <summary>

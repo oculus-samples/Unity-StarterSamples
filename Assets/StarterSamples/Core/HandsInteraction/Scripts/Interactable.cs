@@ -20,6 +20,7 @@
 
 
 using System;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -28,6 +29,7 @@ namespace OculusSampleFramework
     /// <summary>
     /// Interface for all objects interacted with in example code.
     /// </summary>
+    [MetaCodeSample("StarterSample.Core-HandsInteraction")]
     public abstract class Interactable : MonoBehaviour
     {
         protected ColliderZone _proximityZoneCollider = null;

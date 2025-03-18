@@ -23,9 +23,11 @@ using UnityEditor;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Meta.XR.Samples;
 
 namespace Gradle
 {
+    [MetaCodeSample("StarterSample.Core-Tools.Gradle")]
     public static class Configuration
     {
         private static readonly string androidPluginsFolder = "Assets/Plugins/Android/";
@@ -109,8 +111,10 @@ namespace Gradle
         }
     }
 
+    [MetaCodeSample("StarterSample.Core-Tools.Gradle")]
     public class Template
     {
+        [MetaCodeSample("StarterSample.Core-Tools.Gradle")]
         private static class Parsing
         {
             public static string GetVersion(string text)
@@ -254,6 +258,7 @@ namespace Gradle
         }
     }
 
+    [MetaCodeSample("StarterSample.Core-Tools.Gradle")]
     public class Properties
     {
         private readonly string _propertiesPath;

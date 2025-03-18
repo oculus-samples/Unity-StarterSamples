@@ -19,10 +19,12 @@
  */
 
 
+using Meta.XR.Samples;
 using UnityEngine;
 
 namespace OculusSampleFramework
 {
+    [MetaCodeSample("StarterSample-HandsTrain")]
     public class Pose
     {
         public Vector3 Position;

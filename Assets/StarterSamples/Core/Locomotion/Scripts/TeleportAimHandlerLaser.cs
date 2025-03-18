@@ -21,7 +21,9 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportAimHandlerLaser : TeleportAimHandler
 {
     /// <summary>

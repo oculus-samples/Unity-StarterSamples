@@ -20,11 +20,13 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using TMPro;
 using UnityEngine;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(CanvasGroup))]
+[MetaCodeSample("StarterSample-Passthrough")]
 public class PassthroughAtStartupInfoPanel : MonoBehaviour
 {
     private readonly string infoPanelTextTemplate =

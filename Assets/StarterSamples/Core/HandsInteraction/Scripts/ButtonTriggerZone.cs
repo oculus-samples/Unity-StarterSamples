@@ -19,6 +19,7 @@
  */
 
 
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -27,6 +28,7 @@ namespace OculusSampleFramework
     /// <summary>
     /// Trigger zone of button, can be proximity, contact or action.
     /// </summary>
+    [MetaCodeSample("StarterSample.Core-HandsInteraction")]
     public class ButtonTriggerZone : MonoBehaviour, ColliderZone
     {
         [SerializeField] private GameObject _parentInteractableObj = null;

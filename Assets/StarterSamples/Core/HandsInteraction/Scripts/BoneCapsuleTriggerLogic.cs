@@ -20,6 +20,7 @@
 
 
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 
 namespace OculusSampleFramework
@@ -28,6 +29,7 @@ namespace OculusSampleFramework
     /// Allows a bone to keep track of interactables that it has touched. This information
     /// can be used by a tool.
     /// </summary>
+    [MetaCodeSample("StarterSample.Core-HandsInteraction")]
     public class BoneCapsuleTriggerLogic : MonoBehaviour
     {
         public InteractableToolTags ToolTags;

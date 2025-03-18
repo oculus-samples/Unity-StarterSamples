@@ -19,11 +19,13 @@
  */
 
 
+using Meta.XR.Samples;
 using UnityEngine;
 
 namespace OVRTouchSample
 {
     // Animating controller that updates with the tracked controller.
+    [MetaCodeSample("StarterSample.Core-TouchController")]
     public class TouchController : MonoBehaviour
     {
         [SerializeField]

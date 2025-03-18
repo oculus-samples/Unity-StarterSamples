@@ -19,8 +19,10 @@
  */
 
 using System.Collections;
+using Meta.XR.Samples;
 using UnityEngine;
 
+[MetaCodeSample("StarterSample-Passthrough")]
 public class PassthroughStyler : MonoBehaviour
 {
     private const float FadeDuration = 0.2f;

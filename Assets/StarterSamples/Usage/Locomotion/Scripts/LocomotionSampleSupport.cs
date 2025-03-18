@@ -21,13 +21,13 @@
 #define DEBUG_LOCOMOTION_PANEL
 
 using UnityEngine;
-using System.Collections;
 using System.Diagnostics;
+using Meta.XR.Samples;
 using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 using UnityEngine.EventSystems;
-using UnityEngine.Events;
 
+[MetaCodeSample("StarterSample-Locomotion")]
 public class LocomotionSampleSupport : MonoBehaviour
 {
     private LocomotionController lc;

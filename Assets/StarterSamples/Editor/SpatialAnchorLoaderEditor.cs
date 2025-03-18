@@ -18,10 +18,12 @@
  * limitations under the License.
  */
 
+using Meta.XR.Samples;
 using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(SpatialAnchorLoader))]
+[MetaCodeSample("StarterSample-Editor")]
 class MetaAnchorEditorMenu : Editor
 {
     public override void OnInspectorGUI()

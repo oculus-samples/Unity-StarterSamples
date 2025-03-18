@@ -22,6 +22,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using JetBrains.Annotations;
+using Meta.XR.Samples;
 using UnityEngine.Assertions;
 #if UNITY_EDITOR
 using UnityEngine.SceneManagement;
@@ -30,6 +31,7 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// Simply aggregates accessors.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class LocomotionController : MonoBehaviour
 {
     public OVRCameraRig CameraRig;

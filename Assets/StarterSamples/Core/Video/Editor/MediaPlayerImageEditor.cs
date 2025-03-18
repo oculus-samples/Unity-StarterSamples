@@ -20,11 +20,13 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEditor.UI;
 using UnityEditor;
 
 [CustomEditor(typeof(MediaPlayerImage), true)]
+[MetaCodeSample("StarterSample.Core-Video.Editor")]
 public class MediaPlayerImageEditor : ImageEditor
 {
     SerializedProperty m_ButtonType;

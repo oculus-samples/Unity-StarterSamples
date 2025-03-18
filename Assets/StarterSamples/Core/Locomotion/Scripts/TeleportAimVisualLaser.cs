@@ -21,7 +21,9 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using Meta.XR.Samples;
 
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportAimVisualLaser : TeleportSupport
 {
     /// <summary>

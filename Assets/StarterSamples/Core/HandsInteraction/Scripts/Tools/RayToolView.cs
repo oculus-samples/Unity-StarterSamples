@@ -19,6 +19,7 @@
  */
 
 
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -27,6 +28,7 @@ namespace OculusSampleFramework
     /// <summary>
     /// Visual portion of ray tool.
     /// </summary>
+    [MetaCodeSample("StarterSample.Core-HandsInteraction")]
     public class RayToolView : MonoBehaviour, InteractableToolView
     {
         private const int NUM_RAY_LINE_POSITIONS = 25;

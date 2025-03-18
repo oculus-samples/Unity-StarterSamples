@@ -19,6 +19,7 @@
  */
 
 
+using Meta.XR.Samples;
 using UnityEngine;
 
 namespace OVRTouchSample
@@ -32,6 +33,7 @@ namespace OVRTouchSample
     }
 
     // Stores pose-specific data such as the animation id and allowing gestures.
+    [MetaCodeSample("StarterSample.Core-CustomHands")]
     public class HandPose : MonoBehaviour
     {
         [SerializeField]

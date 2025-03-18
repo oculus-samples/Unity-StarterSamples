@@ -20,8 +20,10 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 using UnityEngine;
 
+[MetaCodeSample("StarterSample-Passthrough")]
 public class PassthroughBrush : MonoBehaviour
 {
     public OVRInput.Controller controllerHand = OVRInput.Controller.None;

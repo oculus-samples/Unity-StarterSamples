@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Meta.XR.Samples;
 
 namespace OculusSampleFramework
 {
@@ -47,6 +48,7 @@ namespace OculusSampleFramework
     /// You should be able to observe sharper and less aliased image when switch from world geometry to overlay layer.
     ///
     /// </summary>
+    [MetaCodeSample("StarterSample-OVROverlay")]
     public class OVROverlaySample : MonoBehaviour
     {
         bool inMenu;

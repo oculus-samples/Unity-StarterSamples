@@ -19,10 +19,12 @@
  */
 
 
+using Meta.XR.Samples;
 using UnityEngine;
 
 namespace OculusSampleFramework
 {
+    [MetaCodeSample("StarterSample-HandsTrain")]
     public class SelectionCylinder : MonoBehaviour
     {
         public enum SelectionState

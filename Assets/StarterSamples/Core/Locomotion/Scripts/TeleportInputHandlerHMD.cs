@@ -20,10 +20,12 @@
 
 using UnityEngine;
 using System.Collections;
+using Meta.XR.Samples;
 
 /// <summary>
 /// When this component is enabled, the player will be able to aim and trigger teleport behavior using HMD aiming.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportInputHandlerHMD : TeleportInputHandler
 {
     public Transform Pointer { get; private set; }

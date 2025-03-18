@@ -21,8 +21,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using Meta.XR.Samples;
 using UnityEngine;
 
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class SimpleCapsuleWithStickMovement : MonoBehaviour
 {
     public bool EnableLinearMovement = true;

@@ -21,9 +21,11 @@
 using System;
 using System.Collections;
 using System.Threading.Tasks;
+using Meta.XR.Samples;
 using UnityEngine;
 
 [RequireComponent(typeof(CanvasGroup))]
+[MetaCodeSample("StarterSample-Passthrough")]
 public class CameraSnapBehaviour : MonoBehaviour
 {
     private readonly float angleSnapThreshold = 20;

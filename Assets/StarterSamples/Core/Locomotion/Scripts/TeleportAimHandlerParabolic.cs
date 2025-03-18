@@ -22,10 +22,12 @@ using System;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Meta.XR.Samples;
 
 /// <summary>
 /// This aim handler simulates the parabolic curve that a thrown item would follow, a common style of teleport aiming.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportAimHandlerParabolic : TeleportAimHandler
 {
     /// <summary>

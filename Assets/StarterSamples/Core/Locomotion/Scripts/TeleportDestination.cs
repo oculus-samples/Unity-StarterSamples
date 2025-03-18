@@ -19,6 +19,7 @@
  */
 
 using System;
+using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -32,6 +33,7 @@ using UnityEngine.Assertions;
 /// and if the TeleportDestination’s MechAnim has a Post Teleport animation it might be necessary to instantiate
 /// additional OVRTeleportDestinations to allow targeting to occur before the previous destination finishes it’s animation.
 /// </summary>
+[MetaCodeSample("StarterSample.Core-Locomotion")]
 public class TeleportDestination : MonoBehaviour
 {
     /// <summary>
