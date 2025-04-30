@@ -71,13 +71,6 @@ partial class OculusBuildSamples
         Build("HandsInteractionTrainScene");
     }
 
-    static void BuildMixedRealityCapture()
-    {
-        InitializeBuild("mixedrealitycapture");
-        Build("MixedRealityCapture.apk",
-            new[] { GetFullPathForSample("Usage/MixedRealityCapture/MixedRealityCapture.unity") });
-    }
-
     static void BuildOVROverlay()
     {
         InitializeBuild("ovroverlay");
@@ -121,12 +114,10 @@ partial class OculusBuildSamples
                 GetFullPathForSample("Usage/Tools/Firebase.unity"),
                 GetFullPathForSample("Usage/HandsInteractionTrainScene.unity"),
                 GetFullPathForSample("Usage/Locomotion.unity"),
-                GetFullPathForSample("Usage/MixedRealityCapture/MixedRealityCapture.unity"),
                 GetFullPathForSample("Usage/OVROverlay.unity"),
                 GetFullPathForSample("Usage/OVROverlayCanvas.unity"),
                 GetFullPathForSample("Usage/OVROverlayCanvas_Text.unity"),
                 GetFullPathForSample("Usage/Passthrough.unity"),
-                GetFullPathForSample("Usage/SceneManager.unity"),
                 GetFullPathForSample("Usage/Stereo180Video.unity"),
                 GetFullPathForSample("Usage/SpatialAnchor.unity"),
                 GetFullPathForSample("Usage/WidevineVideo.unity"),

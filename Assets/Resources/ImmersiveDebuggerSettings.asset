@@ -30,6 +30,7 @@ MonoBehaviour:
   panelLayer: 20
   meshRendererLayer: 21
   overlayDepth: 10
+  useOverlay: 1
   inspectedDataEnabled: 
   inspectedDataAssets: []
   useCustomIntegrationConfig: 0

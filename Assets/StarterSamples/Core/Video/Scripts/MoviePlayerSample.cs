@@ -46,11 +46,13 @@ public class MoviePlayerSample : MonoBehaviour
     public VideoStereo Stereo;
     public bool AutoDetectStereoLayout;
     public bool DisplayMono;
+    public int VideoPlaybackRefreshRate = 120;
 
     // keep track of last state so we know when to update our display
     VideoShape _LastShape = (VideoShape)(-1);
     VideoStereo _LastStereo = (VideoStereo)(-1);
     bool _LastDisplayMono = false;
+    private int _LastRefreshRate = -1;
 
     public enum VideoShape
     {
@@ -345,14 +347,17 @@ public class MoviePlayerSample : MonoBehaviour
             IsPlaying = NativeVideoPlayer.IsPlaying;
             PlaybackPosition = NativeVideoPlayer.PlaybackPosition;
             Duration = NativeVideoPlayer.Duration;
-            if (IsPlaying && (int)OVRManager.display.displayFrequency != 60)
-            {
-                OVRManager.display.displayFrequency = 60.0f;
-            }
-            else if (!IsPlaying && (int)OVRManager.display.displayFrequency != 72)
-            {
-                OVRManager.display.displayFrequency = 72.0f;
-            }
+        }
+        int currentRefreshRate = Mathf.RoundToInt(OVRManager.display.displayFrequency);
+        if (IsPlaying && currentRefreshRate != VideoPlaybackRefreshRate)
+        {
+            _LastRefreshRate = currentRefreshRate;
+            OVRManager.display.displayFrequency = VideoPlaybackRefreshRate;
+        }
+        else if (!IsPlaying && _LastRefreshRate != -1 && currentRefreshRate != _LastRefreshRate)
+        {
+            OVRManager.display.displayFrequency = _LastRefreshRate;
+            _LastRefreshRate = -1;
         }
     }
 

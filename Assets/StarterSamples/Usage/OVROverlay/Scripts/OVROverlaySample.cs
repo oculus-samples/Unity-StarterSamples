@@ -147,6 +147,9 @@ namespace OculusSampleFramework
             cameraRenderOverlay.enabled = true;
             cameraRenderOverlay.currentOverlayShape = OVROverlay.OverlayShape.Quad;
             spawnedCubes.Capacity = numObjectsPerLevel * numLevels;
+
+            // select the first entry manually to have a synchronized state with the UI built above
+            ActivateOVROverlay();
         }
 
         void Update()

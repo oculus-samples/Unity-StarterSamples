@@ -24,9 +24,6 @@ EditorBuildSettings:
     path: Assets/StarterSamples/Usage/Locomotion.unity
     guid: 024cd9dcd49bd8f46a6bea03aa8a21bb
   - enabled: 1
-    path: Assets/StarterSamples/Usage/MixedRealityCapture/MixedRealityCapture.unity
-    guid: 24872d3c3760f23498f41ecb019ea5cd
-  - enabled: 1
     path: Assets/StarterSamples/Usage/OVROverlay.unity
     guid: d31b44aac77e1684d861792b23d46a8b
   - enabled: 1
@@ -36,11 +33,11 @@ EditorBuildSettings:
     path: Assets/StarterSamples/Usage/OVROverlayCanvas_Text.unity
     guid: ddc6bb16dbba496439d8fd8634a91a8e
   - enabled: 1
+    path: Assets/StarterSamples/Usage/OVROverlayCanvas_RenderOnChange.unity
+    guid: 7aecae271166037498f5da4184b4f2dd
+  - enabled: 1
     path: Assets/StarterSamples/Usage/Passthrough.unity
     guid: 58e5fc2486c774a4e88ac76261268d52
-  - enabled: 1
-    path: Assets/StarterSamples/Usage/SceneManager.unity
-    guid: d9d629a01189e9744a9347a18243afd9
   - enabled: 1
     path: Assets/StarterSamples/Usage/Stereo180Video.unity
     guid: 11cf8fa7bf3deb04db11bd170c0b4338
@@ -63,4 +60,6 @@ EditorBuildSettings:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 8c0030b4b5984e7439a553df0cdd7dd2,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: abe5d4c6390c70b438750d3c82121457,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 7cc0ec32ddfe5604db951d60073a27d5,
       type: 2}
