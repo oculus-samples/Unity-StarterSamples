@@ -15,6 +15,7 @@ MonoBehaviour:
   debugTypes: []
   immersiveDebuggerEnabled: 0
   immersiveDebuggerDisplayAtStartup: 0
+  enableOnlyInDebugBuild: 0
   showInspectors: 0
   showConsole: 0
   followOverride: 1

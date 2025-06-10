@@ -36,7 +36,7 @@ MonoBehaviour:
   nameUi: Meta XR Feature
   version: 0.0.1
   featureIdInternal: com.meta.openxr.feature.metaxr
-  openxrExtensionStrings: XR_KHR_vulkan_enable XR_KHR_D3D11_enable XR_OCULUS_common_reference_spaces
+  openxrExtensionStrings: 'XR_KHR_vulkan_enable XR_KHR_D3D11_enable XR_OCULUS_common_reference_spaces
     XR_FB_display_refresh_rate XR_EXT_performance_settings XR_FB_composition_layer_image_layout
     XR_KHR_android_surface_swapchain XR_FB_android_surface_swapchain_create XR_KHR_composition_layer_color_scale_bias
     XR_FB_color_space XR_EXT_hand_tracking XR_FB_swapchain_update_state XR_FB_swapchain_update_state_opengl_es
@@ -68,8 +68,9 @@ MonoBehaviour:
     XR_METAX1_face_tracking_visemes XR_METAX1_performance_modes XR_META_headset_id
     XR_FB_composition_layer_settings XR_META_automatic_layer_filter XR_METAX1_lighting_estimation
     XR_METAI_assisted_scene_capture XR_METAX1_spatial_entity_fiducial XR_METAX1_spatial_entity_marker
-    XR_METAX1_raycast XR_EXT_future XR_METAX2_debug_utils_region_profiling XR_METAX2_colocationXR_EXTX2_stationary_reference_space
-    XR_META_recommended_layer_resolution
+    XR_METAX1_raycast XR_EXT_future XR_METAX2_debug_utils_region_profiling XR_METAX2_colocation
+    XR_METAX1_instant_functional_surfaces XR_EXTX2_stationary_reference_space XR_META_recommended_layer_resolution
+    XR_EXT_local_floor XR_METAX1_virtual_reference_space XR_METAX1_virtual_reference_space_id '
   company: Meta
   priority: 0
   required: 0
@@ -376,7 +377,7 @@ MonoBehaviour:
   nameUi: Meta XR Feature
   version: 0.0.1
   featureIdInternal: com.meta.openxr.feature.metaxr
-  openxrExtensionStrings: XR_KHR_vulkan_enable XR_KHR_D3D11_enable XR_OCULUS_common_reference_spaces
+  openxrExtensionStrings: 'XR_KHR_vulkan_enable XR_KHR_D3D11_enable XR_OCULUS_common_reference_spaces
     XR_FB_display_refresh_rate XR_EXT_performance_settings XR_FB_composition_layer_image_layout
     XR_KHR_android_surface_swapchain XR_FB_android_surface_swapchain_create XR_KHR_composition_layer_color_scale_bias
     XR_FB_color_space XR_EXT_hand_tracking XR_FB_swapchain_update_state XR_FB_swapchain_update_state_opengl_es
@@ -408,8 +409,9 @@ MonoBehaviour:
     XR_METAX1_face_tracking_visemes XR_METAX1_performance_modes XR_META_headset_id
     XR_FB_composition_layer_settings XR_META_automatic_layer_filter XR_METAX1_lighting_estimation
     XR_METAI_assisted_scene_capture XR_METAX1_spatial_entity_fiducial XR_METAX1_spatial_entity_marker
-    XR_METAX1_raycast XR_EXT_future XR_METAX2_debug_utils_region_profiling XR_METAX2_colocationXR_EXTX2_stationary_reference_space
-    XR_META_recommended_layer_resolution
+    XR_METAX1_raycast XR_EXT_future XR_METAX2_debug_utils_region_profiling XR_METAX2_colocation
+    XR_METAX1_instant_functional_surfaces XR_EXTX2_stationary_reference_space XR_META_recommended_layer_resolution
+    XR_EXT_local_floor XR_METAX1_virtual_reference_space XR_METAX1_virtual_reference_space_id '
   company: Meta
   priority: 0
   required: 0

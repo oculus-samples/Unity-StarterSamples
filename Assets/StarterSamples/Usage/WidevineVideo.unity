@@ -593,7 +593,7 @@ MonoBehaviour:
   externalSurfaceWidth: 1920
   externalSurfaceHeight: 1080
   compositionDepth: 0
-  noDepthBufferTesting: 0
+  noDepthBufferTesting: 1
   layerTextureFormat: 0
   currentOverlayShape: 0
   textures:
