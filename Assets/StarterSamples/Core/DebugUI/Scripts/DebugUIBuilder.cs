@@ -18,7 +18,6 @@
  * limitations under the License.
  */
 
-using System.Collections;
 using System.Collections.Generic;
 using Meta.XR.Samples;
 using UnityEngine;
@@ -111,7 +110,7 @@ public class DebugUIBuilder : MonoBehaviour
         instance = this;
         menuOffset = transform.position; // TODO: this is unpredictable/busted
         gameObject.SetActive(false);
-        rig = FindObjectOfType<OVRCameraRig>();
+        rig = FindFirstObjectByType<OVRCameraRig>();
         for (int i = 0; i < toEnable.Count; ++i)
         {
             toEnable[i].SetActive(false);
@@ -135,7 +134,7 @@ public class DebugUIBuilder : MonoBehaviour
             GameObject.Instantiate(uiHelpersToInstantiate);
         }
 
-        lp = FindObjectOfType<LaserPointer>();
+        lp = FindFirstObjectByType<LaserPointer>();
         if (!lp)
         {
             Debug.LogError("Debug UI requires use of a LaserPointer and will not function without it. " +

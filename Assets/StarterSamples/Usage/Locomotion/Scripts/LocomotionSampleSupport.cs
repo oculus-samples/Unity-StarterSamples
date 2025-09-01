@@ -40,7 +40,7 @@ public class LocomotionSampleSupport : MonoBehaviour
 
     public void Start()
     {
-        lc = FindObjectOfType<LocomotionController>();
+        lc = FindFirstObjectByType<LocomotionController>();
         DebugUIBuilder.instance.AddButton("Node Teleport w/ A", SetupNodeTeleport);
         DebugUIBuilder.instance.AddButton("Dual-stick teleport", SetupTwoStickTeleport);
         DebugUIBuilder.instance.AddButton("L Strafe R Teleport", SetupLeftStrafeRightTeleport);
@@ -48,7 +48,7 @@ public class LocomotionSampleSupport : MonoBehaviour
         DebugUIBuilder.instance.AddButton("Walk Only", SetupWalkOnly);
 
         // This is just a quick hack-in, need a prefab-based way of setting this up easily.
-        EventSystem eventSystem = FindObjectOfType<EventSystem>();
+        EventSystem eventSystem = FindFirstObjectByType<EventSystem>();
         if (eventSystem == null)
         {
             Debug.LogError("Need EventSystem");

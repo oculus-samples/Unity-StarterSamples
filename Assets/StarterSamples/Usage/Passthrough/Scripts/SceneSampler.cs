@@ -32,7 +32,8 @@ public class SceneSampler : MonoBehaviour
     void Awake()
     {
         // Make sure we have only one instance of SceneSampler game object when jumping between scene
-        if (FindObjectsOfType<SceneSampler>().Any(sceneSampler => sceneSampler != this))
+        var samplers = FindObjectsByType<SceneSampler>(FindObjectsSortMode.None);
+        if (samplers.Any(sceneSampler => sceneSampler != this))
         {
             Destroy(gameObject);
             return;

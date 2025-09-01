@@ -19,10 +19,8 @@
  */
 
 using System.Collections;
-using System.Collections.Generic;
 using Meta.XR.Samples;
 using UnityEngine;
-using UnityEngine.UI;
 
 [MetaCodeSample("StarterSample-Passthrough")]
 public class FlashlightController : MonoBehaviour
@@ -95,7 +93,7 @@ public class FlashlightController : MonoBehaviour
     {
         if (skeletons[0] == null || skeletons[1] == null)
         {
-            OVRSkeleton[] foundSkeletons = FindObjectsOfType<OVRSkeleton>();
+            OVRSkeleton[] foundSkeletons = FindObjectsByType<OVRSkeleton>(FindObjectsSortMode.None);
             if (foundSkeletons[0])
             {
                 skeletons[0] = foundSkeletons[0];

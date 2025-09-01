@@ -20,7 +20,6 @@
 
 
 using System.Collections;
-using System.Collections.Generic;
 using Meta.XR.Samples;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -61,7 +60,7 @@ public class HandsActiveChecker : MonoBehaviour
 
     private IEnumerator GetCenterEye()
     {
-        if ((_cameraRig = FindObjectOfType<OVRCameraRig>()) != null)
+        if ((_cameraRig = FindFirstObjectByType<OVRCameraRig>()) != null)
         {
             while (!_centerEye)
             {

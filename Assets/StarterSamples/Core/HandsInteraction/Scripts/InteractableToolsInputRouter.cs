@@ -42,7 +42,7 @@ namespace OculusSampleFramework
             {
                 if (_instance == null)
                 {
-                    var instances = FindObjectsOfType<InteractableToolsInputRouter>();
+                    var instances = FindObjectsByType<InteractableToolsInputRouter>(FindObjectsSortMode.None);
                     if (instances.Length > 0)
                     {
                         _instance = instances[0];

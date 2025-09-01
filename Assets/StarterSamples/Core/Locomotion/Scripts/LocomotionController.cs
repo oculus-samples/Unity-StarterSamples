@@ -18,10 +18,7 @@
  * limitations under the License.
  */
 
-using System;
 using UnityEngine;
-using System.Collections;
-using JetBrains.Annotations;
 using Meta.XR.Samples;
 using UnityEngine.Assertions;
 #if UNITY_EDITOR
@@ -58,7 +55,7 @@ public class LocomotionController : MonoBehaviour
         //Assert.IsNotNull(PlayerController);
         if (CameraRig == null)
         {
-            CameraRig = FindObjectOfType<OVRCameraRig>();
+            CameraRig = FindFirstObjectByType<OVRCameraRig>();
         }
 
         Assert.IsNotNull(CameraRig);

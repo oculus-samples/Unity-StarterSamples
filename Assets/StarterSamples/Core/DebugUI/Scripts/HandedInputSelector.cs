@@ -19,10 +19,7 @@
  */
 
 using UnityEngine;
-using System.Collections;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using System;
 using Meta.XR.Samples;
 
 [MetaCodeSample("StarterSample.Core-DebugUI")]
@@ -33,8 +30,8 @@ public class HandedInputSelector : MonoBehaviour
 
     void Start()
     {
-        m_CameraRig = FindObjectOfType<OVRCameraRig>();
-        m_InputModule = FindObjectOfType<OVRInputModule>();
+        m_CameraRig = FindFirstObjectByType<OVRCameraRig>();
+        m_InputModule = FindFirstObjectByType<OVRInputModule>();
     }
 
     void Update()

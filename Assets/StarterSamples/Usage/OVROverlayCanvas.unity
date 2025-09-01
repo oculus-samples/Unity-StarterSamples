@@ -866,7 +866,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee10491ef6d5d1d49a270cf6b09bdc19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTransform: {fileID: 0}
+  _enableMipmapping: 0
+  _dynamicResolution: 1
+  _redrawResolutionThreshold: 2147483647
+  rectTransform: {fileID: 314378549}
   maxTextureSize: 2048
   manualRedraw: 0
   renderInterval: 2
@@ -1622,7 +1625,7 @@ MonoBehaviour:
   hideTimeoutPeriod: 0.1
   dimOnHideRequest: 1
   depthScaleMultiplier: 0.03
-  matchNormalOnPhysicsColliders: 0
+  matchNormalOnPhysicsColliders: 1
   rayTransform: {fileID: 2144179061}
 --- !u!4 &851230874
 Transform:

@@ -52,7 +52,7 @@ public class SceneSettings : MonoBehaviour
     private static void CollidersSetContactOffset(float contactOffset)
     {
         // @Note: This does not find inactive objects.
-        Collider[] allColliders = GameObject.FindObjectsOfType<Collider>();
+        Collider[] allColliders = FindObjectsByType<Collider>(FindObjectsSortMode.None);
         foreach (Collider collider in allColliders)
         {
             collider.contactOffset = contactOffset;
