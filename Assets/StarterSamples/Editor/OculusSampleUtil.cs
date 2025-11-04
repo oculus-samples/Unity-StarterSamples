@@ -17,39 +17,3 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-#if UNITY_EDITOR
-using Meta.XR.Samples;
-using UnityEditor;
-
-[InitializeOnLoadAttribute]
-[MetaCodeSample("StarterSample-Editor")]
-public class OculusSampleUtil
-{
-    static OculusSampleUtil()
-    {
-#if UNITY_2017_2_OR_NEWER
-        EditorApplication.playModeStateChanged += HandlePlayModeState;
-#else
-    EditorApplication.playmodeStateChanged += () =>
-    {
-      if (EditorApplication.isPlaying)
-      {
-        OVRPlugin.SendEvent("load", OVRPlugin.wrapperVersion.ToString(), "sample_framework");
-      }
-    };
-#endif
-    }
-
-#if UNITY_2017_2_OR_NEWER
-    private static void HandlePlayModeState(PlayModeStateChange state)
-    {
-        if (state == PlayModeStateChange.EnteredPlayMode)
-        {
-            OVRPlugin.SendEvent("load", OVRPlugin.wrapperVersion.ToString(), "sample_framework");
-        }
-    }
-#endif
-}
-
-#endif

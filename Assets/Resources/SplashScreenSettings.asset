@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8f835de36f47deaa2a10b371655305, type: 3}
   m_Name: SplashScreenSettings
   m_EditorClassIdentifier: 
-  isContextualPassthroughEnabled: 0
-  isSystemSplashScreenEnabled: 0
+  isContextualPassthroughEnabled: 1
+  isSystemSplashScreenEnabled: 1
   isUnityVrSplashScreenEnabled: 0
   isUnityLogosSplashScreenEnabled: 0

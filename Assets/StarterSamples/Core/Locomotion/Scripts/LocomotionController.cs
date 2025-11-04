@@ -59,9 +59,5 @@ public class LocomotionController : MonoBehaviour
         }
 
         Assert.IsNotNull(CameraRig);
-#if UNITY_EDITOR
-        OVRPlugin.SendEvent("locomotion_controller", (SceneManager.GetActiveScene().name == "Locomotion").ToString(),
-            "sample_framework");
-#endif
     }
 }

@@ -23,7 +23,7 @@ git clone https://github.com/oculus-samples/Unity-StarterSamples.git
 1. Navigate to **Meta** > **Samples** > **Build Starter Scene** to build an APK that will launch the **Starter Scene**.
     <div style="margin-left: 4.5em;"><img src="./Documentation/Medias/buildsamples.png" width="300"></div>
     * In this apk you will be able to cycle through the different sample scenes to test them out on device.
-2. Navigate to the `Unity-StarterSamples` folder and copy the `StartScene.apk` to your device using [Meta Quest Developer Hub](https://developer.oculus.com/documentation/unity/ts-odh-deploy-build/).
+2. Navigate to the `Unity-StarterSamples` folder and copy the `StartScene.apk` to your device using [Meta Quest Developer Hub](https://developer.oculus.com/documentation/unity/ts-mqdh-deploy-build/).
 
 ## SDK Dependencies
 All Meta SDKs can be found in the [Unity Asset Store](https://assetstore.unity.com/publishers/25353).

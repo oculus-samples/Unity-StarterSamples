@@ -81,6 +81,10 @@ public class Anchor : MonoBehaviour
 
     private GameObject _icon;
 
+    private string _trackingText = string.Empty;
+
+    private string _trackingLostText = string.Empty;
+
     #region Monobehaviour Methods
 
     private void Awake()
@@ -103,15 +107,22 @@ public class Anchor : MonoBehaviour
 
         if (_spatialAnchor)
         {
-            _anchorName.text = _spatialAnchor.Created
-                ? _spatialAnchor.Uuid.ToString()
-                : "Anchor creation failed";
+            _trackingText = $"{_spatialAnchor.Uuid}\nTracked";
+            _trackingLostText = $"{_spatialAnchor.Uuid}\nNot tracked";
+            SetAnchorName();
         }
         else
         {
             Destroy(gameObject);
         }
     }
+
+    private void SetAnchorName() => _anchorName.text =
+        _spatialAnchor.Created
+            ? _spatialAnchor.IsTracked
+                ? _trackingText
+                : _trackingLostText
+            : "Anchor creation failed";
 
     private void Update()
     {
@@ -125,6 +136,11 @@ public class Anchor : MonoBehaviour
 
         //Billboard the icon
         BillboardPanel(_icon.transform);
+
+        if (_spatialAnchor)
+        {
+            SetAnchorName();
+        }
     }
 
     #endregion // MonoBehaviour Methods

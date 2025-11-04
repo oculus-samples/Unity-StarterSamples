@@ -99,10 +99,6 @@ namespace OVRTouchSample
 
             OVRManager.InputFocusAcquired += OnInputFocusAcquired;
             OVRManager.InputFocusLost += OnInputFocusLost;
-#if UNITY_EDITOR
-            OVRPlugin.SendEvent("custom_hand", (SceneManager.GetActiveScene().name == "CustomHands").ToString(),
-                "sample_framework");
-#endif
         }
 
         private void OnDestroy()
