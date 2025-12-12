@@ -48,9 +48,6 @@ EditorBuildSettings:
     path: Assets/StarterSamples/Usage/WidevineVideo.unity
     guid: 5495456b7253d31479996b9587c20927
   - enabled: 1
-    path: Assets/StarterSamples/Usage/Passthrough/Scenes/OverlayPassthrough.unity
-    guid: 698c56db7f615834881cf3fad4dae4b5
-  - enabled: 1
     path: Assets/StarterSamples/Usage/Passthrough/Scenes/EnableDisablePassthrough.unity
     guid: 3e2ea09376a86d544ba6603c851c8627
   - enabled: 1
