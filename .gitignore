@@ -79,3 +79,8 @@ crashlytics-build.properties
 .idea/
 # VS Code cache directory
 .vscode/
+
+/Assets/Resources/InputActions.asset*
+# ImmersiveDebugger
+**/ImmersiveDebuggerSettings.asset
+**/ImmersiveDebuggerSettings.asset.meta
