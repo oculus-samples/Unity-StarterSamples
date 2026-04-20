@@ -49,7 +49,7 @@ public class PassthroughStyler : MonoBehaviour
     private GameObject[] _compactObjects;
 
     [SerializeField]
-    private GameObject[] _objectsToHideForColorPassthrough;
+    private GameObject[] _objectsToHideForBlackAndWhitePassthrough;
 
     private Vector3 _cursorPosition = Vector3.zero;
     private bool _settingColor = false;
@@ -78,17 +78,6 @@ public class PassthroughStyler : MonoBehaviour
         ShowFullMenu(false);
         _mainCanvas.interactable = false;
         _passthroughColorLut = new OVRPassthroughColorLut(_colorLutTexture);
-
-        if (!OVRManager.GetPassthroughCapabilities().SupportsColorPassthrough)
-        {
-            if (_objectsToHideForColorPassthrough != null)
-            {
-                for (int i = 0; i < _objectsToHideForColorPassthrough.Length; i++)
-                {
-                    _objectsToHideForColorPassthrough[i].SetActive(false);
-                }
-            }
-        }
     }
 
     private void Update()
@@ -255,6 +244,17 @@ public class PassthroughStyler : MonoBehaviour
         foreach (GameObject go in _compactObjects)
         {
             go.SetActive(doShow);
+        }
+
+        if (!OVRManager.GetPassthroughCapabilities().SupportsColorPassthrough)
+        {
+            if (_objectsToHideForBlackAndWhitePassthrough != null)
+            {
+                for (int i = 0; i < _objectsToHideForBlackAndWhitePassthrough.Length; i++)
+                {
+                    _objectsToHideForBlackAndWhitePassthrough[i].SetActive(false);
+                }
+            }
         }
     }
 

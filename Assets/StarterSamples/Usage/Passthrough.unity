@@ -594,8 +594,13 @@ MonoBehaviour:
   maxRenderScale: 1
   _headPoseRelativeOffsetRotation: {x: 0, y: 0, z: 0}
   _headPoseRelativeOffsetTranslation: {x: 0, y: 0, z: 0}
-  profilerTcpPort: 32419
-  expandMixedRealityCapturePropertySheet: 0
+  enableCoreMetricsRelease: 0
+  enableCoreMetricsDevelopment: 1
+  coreMetricVisibility:
+    visibleMemoryMetricStats: 0
+    visibleMemoryMetricGraphs: 0
+    visibleRenderMetricStats: 0
+    visibleRenderMetricGraphs: 0
   enableMixedReality: 0
   compositionMethod: 0
   extraHiddenLayers:
@@ -631,7 +636,6 @@ MonoBehaviour:
   isInsightPassthroughEnabled: 1
   shouldBoundaryVisibilityBeSuppressed: 0
   isImmersiveDebuggerEnabled: 0
-  expandFeatureFidelitySystemPropertySheet: 0
   featureFidelitySystemActivated: 0
   handTrackingFeatureFidelityGroup:
     targetFeatureEnabled: -1
@@ -662,6 +666,8 @@ MonoBehaviour:
   requestScenePermissionOnStartup: 1
   requestRecordAudioPermissionOnStartup: 0
   requestPassthroughCameraAccessPermissionOnStartup: 0
+  _dynamicPerformanceScalerData:
+    scalers: []
   _localDimming: 1
   _trackingOriginType: 1
   usePositionTracking: 1
@@ -675,7 +681,18 @@ MonoBehaviour:
   SimultaneousHandsAndControllersEnabled: 0
   _readOnlyWideMotionModeHandPosesEnabled: 0
   wideMotionModeHandPosesEnabled: 0
+  _readOnlyFastMotionModeHandPosesEnabled: 0
+  fastMotionModeHandPosesEnabled: 0
+  _readOnlyBodyFusionHandPosesEnabled: 0
+  bodyFusionHandPosesEnabled: 0
+  _readOnlyWideMotionMode2HandPosesEnabled: 0
+  wideMotionMode2HandPosesEnabled: 0
   dynamicResolutionVersion: 1
+  debugCPUFidelityOverride: 1
+  debugGPUFidelityOverride: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &236499497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1245,6 +1262,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 211631567}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &861359282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1651792562044564187, guid: f1984b633af3d214aa142412a785ad04,
+    type: 3}
+  m_PrefabInstance: {fileID: 3836090397755418308}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &876558773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2551,6 +2574,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992473649}
   m_CullTransparentMesh: 0
+--- !u!1 &2035910461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7100135693985978223, guid: f1984b633af3d214aa142412a785ad04,
+    type: 3}
+  m_PrefabInstance: {fileID: 3836090397755418308}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2096786911
 GameObject:
   m_ObjectHideFlags: 0
@@ -3215,6 +3244,31 @@ PrefabInstance:
       propertyPath: _passthroughLayer
       value: 
       objectReference: {fileID: 876558773}
+    - target: {fileID: 3836090397970682405, guid: f1984b633af3d214aa142412a785ad04,
+        type: 3}
+      propertyPath: _objectsToHideForColorPassthrough.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3836090397970682405, guid: f1984b633af3d214aa142412a785ad04,
+        type: 3}
+      propertyPath: _objectsToHideForColorPassthrough.Array.data[1]
+      value: 
+      objectReference: {fileID: 2035910461}
+    - target: {fileID: 3836090397970682405, guid: f1984b633af3d214aa142412a785ad04,
+        type: 3}
+      propertyPath: _objectsToHideForBlackAndWhitePassthrough.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3836090397970682405, guid: f1984b633af3d214aa142412a785ad04,
+        type: 3}
+      propertyPath: _objectsToHideForBlackAndWhitePassthrough.Array.data[0]
+      value: 
+      objectReference: {fileID: 861359282}
+    - target: {fileID: 3836090397970682405, guid: f1984b633af3d214aa142412a785ad04,
+        type: 3}
+      propertyPath: _objectsToHideForBlackAndWhitePassthrough.Array.data[1]
+      value: 
+      objectReference: {fileID: 2035910461}
     - target: {fileID: 3836090397970682406, guid: f1984b633af3d214aa142412a785ad04,
         type: 3}
       propertyPath: m_RootOrder
@@ -3353,7 +3407,7 @@ PrefabInstance:
     - target: {fileID: 4543806200825785096, guid: f1984b633af3d214aa142412a785ad04,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -633.14
+      value: -903.14
       objectReference: {fileID: 0}
     - target: {fileID: 6290964218338981681, guid: f1984b633af3d214aa142412a785ad04,
         type: 3}

@@ -20,6 +20,7 @@ MonoBehaviour:
   showConsole: 0
   followOverride: 1
   rotateOverride: 0
+  recenterOnToggle: 1
   showInfoLog: 0
   showWarningLog: 1
   showErrorLog: 1
