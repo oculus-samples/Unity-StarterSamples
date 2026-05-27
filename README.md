@@ -48,3 +48,21 @@ This project depends on SDKs defined in the [Packages/manifest.json](./Packages/
       5. Click on <i>Assets->Import Package->Custom Package...</i> from the menu bar
       6. Find the package we saved in step 3 and click <i>Open</i>
     </details>
+
+## Agent-ready development
+
+This sample is configured for AI coding agents.
+
+For the best experience in VS Code or Cursor, install the Meta Horizon extension:
+
+https://marketplace.visualstudio.com/items?itemName=meta.meta-vr-dev
+
+This repository also includes agent instructions and MCP configuration for Meta Quest Agentic Tools:
+
+https://github.com/meta-quest/agentic-tools
+
+Suggested first prompt:
+
+```text
+Read AGENTS.md, detect what type of Meta Quest sample this is, enable the hzdb MCP server if available, and explain how to build, run, and debug this sample on a Quest device.
+```

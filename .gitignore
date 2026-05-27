@@ -78,9 +78,13 @@ crashlytics-build.properties
 # Rider cache directory
 .idea/
 # VS Code cache directory
-.vscode/
+.vscode/*
 
 /Assets/Resources/InputActions.asset*
 # ImmersiveDebugger
 **/ImmersiveDebuggerSettings.asset
 **/ImmersiveDebuggerSettings.asset.meta
+
+# Meta Quest agentic tooling: keep VS Code/Cursor workspace recommendations
+!.vscode/extensions.json
+!.vscode/mcp.json
