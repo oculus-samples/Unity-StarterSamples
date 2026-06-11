@@ -1,3 +1,5 @@
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+
 Shader "MixedReality/BackgroundColor" {
   Properties{
       _Color("Color", Color) = (1, 1, 1, 1)

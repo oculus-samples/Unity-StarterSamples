@@ -1,22 +1,4 @@
-/*
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- * All rights reserved.
- *
- * Licensed under the Oculus SDK License Agreement (the "License");
- * you may not use the Oculus SDK except in compliance with the License,
- * which is provided at the time of installation or download, or which
- * otherwise accompanies this software in either electronic or hard copy form.
- *
- * You may obtain a copy of the License at
- *
- * https://developer.oculus.com/licenses/oculussdk/
- *
- * Unless required by applicable law or agreed to in writing, the Oculus SDK
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright (c) Meta Platforms, Inc. and affiliates.
 
 using System.Collections;
 using Meta.XR.Samples;
@@ -276,6 +258,11 @@ public class PassthroughStyler : MonoBehaviour
             int Upos = Mathf.RoundToInt(toImg.x * _colorTexture.width);
             int Vpos = Mathf.RoundToInt(toImg.y * _colorTexture.height);
             sampledColor = _colorTexture.GetPixel(Upos, Vpos);
+            // For some reason, perhaps it's the compression of the color wheel image, the very edges will incorrectly
+            // have rgb values of 1,1,1. Alpha is still 0 which is correct and the image shows that it has a fully transparent
+            // background but our assumption that the color values there are 0 are incorrect. If alpha is 0, the output needs to be
+            // 0,0,0 as well. This fixes that
+            sampledColor *= sampledColor.a;
         }
 
         _savedColor = new Color(sampledColor.r, sampledColor.g, sampledColor.b, _savedColor.a);

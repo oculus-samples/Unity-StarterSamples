@@ -1,22 +1,4 @@
-/*
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- * All rights reserved.
- *
- * Licensed under the Oculus SDK License Agreement (the "License");
- * you may not use the Oculus SDK except in compliance with the License,
- * which is provided at the time of installation or download, or which
- * otherwise accompanies this software in either electronic or hard copy form.
- *
- * You may obtain a copy of the License at
- *
- * https://developer.oculus.com/licenses/oculussdk/
- *
- * Unless required by applicable law or agreed to in writing, the Oculus SDK
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+// Copyright (c) Meta Platforms, Inc. and affiliates.
 
 using System.Collections;
 using System.Collections.Generic;
@@ -24,6 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using Meta.XR.Samples;
+#if USING_XR_SDK
+using UnityEngine.XR;
+#endif
 
 namespace OculusSampleFramework
 {
@@ -142,14 +127,25 @@ namespace OculusSampleFramework
 
             DebugUIBuilder.instance.Show();
 
-            // Start with Overlay Quad
-            CameraAndRenderTargetSetup();
-            cameraRenderOverlay.enabled = true;
+            // Start with Overlay Quad - wait for XR resolution to be initialized
+            StartCoroutine(InitializeCameraAndRenderTarget());
             cameraRenderOverlay.currentOverlayShape = OVROverlay.OverlayShape.Quad;
             spawnedCubes.Capacity = numObjectsPerLevel * numLevels;
 
             // select the first entry manually to have a synchronized state with the UI built above
             ActivateOVROverlay();
+        }
+
+        IEnumerator InitializeCameraAndRenderTarget()
+        {
+            // Wait until XR resolution is initialized (eyeTextureWidth/Height become valid)
+            while (UnityEngine.XR.XRSettings.eyeTextureWidth == 0 || UnityEngine.XR.XRSettings.eyeTextureHeight == 0)
+            {
+                yield return null;
+            }
+
+            CameraAndRenderTargetSetup();
+            cameraRenderOverlay.enabled = true;
         }
 
         void Update()
@@ -262,37 +258,26 @@ namespace OculusSampleFramework
             float overlayHeight = cameraRenderOverlay.transform.localScale.y;
             float overlayRadius = cameraRenderOverlay.transform.localScale.z;
 
-#if UNITY_ANDROID
-            // Gear VR display panel resolution
-            float hmdPanelResWidth = 2560;
-            float hmdPanelResHeight = 1440;
-#else
-            // Rift display panel resolution
-            float hmdPanelResWidth = 2160;
-            float hmdPanelResHeight = 1200;
-#endif
+            // Use the recommended eye texture resolution as starting point, then double it
+            // This follows the same approach as OVROverlayCanvas for optimal resolution
+            float resolutionWidth = UnityEngine.XR.XRSettings.eyeTextureWidth * 2.0f;
+            float resolutionHeight = UnityEngine.XR.XRSettings.eyeTextureHeight * 2.0f;
 
-            float singleEyeScreenPhysicalResX = hmdPanelResWidth * 0.5f;
-            float singleEyeScreenPhysicalResY = hmdPanelResHeight;
+            // Get the projection matrix from the XR subsystem (Camera.projectionMatrix/fieldOfView don't work for VR)
+            Camera cam = mainCamera.GetComponent<Camera>();
+            Matrix4x4 projMatrix = GetProjectionMatrix(cam);
 
-            // Calculate RT Height
-            // screenSizeYInWorld : how much world unity the full screen can cover at overlayQuad's location vertically
-            // pixelDensityY: pixels / world unit ( meter )
+            // Extract vertical FOV from projection matrix: proj[1,1] = 1 / tan(fovY/2)
+            float tanHalfFovY = 1.0f / projMatrix[1, 1];
+            float screenSizeYInWorld = 2 * overlayRadius * tanHalfFovY;
+            float pixelDensityYPerWorldUnit = resolutionHeight / screenSizeYInWorld;
+            float renderTargetHeight = pixelDensityYPerWorldUnit * overlayHeight;
 
-            float halfFovY = mainCamera.GetComponent<Camera>().fieldOfView / 2;
-            float screenSizeYInWorld = 2 * overlayRadius * Mathf.Tan(Mathf.Deg2Rad * halfFovY);
-            float pixelDensityYPerWorldUnit = singleEyeScreenPhysicalResY / screenSizeYInWorld;
-            float renderTargetHeight = pixelDensityYPerWorldUnit * overlayWidth;
-
-            // Calculate RT width
-            float renderTargetWidth = 0.0f;
-
-            // screenSizeXInWorld : how much world unity the full screen can cover at overlayQuad's location horizontally
-            // pixelDensityY: pixels / world unit ( meter )
-
-            float screenSizeXInWorld = screenSizeYInWorld * mainCamera.GetComponent<Camera>().aspect;
-            float pixelDensityXPerWorldUnit = singleEyeScreenPhysicalResX / screenSizeXInWorld;
-            renderTargetWidth = pixelDensityXPerWorldUnit * overlayWidth;
+            // Extract horizontal FOV from projection matrix: proj[0,0] = 1 / tan(fovX/2)
+            float tanHalfFovX = 1.0f / projMatrix[0, 0];
+            float screenSizeXInWorld = 2 * overlayRadius * tanHalfFovX;
+            float pixelDensityXPerWorldUnit = resolutionWidth / screenSizeXInWorld;
+            float renderTargetWidth = pixelDensityXPerWorldUnit * overlayWidth;
 
             // Compute the orthographic size for the camera
             float orthographicSize = overlayHeight / 2.0f;
@@ -323,6 +308,24 @@ namespace OculusSampleFramework
             uiCamera.GetComponent<Camera>().targetTexture = overlayRT;
 
             cameraRenderOverlay.textures[0] = overlayRT;
+        }
+
+        /// <summary>
+        /// Gets the projection matrix from the XR subsystem if available, otherwise falls back to camera projection.
+        /// This is necessary because Camera.projectionMatrix and Camera.fieldOfView don't work correctly for VR.
+        /// </summary>
+        Matrix4x4 GetProjectionMatrix(Camera cam)
+        {
+#if USING_XR_SDK
+            XRDisplaySubsystem currentDisplaySubsystem = OVRManager.GetCurrentDisplaySubsystem();
+            if (currentDisplaySubsystem != null && currentDisplaySubsystem.GetRenderPassCount() > 0)
+            {
+                currentDisplaySubsystem.GetRenderPass(0, out var renderPass);
+                renderPass.GetRenderParameter(cam, 0, out var renderParameter);
+                return renderParameter.projection;
+            }
+#endif
+            return cam.projectionMatrix;
         }
 
 

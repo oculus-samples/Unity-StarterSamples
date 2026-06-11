@@ -1,4 +1,6 @@
-﻿Shader "MixedReality/SelectivePassthrough"
+﻿// Copyright (c) Meta Platforms, Inc. and affiliates.
+
+Shader "MixedReality/SelectivePassthrough"
 {
     Properties
     {

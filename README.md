@@ -3,8 +3,6 @@
 # Unity Starter Samples
 The starter samples you will find here are to help you navigate and understand our APIs with more flexibility. We encourage you to look into them, test them out and inspire yourself on how the APIs can be used in your own project.
 
-The [Oculus License](./LICENSE) applies to the samples.
-
 This project was built using the [Unity engine](https://unity.com/download).
 
 ## Getting The Code
@@ -48,3 +46,7 @@ This project depends on SDKs defined in the [Packages/manifest.json](./Packages/
       5. Click on <i>Assets->Import Package->Custom Package...</i> from the menu bar
       6. Find the package we saved in step 3 and click <i>Open</i>
     </details>
+
+## License
+
+The majority of Starter Samples is licensed under the [MIT LICENSE](./LICENSE); however, files from [Audio360](./Assets/StarterSamples/Core/Video/Plugins/Android/Audio360) are licensed under their respective licensing terms.

@@ -15,7 +15,7 @@ MonoBehaviour:
   m_StereoRenderingModeDesktop: 1
   m_StereoRenderingModeAndroid: 2
   SharedDepthBuffer: 1
-  DepthSubmission: 1
+  DepthSubmission: 0
   DashSupport: 1
   LowOverheadMode: 1
   OptimizeBufferDiscards: 1

@@ -1,3 +1,5 @@
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+
 // Custom shader to draw our toy cubes and balls with an outline around them.
 Shader "Custom/ToyCubeOutline"
 {

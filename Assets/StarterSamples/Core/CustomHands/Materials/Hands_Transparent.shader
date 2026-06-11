@@ -1,3 +1,5 @@
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+
 Shader "Oculus/Hands_Transparent" {
      Properties
      {

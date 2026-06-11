@@ -1,3 +1,5 @@
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+
 Shader "Oculus/Hands_DiffuseBump" {
     Properties {
         _Shininess ("Shininess", Range (0.01, 3)) = 1

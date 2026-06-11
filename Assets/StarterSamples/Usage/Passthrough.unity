@@ -583,6 +583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _monoscopic: 0
   _sharpenType: 0
+  _disableRecording: 0
   _enableDynamicResolution: 1
   minDynamicResolutionScale: 1
   maxDynamicResolutionScale: 1
@@ -767,7 +768,7 @@ PrefabInstance:
     - target: {fileID: 114043904411177872, guid: a9d2de84afb308a4796cc671d3432b4d,
         type: 3}
       propertyPath: joyPadClickButton
-      value: 2105345
+      value: 2097152
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3238,6 +3239,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PassthroughStyler
+      objectReference: {fileID: 0}
+    - target: {fileID: 3836090397970682404, guid: f1984b633af3d214aa142412a785ad04,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.35693178
+      objectReference: {fileID: 0}
+    - target: {fileID: 3836090397970682404, guid: f1984b633af3d214aa142412a785ad04,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.028465688
       objectReference: {fileID: 0}
     - target: {fileID: 3836090397970682405, guid: f1984b633af3d214aa142412a785ad04,
         type: 3}
