@@ -21,6 +21,8 @@ public class LaserPointer : OVRCursor
     public GameObject cursorVisual;
     public float maxLength = 10.0f;
 
+    public Action<Vector3> SetCursorPosition;
+
     private LaserBeamBehavior _laserBeamBehavior;
     bool m_restoreOnInputAcquired = false;
 
@@ -64,6 +66,7 @@ public class LaserPointer : OVRCursor
         _startPoint = start;
         _endPoint = dest;
         _hitTarget = true;
+        SetCursorPosition?.Invoke(_endPoint);
     }
 
     public override void SetCursorRay(Transform t)

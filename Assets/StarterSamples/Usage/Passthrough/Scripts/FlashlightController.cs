@@ -1,37 +1,26 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-using System.Collections;
 using Meta.XR.Samples;
+using System.Collections;
 using UnityEngine;
 
 [MetaCodeSample("StarterSample-Passthrough")]
 public class FlashlightController : MonoBehaviour
 {
+    [SerializeField]
+    private OVRGrabbable grabbable;
+
     public Light sceneLight;
     public Transform flashlightRoot;
     Vector3 localPosition = Vector3.zero;
     Quaternion localRotation = Quaternion.identity;
-    public TextMesh infoText;
-    GrabObject externalController = null;
 
-    OVRSkeleton[] skeletons;
-    OVRHand[] hands;
-    int handIndex = -1;
-    bool pinching = false;
+    private bool isGrabbed;
 
     private void Start()
     {
         localRotation = flashlightRoot.localRotation;
         localPosition = flashlightRoot.localPosition;
-        skeletons = new OVRSkeleton[2];
-        hands = new OVRHand[2];
-
-        externalController = GetComponent<GrabObject>();
-        if (externalController)
-        {
-            externalController.GrabbedObjectDelegate += Grab;
-            externalController.ReleasedObjectDelegate += Release;
-        }
 
         if (GetComponent<Flashlight>())
         {
@@ -39,110 +28,22 @@ public class FlashlightController : MonoBehaviour
         }
     }
 
-    void LateUpdate()
+    void Update()
     {
-        if (!externalController)
+        if (grabbable.isGrabbed && !isGrabbed)
         {
-            FindHands();
-            bool usingControllers =
-                (OVRInput.GetActiveController() == OVRInput.Controller.RTouch ||
-                 OVRInput.GetActiveController() == OVRInput.Controller.LTouch ||
-                 OVRInput.GetActiveController() == OVRInput.Controller.Touch);
-
-            if (!usingControllers)
-            {
-                if (handIndex >= 0)
-                {
-                    AlignWithHand(hands[handIndex], skeletons[handIndex]);
-                }
-
-                if (infoText) infoText.text = "Pinch to toggle flashlight";
-            }
-            else
-            {
-                AlignWithController(OVRInput.Controller.RTouch);
-                if (OVRInput.GetUp(OVRInput.RawButton.A))
-                {
-                    if (GetComponent<Flashlight>()) GetComponent<Flashlight>().ToggleFlashlight();
-                }
-
-                if (infoText) infoText.text = "Press A to toggle flashlight";
-            }
+            Grab();
+        }
+        else if (!grabbable.isGrabbed && isGrabbed)
+        {
+            Release();
         }
     }
 
-    void FindHands()
+    public void Grab()
     {
-        if (skeletons[0] == null || skeletons[1] == null)
-        {
-            OVRSkeleton[] foundSkeletons = FindObjectsByType<OVRSkeleton>(FindObjectsSortMode.None);
-            if (foundSkeletons[0])
-            {
-                skeletons[0] = foundSkeletons[0];
-                hands[0] = skeletons[0].GetComponent<OVRHand>();
-                handIndex = 0;
-            }
+        isGrabbed = true;
 
-            if (foundSkeletons[1])
-            {
-                skeletons[1] = foundSkeletons[1];
-                hands[1] = skeletons[1].GetComponent<OVRHand>();
-                handIndex = 1;
-            }
-        }
-        else
-        {
-            if (handIndex == 0)
-            {
-                if (hands[1].GetFingerIsPinching(OVRHand.HandFinger.Index))
-                {
-                    handIndex = 1;
-                }
-            }
-            else
-            {
-                if (hands[0].GetFingerIsPinching(OVRHand.HandFinger.Index))
-                {
-                    handIndex = 0;
-                }
-            }
-        }
-    }
-
-    void AlignWithHand(OVRHand hand, OVRSkeleton skeleton)
-    {
-        if (pinching)
-        {
-            if (hand.GetFingerPinchStrength(OVRHand.HandFinger.Index) < 0.8f)
-            {
-                pinching = false;
-            }
-        }
-        else
-        {
-            if (hand.GetFingerIsPinching(OVRHand.HandFinger.Index))
-            {
-                if (GetComponent<Flashlight>()) GetComponent<Flashlight>().ToggleFlashlight();
-                pinching = true;
-            }
-        }
-
-        flashlightRoot.position = skeleton.Bones[6].Transform.position;
-        flashlightRoot.rotation =
-            Quaternion.LookRotation(skeleton.Bones[6].Transform.position - skeleton.Bones[0].Transform.position);
-    }
-
-    void AlignWithController(OVRInput.Controller controller)
-    {
-        transform.position = OVRInput.GetLocalControllerPosition(controller);
-        transform.rotation = OVRInput.GetLocalControllerRotation(controller);
-
-        flashlightRoot.localRotation = localRotation;
-        flashlightRoot.localPosition = localPosition;
-    }
-
-    public void Grab(OVRInput.Controller grabHand)
-    {
         if (GetComponent<Flashlight>())
         {
             GetComponent<Flashlight>().EnableFlashlight(true);
@@ -154,6 +55,8 @@ public class FlashlightController : MonoBehaviour
 
     public void Release()
     {
+        isGrabbed = false;
+
         if (GetComponent<Flashlight>())
         {
             GetComponent<Flashlight>().EnableFlashlight(false);

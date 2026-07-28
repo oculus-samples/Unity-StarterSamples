@@ -84,3 +84,7 @@ crashlytics-build.properties
 # ImmersiveDebugger
 **/ImmersiveDebuggerSettings.asset
 **/ImmersiveDebuggerSettings.asset.meta
+
+# DevAgentSettings
+/[Aa]ssets/[Rr]esources/DevAgentSettings.asset
+/[Aa]ssets/[Rr]esources/DevAgentSettings.asset.meta

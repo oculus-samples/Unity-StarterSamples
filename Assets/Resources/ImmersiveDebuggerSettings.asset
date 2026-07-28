@@ -11,18 +11,39 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7d75bea1662418ab5f9e0c22110bc09, type: 3}
   m_Name: ImmersiveDebuggerSettings
-  m_EditorClassIdentifier: 
-  debugTypes: []
-  immersiveDebuggerEnabled: 0
-  immersiveDebuggerDisplayAtStartup: 0
+  m_EditorClassIdentifier:
+  debugTypes:
+  - AssemblyName: Meta.XR.BuildingBlocks
+    DebugTypes:
+    - Meta.XR.BuildingBlocks.QrCodeScanner
+  - AssemblyName: Meta.XR.MultiplayerBlocks.Shared
+    DebugTypes:
+    - Meta.XR.MultiplayerBlocks.Shared.CustomMatchmaking
+  - AssemblyName: Meta.XR.ImmersiveDebugger
+    DebugTypes:
+    - TestSceneUsage
+    - UIEditorSetup
+  - AssemblyName: Oculus.VR.EditModeTests
+    DebugTypes:
+    - TestClassWithActionAttribute
+    - TestClassWithAttribute
+    - TestClassForCompilationProcessor
+    - TestClassWithGizmoAttribute
+    - NestedDataClass
+    - TestClassWithNestedData
+    - TestClassWithTweakAttribute
+    - TestClassWithWatchAttribute
+    - Meta.XR.ImmersiveDebugger.TestNamespace.TestClassWithinNamespace
+  immersiveDebuggerEnabled: 1
+  immersiveDebuggerDisplayAtStartup: 1
   enableOnlyInDebugBuild: 0
   showInspectors: 0
-  showConsole: 0
+  showConsole: 1
   followOverride: 1
   rotateOverride: 0
   recenterOnToggle: 1
-  showInfoLog: 0
-  showWarningLog: 1
+  showInfoLog: 1
+  showWarningLog: 0
   showErrorLog: 1
   collapsedIdenticalLogEntries: 0
   maximumNumberOfLogEntries: 1000
@@ -33,10 +54,12 @@ MonoBehaviour:
   meshRendererLayer: 21
   overlayDepth: 10
   useOverlay: 1
-  inspectedDataEnabled: 
-  inspectedDataAssets: []
+  inspectedDataEnabled: 0101
+  inspectedDataAssets:
+  - {fileID: 11400000, guid: 7d2b5c7a7c5e53542ab61e3e1f5a2785, type: 2}
+  - {fileID: 11400000, guid: 168f7a776bb65884397aab8376e40c7d, type: 2}
   useCustomIntegrationConfig: 0
-  customIntegrationConfigClassName: 
+  customIntegrationConfigClassName:
   hierarchyViewShowsPrivateMembers: 0
   clickButton: 8193
   toggleFollowTranslationButton: 0

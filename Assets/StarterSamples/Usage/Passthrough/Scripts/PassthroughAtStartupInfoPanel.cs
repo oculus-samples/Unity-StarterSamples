@@ -32,11 +32,14 @@ public class PassthroughAtStartupInfoPanel : MonoBehaviour
     public SplashScreenSettings splashScreenSettings;
 
     private CanvasGroup canvasGroup;
-    private bool isPassthroughRecommended;
+    private bool isPassthroughRecommended = true;
 
     private void Awake()
     {
-        isPassthroughRecommended = OVRManager.IsPassthroughRecommended();
+        if (!Application.isEditor)
+        {
+            isPassthroughRecommended = OVRManager.IsPassthroughRecommended();
+        }
         canvasGroup = GetComponent<CanvasGroup>();
         StartCoroutine(LoadSettingsAndPositionPanel());
     }

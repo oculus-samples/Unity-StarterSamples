@@ -1,18 +1,22 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-using System.Collections;
-using System.Collections.Generic;
 using Meta.XR.Samples;
+using System.Collections;
 using UnityEngine;
 
 [MetaCodeSample("StarterSample-Passthrough")]
 public class BrushController : MonoBehaviour
 {
+    [SerializeField]
+    private OVRGrabbable grabbable;
+
     public PassthroughBrush brush;
     public MeshRenderer backgroundSphere;
 
     IEnumerator grabRoutine;
     IEnumerator releaseRoutine;
+
+    private bool isGrabbed;
 
     void Start()
     {
@@ -23,29 +27,34 @@ public class BrushController : MonoBehaviour
             brush.lineContainer = new GameObject("LineContainer");
         }
 
-        // the material on the background sphere ignores z-write, so it can overwrite other opaque objects in the scene
-        // also renders after transparent objects
         backgroundSphere.material.renderQueue = 3998;
-        // the selective Passthrough shader renders at 4000 and higher, to render after other transparent objects
-        // (white ring and info text render after)
         backgroundSphere.transform.parent = null;
         backgroundSphere.enabled = false;
-
-        if (GetComponent<GrabObject>())
-        {
-            GetComponent<GrabObject>().GrabbedObjectDelegate += Grab;
-            GetComponent<GrabObject>().ReleasedObjectDelegate += Release;
-        }
     }
 
     void Update()
     {
         backgroundSphere.transform.position = Camera.main.transform.position;
+
+        if (grabbable.isGrabbed && !isGrabbed)
+        {
+            Grab(OVRInput.Controller.Hands);
+        }
+        else if (!grabbable.isGrabbed && isGrabbed)
+        {
+            Release();
+        }
     }
 
-    public void Grab(OVRInput.Controller grabHand)
+    public void GrabWithHand()
     {
-        brush.controllerHand = grabHand;
+        Grab(OVRInput.Controller.Hands);
+    }
+
+    public void Grab(OVRInput.Controller controllerType)
+    {
+        isGrabbed = true;
+        brush.controllerHand = controllerType;
         brush.lineContainer.SetActive(true);
         backgroundSphere.enabled = true;
 
@@ -57,6 +66,7 @@ public class BrushController : MonoBehaviour
 
     public void Release()
     {
+        isGrabbed = false;
         brush.controllerHand = OVRInput.Controller.None;
         brush.lineContainer.SetActive(false);
 

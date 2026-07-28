@@ -143,6 +143,14 @@ public class EnableDisablePassthroughController : MonoBehaviour
         }
     }
 
+    public void OnMicroGesture(OVRHand.MicrogestureType gesture)
+    {
+        if (gesture == OVRHand.MicrogestureType.ThumbTap)
+        {
+            TogglePassthrough();
+        }
+    }
+
     private enum PassthroughTransitionType
     {
         VrToMr,

@@ -12,7 +12,7 @@ git clone https://github.com/oculus-samples/Unity-StarterSamples.git
 ```
 
 ## How to run the project in Unity
-1. Make sure you're using  *Unity 2022.3.15f1* or newer.
+1. Make sure you're using  *Unity 6000.0.66f2* or newer.
 2. In the Project window, navigate to [Assets/StarterSamples/Usage](Assets/StarterSamples/Usage).
 3. Click on individual scenes.
 4. Click **Play** button to explore scene functionality in Unity.

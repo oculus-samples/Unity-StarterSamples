@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using Meta.XR.Samples;
+using UnityEngine.InputSystem;
 #if USING_XR_SDK
 using UnityEngine.XR;
 #endif
@@ -132,7 +133,7 @@ namespace OculusSampleFramework
             cameraRenderOverlay.currentOverlayShape = OVROverlay.OverlayShape.Quad;
             spawnedCubes.Capacity = numObjectsPerLevel * numLevels;
 
-            // select the first entry manually to have a synchronized state with the UI built above
+            // select the first entry manually
             ActivateOVROverlay();
         }
 
@@ -159,7 +160,7 @@ namespace OculusSampleFramework
             }
 
             // Trigger loading simulator via keyboard
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Keyboard.current?.aKey.wasPressedThisFrame == true)
             {
                 TriggerLoad();
             }

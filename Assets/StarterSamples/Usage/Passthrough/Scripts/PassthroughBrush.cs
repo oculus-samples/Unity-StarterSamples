@@ -36,7 +36,11 @@ public class PassthroughBrush : MonoBehaviour
         // face camera
         transform.rotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position);
 
-        if (!(controllerHand == OVRInput.Controller.LTouch || controllerHand == OVRInput.Controller.RTouch))
+        if (!(
+            controllerHand == OVRInput.Controller.LTouch ||
+            controllerHand == OVRInput.Controller.RTouch ||
+            controllerHand == OVRInput.Controller.Hands
+            ))
         {
             return;
         }
@@ -50,7 +54,8 @@ public class PassthroughBrush : MonoBehaviour
                     UndoInkLine();
                 }
 
-                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, controllerHand))
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, controllerHand) ||
+                    controllerHand == OVRInput.Controller.Hands)
                 {
                     StartLine(tipPosition);
                     brushStatus = BrushState.Inking;

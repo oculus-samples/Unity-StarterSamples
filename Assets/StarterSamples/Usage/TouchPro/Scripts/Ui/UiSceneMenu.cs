@@ -3,6 +3,7 @@
 using System.Text.RegularExpressions;
 using Meta.XR.Samples;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
@@ -62,12 +63,12 @@ public class UiSceneMenu : MonoBehaviour
 
     private bool KeyboardPrevScene()
     {
-        return Input.GetKeyDown(KeyCode.UpArrow);
+        return Keyboard.current?.upArrowKey.wasPressedThisFrame == true;
     }
 
     private bool KeyboardNextScene()
     {
-        return Input.GetKeyDown(KeyCode.DownArrow);
+        return Keyboard.current?.downArrowKey.wasPressedThisFrame == true;
     }
 
     private bool ThumbstickPrevScene(OVRInput.Controller controller)

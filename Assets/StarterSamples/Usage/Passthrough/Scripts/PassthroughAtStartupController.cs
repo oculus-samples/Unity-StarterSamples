@@ -12,15 +12,6 @@ using UnityEngine.UI;
 [MetaCodeSample("StarterSample-Passthrough")]
 public class PassthroughAtStartupController : MonoBehaviour
 {
-    private const float LogoFoVDefault = 35f;
-
-    // Static values of the Menu panel. At app start the menu is populated from some GameObject, but once a user
-    // starts jumping between scenes, and once they return to the current page, the menu values are populated
-    // from these static fields.
-    private static float logoDistanceBetweenRestarts = -1;
-    private static float logoFoVBetweenRestarts = -1;
-    private static float logoFadeInDurationBetweenRestarts = -1;
-
     private AsyncOperation loadingNextSceneOperation;
     private bool transitionToNextSceneStarted;
     private float loadingElapsed;
@@ -34,11 +25,6 @@ public class PassthroughAtStartupController : MonoBehaviour
 
     // Left controller menu UI items
     public Slider progressBar;
-    public Toggle pauseTransitionToggle;
-    public Button restartButton;
-    public Slider logoDistanceSlider;
-    public Slider logoFoVSlider;
-    public Slider logoFadeInDurationSlider;
 
     public void Start()
     {
@@ -49,25 +35,6 @@ public class PassthroughAtStartupController : MonoBehaviour
         // is a VR app, so OVRManager.IsPassthroughRecommended() will always return false.
         passthroughLayer.enabled = OVRManager.IsPassthroughRecommended();
 #endif
-
-        // Restore values from the previous scene incarnation when available, or fall back to defaults
-        logoDistanceSlider.value = logoDistanceBetweenRestarts > 0 ? logoDistanceBetweenRestarts : splashScreenController.ImageDistance;
-        logoFoVSlider.value = logoFoVBetweenRestarts > 0 ? logoFoVBetweenRestarts : LogoFoVDefault;
-        logoFadeInDurationSlider.value = logoFadeInDurationBetweenRestarts > 0 ? logoFadeInDurationBetweenRestarts : splashScreenController.ImageFadeInDuration;
-
-        // Propagate values to the right controller
-        splashScreenController.ImageDistance = logoDistanceSlider.value;
-        splashScreenController.ImageFoV = logoFoVSlider.value;
-        splashScreenController.ImageFadeInDuration = logoFadeInDurationSlider.value;
-
-        // Subscribe to UI events
-        pauseTransitionToggle.isOn = false;
-        pauseTransitionToggle.onValueChanged.AddListener(PauseTransitionPressed);
-        restartButton.onClick.AddListener(RestartButtonPressed);
-        logoDistanceSlider.onValueChanged.AddListener(LogoDistanceValueChanged);
-        logoFoVSlider.onValueChanged.AddListener(LogoFoVValueChanged);
-        logoFadeInDurationSlider.onValueChanged.AddListener(LogoFadeInDurationValueChanged);
-
         string confirmedNextScene = GetFinalSceneToRedirect(nextScene);
         if (!string.IsNullOrEmpty(confirmedNextScene))
         {
@@ -117,6 +84,11 @@ public class PassthroughAtStartupController : MonoBehaviour
 
     private void Update()
     {
+        if (OVRInput.GetDown(OVRInput.RawButton.A))
+        {
+            PauseTransitionPressed(!pauseTransition);
+        }
+
         if (transitionToNextSceneStarted)
             return;
 
@@ -135,15 +107,6 @@ public class PassthroughAtStartupController : MonoBehaviour
         {
             transitionToNextSceneStarted = true;
             StartTransitionToNextScene();
-            return;
-        }
-
-        // Catch the moment when a user moved the FadeIn slider and released the controller - we restart current scene
-        if (logoFadeInDurationBetweenRestarts > 0
-            && Math.Abs(logoFadeInDurationBetweenRestarts - splashScreenController.ImageFadeInDuration) > .1f
-            && OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
-        {
-            Restart();
         }
     }
 
@@ -169,24 +132,11 @@ public class PassthroughAtStartupController : MonoBehaviour
         pauseTransition = value;
     }
 
-    private void RestartButtonPressed()
+    public void OnMicroGesture(OVRHand.MicrogestureType gesture)
     {
-        Restart();
-    }
-
-    private void LogoDistanceValueChanged(float newDistance)
-    {
-        splashScreenController.ImageDistance = newDistance;
-        logoDistanceBetweenRestarts = newDistance;
-    }
-    private void LogoFoVValueChanged(float newFoV)
-    {
-        splashScreenController.ImageFoV = newFoV;
-        logoFoVBetweenRestarts = newFoV;
-
-    }
-    private void LogoFadeInDurationValueChanged(float newDuration)
-    {
-        logoFadeInDurationBetweenRestarts = newDuration;
+        if (gesture == OVRHand.MicrogestureType.ThumbTap)
+        {
+            PauseTransitionPressed(!pauseTransition);
+        }
     }
 }
