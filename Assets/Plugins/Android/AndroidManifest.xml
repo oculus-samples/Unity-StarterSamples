@@ -23,6 +23,7 @@
   <uses-permission android:name="com.oculus.permission.HAND_TRACKING" />
   <uses-feature android:name="com.oculus.experimental.enabled" android:required="true" />
   <uses-permission android:name="com.oculus.permission.USE_ANCHOR_API" />
+  <uses-permission android:name="com.oculus.permission.PLANE_TRACKING" />
   <uses-feature android:name="com.oculus.feature.PASSTHROUGH" android:required="true" />
   <uses-permission android:name="com.oculus.permission.USE_SCENE" />
   <horizonos:uses-horizonos-sdk horizonos:minSdkVersion="68" horizonos:targetSdkVersion="74" />
