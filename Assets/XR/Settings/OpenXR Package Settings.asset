@@ -765,28 +765,6 @@ MonoBehaviour:
   Values:
   - {fileID: 7319985328151030268}
   - {fileID: -2661437022847565163}
---- !u!114 &58243886045614785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 694e0427ee714c52ae28bdcd4d4e5f67, type: 3}
-  m_Name: MetaXRSwiftlet Standalone
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Meta XR Swiftlet
-  version: 0.0.1
-  featureIdInternal: com.meta.openxr.feature.swiftlet
-  openxrExtensionStrings: XR_METAX5_extension232_interaction
-  company: Meta
-  priority: 0
-  targetOpenXRApiVersion: 
-  required: 0
-  customRuntimeLoaderName: 
 --- !u!114 &702831222686462404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1337,28 +1315,6 @@ MonoBehaviour:
   targetOpenXRApiVersion: 
   required: 0
   customRuntimeLoaderName: 
---- !u!114 &6816060491221077003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 694e0427ee714c52ae28bdcd4d4e5f67, type: 3}
-  m_Name: MetaXRSwiftlet Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Meta XR Swiftlet
-  version: 0.0.1
-  featureIdInternal: com.meta.openxr.feature.swiftlet
-  openxrExtensionStrings: XR_METAX5_extension232_interaction
-  company: Meta
-  priority: 0
-  targetOpenXRApiVersion: 
-  required: 0
-  customRuntimeLoaderName: 
 --- !u!114 &7238476496026235010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1480,28 +1436,6 @@ MonoBehaviour:
   lateLatchingDebug: 0
   optimizeMultiviewRenderRegions: 0
   spacewarpMotionVectorTextureFormat: 0
---- !u!114 &8251096879778320821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 694e0427ee714c52ae28bdcd4d4e5f67, type: 3}
-  m_Name: MetaXRSwiftlet Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Meta XR Swiftlet
-  version: 0.0.1
-  featureIdInternal: com.meta.openxr.feature.swiftlet
-  openxrExtensionStrings: XR_METAX5_extension232_interaction
-  company: Meta
-  priority: 0
-  targetOpenXRApiVersion: 
-  required: 0
-  customRuntimeLoaderName: 
 --- !u!114 &9015944233789514062
 MonoBehaviour:
   m_ObjectHideFlags: 0

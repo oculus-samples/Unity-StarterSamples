@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using System.IO;
 using Meta.XR.Samples;
-using UnityEditor.Android;
 using UnityEngine;
 
 [MetaCodeSample("StarterSample.Core-Video.Editor")]
@@ -18,6 +17,29 @@ public class AndroidVideoEditorUtil
     private const string AndroidXPropertyName = "android.useAndroidX";
     private const string AndroidXPropertyValue = "true";
     private const AndroidSdkVersions MinimumTargetAndroidSdkVersion = (AndroidSdkVersions)31;
+
+    // UnityEditor.Android.AndroidExternalToolsSettings ships with the Android module, so referencing
+    // it directly stops this sample compiling in editors that do not have that module installed.
+    // EditorPrefs and BuildPipeline expose the same locations and are always available.
+    private static string GetAndroidSdkRootPath()
+    {
+        var configuredRoot = EditorPrefs.GetString("AndroidSdkRoot");
+        if (!EditorPrefs.GetBool("SdkUseEmbedded") && !string.IsNullOrEmpty(configuredRoot))
+        {
+            return configuredRoot;
+        }
+
+        try
+        {
+            var engineDir = BuildPipeline.GetPlaybackEngineDirectory(BuildTarget.Android, BuildOptions.None);
+            return string.IsNullOrEmpty(engineDir) ? string.Empty : Path.Combine(engineDir, "SDK");
+        }
+        catch (System.Exception)
+        {
+            // No Android module installed, so there is no embedded SDK to fall back to.
+            return string.Empty;
+        }
+    }
 
     private static void SetPluginCompatibility(bool enabled)
     {
@@ -60,7 +82,7 @@ public class AndroidVideoEditorUtil
         var currentTargetSDK = PlayerSettings.Android.targetSdkVersion;
         if (currentTargetSDK == 0)
         {
-            var platformPath = Path.Combine(AndroidExternalToolsSettings.sdkRootPath, "platforms");
+            var platformPath = Path.Combine(GetAndroidSdkRootPath(), "platforms");
             if (Directory.Exists(platformPath))
             {
                 var allSubDir = Directory.GetDirectories(platformPath);
